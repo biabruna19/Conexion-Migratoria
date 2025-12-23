@@ -1,0 +1,525 @@
+<?php
+session_start();
+$dbHost = 'Localhost';
+$dbUsername = 'root';
+$dbPassword = '';
+$dbName = 'dbcm';
+
+$conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+if ($conn->connect_error) {
+    die("Conexão falhou: " . $conn->connect_error);
+}
+
+// Obtém o código do estado da URL (e.g., SP, RJ)
+$uf = isset($_GET['uf']) ? $_GET['uf'] : '';
+
+// Consulta o banco de dados para obter informações do estado
+$sql = "SELECT nomeEstado, cultDescricao1, cultDescricao2, nomePonto1, nomePonto2, nomePonto3, nomePonto4, descPonto1,
+descPonto2, descPonto3, descPonto4, saudeP1, saudeP2, escolaP1, nomeEsc1, nomeEsc2, nomeEsc3, nomeEsc4, nomeEsc5,
+nomeEsc6, locP1, locP2, locP3, img1, imgCult, imgPonto1, imgPonto2, imgPonto3, imgPonto4 FROM tbEstado WHERE uf = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $uf);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Verifica se o estado foi encontrado
+if ($result->num_rows > 0) {
+    $estado = $result->fetch_assoc();
+    $nomeEstado = $estado['nomeEstado'];
+    $cultDescricao1 = $estado['cultDescricao1'];
+    $cultDescricao2 = $estado['cultDescricao2'];
+    $nomePonto1 = $estado['nomePonto1'];
+    $nomePonto2 = $estado['nomePonto2'];
+    $nomePonto3 = $estado['nomePonto3'];
+    $nomePonto4 = $estado['nomePonto4'];
+    $descPonto1 = $estado['descPonto1'];
+    $descPonto2 = $estado['descPonto2'];
+    $descPonto3 = $estado['descPonto3'];
+    $descPonto4 = $estado['descPonto4'];
+    $saudeP1 = $estado['saudeP1'];
+    $saudeP2 = $estado['saudeP2'];
+    $escolaP1 = $estado['escolaP1'];
+    $nomeEsc1 = $estado['nomeEsc1'];
+    $nomeEsc2 = $estado['nomeEsc2'];
+    $nomeEsc3 = $estado['nomeEsc3'];
+    $nomeEsc4 = $estado['nomeEsc4'];
+    $nomeEsc5 = $estado['nomeEsc5'];
+    $nomeEsc6 = $estado['nomeEsc6'];
+    $locP1 = $estado['locP1'];
+    $locP2 = $estado['locP2'];
+    $locP3 = $estado['locP3'];
+    $img1 = $estado['img1'];
+    $imgCult = $estado['imgCult'];
+    $imgPonto1 = $estado['imgPonto1'];
+    $imgPonto2 = $estado['imgPonto2'];
+    $imgPonto3 = $estado['imgPonto3'];
+    $imgPonto4 = $estado['imgPonto4'];
+} else {
+    echo "<p>Estado não encontrado.</p>";
+    exit;
+}
+$stmt->close();
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexión Migratoria - Estado</title>
+
+    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
+    <link rel="stylesheet" href="./css/nav-footer.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/estados.css">
+</head>
+<body>
+
+    <script>window.gtranslateSettings = {"default_language":"pt","detect_browser_language":true,"languages":["pt","es"],"wrapper_selector":".gtranslate_wrapper","flag_size":48,"alt_flags":{"pt":"brazil"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
+    
+<nav>
+    <div class="alinhar">
+        <div class="logos">
+            <a href="./homeLogada.php"><img src="./img/logo-branca Conexión Migratoria.png"></a>
+        </div>
+        <div class="links-nav">
+            <ul>
+                <a href="./homeLogada.php#mapa"><li>MAPA INTERATIVO</li></a>
+                <a href="./homeLogada.php#leis"><li>LEIS E DOCUMENTOS</li></a>
+                <a href="./homeLogada.php#leis"><li>EMPREGABILIDADE</li></a>
+                <a href="./homeLogada.php#leis"><li>CURSOS</li></a>
+                <a href="./homeLogada.php#noticias"><li>NOTÍCIAS</li></a>
+            </ul>
+    
+            <div class="traduçao">
+                <div class="gtranslate_wrapper">
+                </div>
+            </div>
+    
+            <div class="user"> 
+                <a href="./pg-perfil.php"><img src="<?php echo isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : './img/do-utilizador.png'; ?>" alt=""></a>
+            </div>
+        </div>
+
+        <div class="menu-hamburguer"  id="menuHamburguer">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+<script>
+    document.getElementById('menuHamburguer').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.getElementById('backMenuMobile').classList.toggle('active');
+});
+</script>
+    
+    <div class="movendo-gradient"></div>
+    
+</nav>
+
+<div class="back-menumobile" id="backMenuMobile">
+    <div class="menu-mobile">
+        <h1>TRADUZIR</h1>
+        
+        <div>
+            <div class="gtranslate_wrapper">
+            </div>
+        </div>
+
+        <a href="">Minha Conta</a>
+
+        <a href="">Sair</a>
+    </div>
+</div>
+
+
+<main>
+    <div class="containe-body">    
+        <button class="anterior"><img src="./img/seta-direita.png"></button>
+        <section class="sec1">
+            <div class="conteudo">
+                <div class="titulo">
+                    <h1>CONHEÇA MAIS SOBRE O ESTADO</h1>
+                    <h1><span><?php echo htmlspecialchars($nomeEstado); ?></span></h1>
+                </div>
+        
+                <div class="imagem">
+                    <div class="borda-imagem">
+                        <img src="<?php echo htmlspecialchars($img1); ?>">
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="sec2">
+            <div class="conteudo">
+
+                <h1>UM POUCO SOBRE A <span>CULTURA</span></h1>
+                
+                <div class="alinhar-infos">
+                    <div class="info-estado">
+                        <p><?php echo htmlspecialchars($cultDescricao1); ?></p>
+                        <p><?php echo htmlspecialchars($cultDescricao2); ?></p>
+                    </div>
+            
+                    <div class="imagem2">
+                        <div class="borda-imagem">
+                        <img src="<?php echo htmlspecialchars($imgCult); ?>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <button class="proximo"><img src="./img/seta-direita.png"></button>
+
+    </div>
+</main>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('section');
+    const totalSlides = slides.length;
+
+    document.querySelector('.anterior img').addEventListener('click', () => {
+        slides[currentSlide].style.display = 'none';
+        currentSlide = (currentSlide === 0) ? totalSlides - 1 : currentSlide - 1;
+        slides[currentSlide].style.display = 'flex';
+    });
+
+    document.querySelector('.proximo img').addEventListener('click', () => {
+        slides[currentSlide].style.display = 'none';
+        currentSlide = (currentSlide === totalSlides - 1) ? 0 : currentSlide + 1;
+        slides[currentSlide].style.display = 'flex';
+    });
+</script>
+
+<section class="sessao2" id="imgfundo" style="background-image: url('<?php echo $imgPonto1; ?>');">
+    <h1>PONTOS TURÍSTICOS</h1>
+
+    <div class="pontos-turisticos">
+        <div class="cards">
+            <div id="imgponto1" style="background-image: url('<?php echo $imgPonto1; ?>');"><p><?php echo htmlspecialchars($nomePonto1); ?></p></div>
+            <div id="imgponto2" style="background-image: url('<?php echo $imgPonto2; ?>');"><p><?php echo htmlspecialchars($nomePonto2); ?></p></div>
+            <div id="imgponto3" style="background-image: url('<?php echo $imgPonto3; ?>');"><p><?php echo htmlspecialchars($nomePonto3); ?></p></div>
+            <div id="imgponto4" style="background-image: url('<?php echo $imgPonto4; ?>');"><p><?php echo htmlspecialchars($nomePonto4); ?></p></div>
+        </div>
+        <div class="info-ponto" id="ponto1">
+            <h1><?php echo htmlspecialchars($nomePonto1); ?></h1>
+            <div>
+                <p><?php echo htmlspecialchars($descPonto1); ?></p>
+            </div>
+        </div>
+
+        <div class="info-ponto" id="ponto2">
+            <h1><?php echo htmlspecialchars($nomePonto2); ?></h1>
+            <div>
+                <p><?php echo htmlspecialchars($descPonto2); ?></p>
+            </div>
+        </div>
+
+        <div class="info-ponto" id="ponto3">
+            <h1><?php echo htmlspecialchars($nomePonto3); ?></h1>
+            <div>
+                <p><?php echo htmlspecialchars($descPonto3); ?></p>
+            </div>
+        </div>
+
+        <div class="info-ponto" id="ponto4">
+            <h1><?php echo htmlspecialchars($nomePonto4); ?></h1>
+            <div>
+                <p><?php echo htmlspecialchars($descPonto4); ?></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var selec1 = document.getElementById("imgponto1");
+        var selec2 = document.getElementById("imgponto2");
+        var selec3 = document.getElementById("imgponto3");
+        var selec4 = document.getElementById("imgponto4");
+
+        var fundo = document.getElementById("imgfundo");
+
+        var info1 = document.getElementById("ponto1");
+        var info2 = document.getElementById("ponto2");
+        var info3 = document.getElementById("ponto3");
+        var info4 = document.getElementById("ponto4");
+
+        selec1.addEventListener('click', function() {
+            info1.style.display = "grid";
+            info2.style.display = "none";
+            info3.style.display = "none";
+            info4.style.display = "none";
+            fundo.style.backgroundImage = 'url(<?php echo $imgPonto1; ?>';
+        });
+
+        selec2.addEventListener('click', function() {
+            info1.style.display = "none";
+            info2.style.display = "grid";
+            info3.style.display = "none";
+            info4.style.display = "none";
+            fundo.style.backgroundImage = 'url(<?php echo $imgPonto2; ?>';
+        });
+
+        selec3.addEventListener('click', function() {
+            info1.style.display = "none";
+            info2.style.display = "none";
+            info3.style.display = "grid";
+            info4.style.display = "none";
+            fundo.style.backgroundImage = 'url(<?php echo $imgPonto3; ?>';
+        });
+
+        selec4.addEventListener('click', function() {
+            info1.style.display = "none";
+            info2.style.display = "none";
+            info3.style.display = "none";
+            info4.style.display = "grid";
+            fundo.style.backgroundImage = 'url(<?php echo $imgPonto4; ?>';
+        });
+    </script>
+</section>
+
+
+<section class="sessao3">
+    <h1>MAIS INFORMAÇÕES</h1>
+    <div class="cards-sec3">
+        <div>
+            <img src="./img/saude.png">
+            <h2>SÁUDE</h2>
+            <p>Veja um poco sobre o sistema de saude gratis deste estado.</p>
+            <a href="#scroll"><button id="saude">VER MAIS</button></a>
+        </div>
+
+        <div>
+            <img src="./img/diplomado.png">
+            <h2>ENSINO</h2>
+            <p>Saiba um pouco sobre o sistema de ensino e sobre as escolas publicas.</p>
+            <a href="#scroll"><button id="ensino">VER MAIS</button></a>
+        </div>
+
+        <div>
+            <img src="./img/pin.png">
+            <h2>LOCALIDADE</h2>
+            <p>Veja as cidades com melhor localização e qualidade de vida.</p>
+            <a href="#scroll"><button id="localidade">VER MAIS</button></a>
+        </div>
+    </div>
+
+    <div id="scroll"></div>
+
+    <section class="infos-sec3" id="infos1">
+        <h1>SISTEMA DE SÁUDE</h1>
+
+        <div class="container-infos">
+            <div class="ajustar">
+                <p><?php echo htmlspecialchars($saudeP1); ?></p>
+                <p><?php echo htmlspecialchars($saudeP2); ?></p>
+            </div>
+
+            <div class="imagem-ref">
+                <img src="./img/medico.jpg">
+            </div>
+        </div>
+    </section>
+
+    <section class="infos-sec3" id="infos2">
+        <h1>SISTEMA DE ENSINO</h1>
+
+        <div class="container-infos">
+            <div class="ajustar">
+                <p><?php echo htmlspecialchars($escolaP1); ?></p>
+                <div></div>
+                <p><?php echo htmlspecialchars($nomeEsc1); ?></p>
+                <p><?php echo htmlspecialchars($nomeEsc2); ?></p>
+                <p><?php echo htmlspecialchars($nomeEsc3); ?></p>
+                <p><?php echo htmlspecialchars($nomeEsc4); ?></p>
+                <p><?php echo htmlspecialchars($nomeEsc5); ?></p>
+                <p><?php echo htmlspecialchars($nomeEsc6); ?></p>
+            </div>
+
+            <div class="imagem-ref">
+                <img src="./img/ensino.jpg">
+            </div>
+        </div>
+    </section>
+
+    <section class="infos-sec3" id="infos3">
+        <h1>CIDADES BEM LOCALIZADAS</h1>
+
+        <div class="container-infos">
+            <div class="ajustar">
+                <p><?php echo htmlspecialchars($locP1); ?></p>
+                <div></div>
+                <p><?php echo htmlspecialchars($locP2); ?></p>
+                <div></div>
+                <p><?php echo htmlspecialchars($locP3); ?></p>
+            </div>
+
+            <div class="imagem-ref">
+                <img src="./img/localidade.png">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var botaoSaude = document.getElementById("saude");
+            var botaoEnsino = document.getElementById("ensino");
+            var botaoLocalidade = document.getElementById("localidade");
+
+            var secSaude = document.getElementById("infos1");
+            var secEnsino = document.getElementById("infos2");
+            var secLocalidade = document.getElementById("infos3");
+            var corWave = document.getElementById('div-wavefoot');
+
+            botaoSaude.addEventListener('click', function() {
+                if (secSaude.style.display === "block") {
+                    secSaude.style.display = "none";
+                    corWave.style.backgroundColor = 'white';
+                } else {
+                    secSaude.style.display = "block";
+                    secEnsino.style.display = "none";
+                    secLocalidade.style.display = "none";
+                    corWave.style.backgroundColor = '#053344';
+                }
+            });
+
+            botaoEnsino.addEventListener('click', function() {
+                if (secEnsino.style.display === "block") {
+                    secEnsino.style.display = "none";
+                    corWave.style.backgroundColor = 'white';
+                } else {
+                    secSaude.style.display = "none";
+                    secEnsino.style.display = "block";
+                    secLocalidade.style.display = "none";
+                    corWave.style.backgroundColor = '#053344';
+                }
+            });
+
+            botaoLocalidade.addEventListener('click', function() {
+                if (secLocalidade.style.display === "block") {
+                    secLocalidade.style.display = "none";
+                    corWave.style.backgroundColor = 'white';
+                } else {
+                    secSaude.style.display = "none";
+                    secEnsino.style.display = "none";
+                    secLocalidade.style.display = "block";
+                    corWave.style.backgroundColor = '#053344';
+                }
+            });
+        });
+    </script>
+</section>
+
+<div class="div-wavefoot" id="div-wavefoot">
+    <div class="wave-foot wave1"></div> 
+    <div class="wave-foot wave2"></div> 
+    <div class="wave-foot wave3"></div> 
+    <div class="wave-foot wave4"></div> 
+</div>
+
+<footer>
+
+    <div class="cont-foot">
+    
+        <div class="cont-1-foot">
+            <h1>INFORMAÇÕES</h1>
+            <div class="infos-footer">
+                <div>
+                    <h1>Instituição:</h1>
+                    <p>Centro Paula Souza | Etec De Carapicuiba - Desenvolvimento de Sistemas</p>
+                </div>
+    
+                <div>
+                    <h1>Orientadores:</h1>
+                    <p>Wesley Castanha, Luiz Fernando, Luiz Ricardo, Sabrina Cristiana.</p>
+                </div>
+            </div>
+        </div>
+    
+        <h1>DESENVOLVEDORES</h1>
+        <div class="container">
+            <div class="container-cards">
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Alexia-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Alexia Vitoria</h1>
+                    <p>Redatora de Conteúdo</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/aalexiav_/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/aalexiav_/"><p>@aalexiav_</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Beatriz-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Beatriz Bruna</h1>
+                    <p>Designer</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/biabruna_/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/biabruna_/"><p>@biabruna_</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Evellyn-card2.png">
+                </div>
+                <div class="info-card">
+                    <h1>Evellyn Silva</h1>
+                    <p>Redatora de Conteúdo</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/evee.ws/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/evee.ws_/"><p>@evee.ws</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Felipe-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Felipe Reis</h1>
+                    <p>Programador</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/s4ntk_/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/s4ntk_/"><p>@s4ntk_</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Guilherme-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Guilherme Leandro</h1>
+                    <p>Designer</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/gui.leandrzz/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/gui.leandrzz/"><p>@gui.leandrzz</p></a>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    </footer>
+    
+</body>
+</html>

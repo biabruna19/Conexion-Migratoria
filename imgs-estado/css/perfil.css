@@ -1,0 +1,427 @@
+section{
+    background-image: url(../img/bg-1.png);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding-top: 30px;
+}
+
+section h1{
+    color: #3bbdec;
+    font-size: 3rem;
+}
+
+.container{
+    display: flex;
+    width: 100vw;
+    height: 570px;
+    padding: 0 10%;
+    gap: 6%;
+}
+
+.alinar-1{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alinar-2{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs-image{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px;
+    border-radius: 30px;
+}
+
+
+.foto-perfil{
+    width: 250px;
+    height: 250px;
+    border: #1AAADF solid 2px;
+    border-radius: 150px;
+}
+
+.excluir-foto{
+    display: flex;
+    justify-content: end;
+    margin-bottom: -70px;
+    width: 90%;
+    z-index: 5;
+}
+
+.excluir-foto button{
+    background-color: white;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    border: #3bbdec solid 2px;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+}
+
+.excluir-foto button:hover{
+    transform: translateY(-10px);
+}
+
+.excluir-foto img{
+    width: 60px;
+    padding: 12px;
+    z-index: 5;
+}
+
+
+.inputs-image h1{
+    color: black;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.upload-ft{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.upload-ft button{
+    background-color: #053344;
+    color: white;
+    width: 95%;
+    padding: 15px;
+    border: solid #1AAADF 2px;
+    border-radius: 40px;
+    font-size: 1.1rem;
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+.upload-ft button:hover{
+    color: #1AAADF;
+}
+
+.pt-perfil{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.ali-tlt{
+    display: flex;
+}
+
+.inputs-infos{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    border: solid #1AAADF 5px;
+    gap: 30px;
+}
+
+.titulo-infos-perfil{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titulo-infos-perfil h1{
+    color: black;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.editar{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.editar a{
+    background-color: #1AAADF;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+.editar a:hover{
+    transform: translateY(-5px);
+}
+
+.editar img{
+    width: 60px;
+    padding: 11px;
+}
+
+.editar p{
+    font-weight: 600;
+}
+
+.infos-perfil{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 50px;
+}
+
+.infos-perfil-alinhar{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    width: 100%;
+    gap: 50px;
+}
+
+.infos-perfil-alinhar div{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.infos-perfil-alinhar div input {
+    background-color: rgb(224, 224, 224);
+    height: 40px;
+    width: 99%;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.05rem;
+    padding-left: 10px;
+    border: #9aa6aa solid 1px;
+    border-radius: 50px;
+    transition: ease-in-out 0.3s;
+}
+
+.form-logout{
+    width: 50%;
+}
+
+
+.salvar-alt{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+.infos-perfil-alinhar .salvar-alt button{
+    background-color: #053344;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    border: solid #1AAADF 2px;
+    border-radius: 40px;
+    font-size: 1.1rem;
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+.infos-perfil-alinhar .salvar-alt button:hover{
+    color: #1AAADF;
+}
+
+.sair-caonta{
+    padding-top: 30px;
+    width: 100%;
+}
+
+.sair-caonta button{
+    background-color: #053344;
+    color: white;
+    padding: 15px;
+    width: 60%;
+    border: solid #1AAADF 2px;
+    border-radius: 40px;
+    font-size: 1.1rem;
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+.sair-caonta form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.sair-caonta button:hover{
+    color: #1AAADF;
+}
+
+@media screen and (max-width: 1440px){
+    section{
+        gap: 20px;
+        padding-top: 60px;
+    }
+
+    section h1{
+        font-size: 2.6rem;
+    }
+
+    .container{
+        padding: 0 7%;
+    }  
+    
+    .foto-perfil{
+        width: 220px;
+        height: 220px;
+    }
+    
+    .excluir-foto{
+        margin-bottom: -50px;
+    }
+
+    .pt-perfil{
+        width: 93%;
+    }
+    
+    .titulo-infos-perfil h1{
+        font-size: 1.5rem;
+    }
+    
+    .editar img{
+        width: 50px;
+    }
+    
+    .editar p{
+        font-weight: 600;
+    }
+    
+    .infos-perfil{
+        gap: 40px;
+    }
+    
+    .infos-perfil-alinhar{
+        gap: 40px;
+    }
+    
+    .infos-perfil-alinhar div{
+        gap: 12px;
+    }
+
+    .infos-perfil-alinhar div h2{
+        font-size: 1.3rem;
+    }
+    
+    .infos-perfil-alinhar div input {
+        font-size: 1rem;
+    }
+    
+    .form-logout{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    section{
+        gap: 10px;
+        padding-top: 60px;
+    }
+
+    section h1{
+        font-size: 2.3rem;
+    }
+
+    .container{
+        height: 430px;
+        padding: 0 4%;
+        gap: 3%;
+    }
+    
+    .inputs-image{
+        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 40px;
+        border-radius: 30px;
+    }
+    
+    .foto-perfil{
+        width: 200px;
+        height: 200px;
+    }
+    
+    .excluir-foto{
+        margin-bottom: -50px;
+    }
+    
+    .excluir-foto img{
+        width: 50px;
+        padding: 8px;
+    }
+
+    .pt-perfil{
+        width: 95%;
+    }
+    
+    .titulo-infos-perfil h1{
+        font-size: 1.2rem;
+    }
+    
+    .editar img{
+        width: 35px;
+        padding: 7px;
+    }
+    
+    .editar p{
+        font-size: 0.8rem;
+    }
+
+    .inputs-infos {
+        height: 95%;
+    }
+    
+    .infos-perfil{
+        gap: 25px;
+    }
+    
+    .infos-perfil-alinhar{
+        width: 100%;
+        gap: 15px;
+    }
+    
+    .infos-perfil-alinhar div{
+        gap: 8px;
+    }
+
+    .infos-perfil-alinhar div h2{
+        font-size: 1rem;
+    }
+    
+    .infos-perfil-alinhar div input {
+        height: 30px;
+        font-size: 0.9rem;
+    }
+    
+    .infos-perfil-alinhar .salvar-alt button{
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .sair-caonta button{
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}

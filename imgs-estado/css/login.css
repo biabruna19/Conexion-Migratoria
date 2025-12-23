@@ -1,0 +1,399 @@
+body{
+    background-image: url(../img/bg-leis.png);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: move-background 45s linear infinite;
+}
+
+@keyframes move-background {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -100vw 0;
+    }
+}
+
+body section{
+    background-color: rgba(150, 150, 150, 0.116);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    width: 75%;
+    height: 75vh;
+    -webkit-box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center
+}
+
+.infos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    background-color: rgba(185, 185, 185, 0.185);
+    height: 100%;
+    border-radius: 30px 0 0 30px;
+    gap: 40px;
+}
+
+.infos h1{
+    font-size: 2.8rem;
+    color: #1AAADF;
+    text-align: center;
+    font-weight: 400;
+}
+
+.infos img{
+    width: 350px;
+}
+
+.infos p{
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0 30px;
+}
+
+.creat{
+    width: 60%;
+    padding: 15px;
+    background-color: transparent;
+    border: solid #1AAADF 4px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.creat:hover{
+    background-color: white;
+    border: solid white 4px;
+    color: #1AAADF;
+    border-radius: 20px;
+}
+
+
+.login1{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    gap: 50px;
+}
+
+.login1 form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+}
+
+.login2{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    gap: 50px;
+}
+
+.login2 form{
+    display: grid;
+    gap: 40px;
+}
+
+.title{
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    background-color: rgba(185, 185, 185, 0.185);
+    border-radius: 17px;
+}
+
+.input img{
+    width: 50px;
+    padding: 10px;
+}
+
+.input div{
+    width: 3px;
+    height: 80%;
+    background-color: white;
+}
+
+.input input{
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    border: none;
+    padding: 0 10px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.input input::placeholder{
+    color: rgb(172, 172, 172);
+}
+
+.input input:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.alinhar{
+    display: flex;
+    gap: 20px;
+}
+
+
+.botao{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#submit{
+    width: 50%;
+    padding: 15px;
+    background-color: transparent;
+    border: solid #1AAADF 4px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+#submit:hover{
+    background-color: white;
+    border: solid white 4px;
+    color: #1AAADF;
+    border-radius: 20px;
+}
+
+a{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    width: 100%;
+}
+
+.botao-link{
+    width: 50%;
+    padding: 15px;
+    background-color: transparent;
+    border: solid #1AAADF 4px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.botao-link:hover{
+    background-color: white;
+    border: solid white 4px;
+    color: #1AAADF;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 1440px){
+    .infos{
+        gap: 25px;
+    }
+    
+    .infos h1{
+        font-size: 2.5rem;
+    }
+    
+    .infos img{
+        width: 270px;
+    }
+    
+    .infos p{
+        font-size: 0.8rem;
+        padding: 0 30px;
+    }
+    
+    .creat{
+        width: 60%;
+        padding: 15px;
+    }
+
+    .title{
+        font-size: 2.7rem;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .infos{
+        gap: 20px;
+    }
+    
+    .infos h1{
+        font-size: 2.3rem;
+    }
+    
+    .infos img{
+        width: 240px;
+    }
+    
+    .infos p{
+        font-size: 0.7rem;
+        padding: 0 20px;
+    }
+    
+    .creat{
+        width: 60%;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .title{
+        font-size: 2.3rem;
+    }
+
+    #submit{
+        width: 60%;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .input input{
+        height: 100%;
+        width: 100%;
+        border: none;
+        padding: 0 10px;
+        color: white;
+        font-size: 1rem;
+    }
+
+    .login1{
+        gap: 30px;
+    }
+
+    .login2{
+        gap: 20px;
+    }
+    
+}
+
+.login-mobile{
+    display: none;
+}
+
+@media screen and (max-width: 770px){
+    body section{
+        display: none;
+    }
+
+    .login-mobile{
+        display: flex;
+        justify-content: center;
+    }
+
+    .login1{
+        width: 90%;
+        gap: 20px;
+    }
+
+    .logo-mobile{
+        width: 300px;
+    }
+
+    .teste{
+        width: 100%;
+        display: flex;
+        gap: 20px;
+    }
+
+    #submit{
+        width: 100%;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .botao-link{
+        width: 100%;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .input{
+        width: 100%;
+    }
+    
+}
+
+#login1mobile{
+    display: flex;
+}
+
+#login2mobile{
+    display: none;
+}
+
+@media screen and (max-width: 1024px){
+    body section{
+        width: 90%;
+        height: 75vh;
+        -webkit-box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);
+        display: flex;
+        align-items: center
+    }
+}
+
+@media screen and (max-width: 425px){
+    .login-mobile{
+        display: flex;
+        justify-content: center;
+        width: 92%;
+        height: 85vh;
+    }
+
+    .login1{
+        width: 92%;
+        padding: 0 0;
+    }
+
+    .logo-mobile{
+        width: 225px;
+    }
+
+    .title{
+        font-size: 1.8rem;
+    }
+
+    .botao-link{
+        padding: 15px 0;
+        font-weight: 600;
+    }
+}
