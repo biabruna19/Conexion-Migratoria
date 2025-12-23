@@ -1,0 +1,299 @@
+<?php
+
+session_start();
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['user_id'])) {
+    echo "<script>alert('Para acessar esta página conecte-se com uma conta'); window.location.href = 'logar.php';</script>";
+    exit(); // Corrigido de "saída();" para "exit();"
+}
+
+$logado = $_SESSION['user_id']; // Certifique-se de usar o mesmo nome de chave aqui
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexión Migratoria - Cursos</title>
+
+    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
+    <link rel="stylesheet" href="./css/leis.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/nav-footer.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <script>window.gtranslateSettings = {"default_language":"pt","detect_browser_language":true,"languages":["pt","es"],"wrapper_selector":".gtranslate_wrapper","flag_size":48,"alt_flags":{"pt":"brazil"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
+
+    <nav>
+        <div class="alinhar">
+            <div class="logos">
+                <a href="./homeLogada.php"><img src="./img/logo-branca Conexión Migratoria.png"></a>
+            </div>
+            <div class="links-nav">
+                <ul>
+                    <a href="./homeLogada.php#mapa"><li>MAPA INTERATIVO</li></a>
+                    <a href="./homeLogada.php#leis"><li>LEIS E DOCUMENTOS</li></a>
+                    <a href="./homeLogada.php#leis"><li>EMPREGABILIDADE</li></a>
+                    <a href="./homeLogada.php#leis"><li>CURSOS</li></a>
+                    <a href="./homeLogada.php#noticias"><li>NOTÍCIAS</li></a>
+                </ul>
+        
+                <div class="traduçao">
+                    <div class="gtranslate_wrapper">
+                    </div>
+                </div>
+        
+                <div class="user"> 
+                    <a href="./pg-perfil.php"><img src="<?php echo isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : './img/do-utilizador.png'; ?>" alt=""></a>
+                </div>
+            </div>
+    
+            <div class="menu-hamburguer"  id="menuHamburguer">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    
+    <script>
+        document.getElementById('menuHamburguer').addEventListener('click', function() {
+        this.classList.toggle('active');
+        document.getElementById('backMenuMobile').classList.toggle('active');
+    });
+    </script>
+        
+        <div class="movendo-gradient"></div>
+        
+    </nav>
+
+<main>
+    <div class="containe-body">    
+        <button class="anterior"><img src="./img/seta-direita.png"></button>
+        <section class="sec1">
+            <div class="conteudo">
+                <div class="icone">
+                    <div>
+                        <img src="./img/documentos.png">
+                    </div>
+                </div>
+        
+                <div class="scroll">
+                    <div class="infos">
+                        <h1>Documentação Necessária</h1>
+                        <p>Para garantir o direito de permanência de imigrantes no Brasil, é necessário apresentar e regularizar alguns documentos. Abaixo está um resumo dos principais documentos e etapas para obtê-los:</p>
+                        <p><span>Protocolo de Solicitação de Refúgio:</span></p>
+                        <p>• Solicite na Polícia Federal ou órgão responsável, fornecendo documentos como passaporte.</p>
+                        <p>• Receba um documento que garante residência provisória, renovável anualmente.</p>
+                        <p><span>Carteira de Trabalho e Previdência Social (CTPS):</span></p>
+                        <p>• Solicite após estar regularizado com CPF e documentos de residência válidos.</p>
+                        <p>• Permite vínculo empregatício formal e acesso à previdência social.</p>
+                        <p><span>Cadastro de Pessoa Física (CPF):</span></p>
+                        <p>• Solicite na Receita Federal com documentos pessoais (passaporte, protocolo de refúgio ou visto).</p>
+                        <p>• Necessário para acessar serviços públicos e privados.</p>
+                        <p><span>Carteira de Registro Nacional Migratório:</span></p>
+                        <p>• Emitida após a obtenção de visto temporário ou autorização de residência.</p>
+                        <p>• Funciona como documento de identidade para imigrantes.</p>
+                        <p><span>Cartão SUS:</span></p>
+                        <p>• Solicite em unidades de saúde ou online com protocolo de refúgio ou documento equivalente.</p>
+                        <p>• Garantirá acesso gratuito a serviços de saúde pública.</p>
+                        <p><span>Documentos de Educação e Trabalho:</span></p>
+                        <p>• Apresente diplomas e certificados de qualificação, traduzidos se necessário.</p>
+                        <p>• Esses documentos podem ser exigidos para certos tipos de visto ou autorização de residência.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="sec2">
+            <div class="conteudo">
+                <div class="icone">
+                    <div>
+                        <img src="./img/lei.png">
+                    </div>
+                </div>
+                
+                <div class="scroll">
+                    <div class="infos">
+                        <h1>Legislação de Imigração</h1>
+                        <p><span>Residência Permanente no Brasil:</span> Se você deseja morar ou trabalhar no Brasil, pode solicitar uma autorização de residência. Isso é feito através de um formulário online, seguido pela apresentação da documentação necessária em um posto da Polícia Federal. Você também precisará pagar algumas taxas: R$ 168,13 para o processamento do pedido e R$ 204,77 para a emissão da Carteira de Registro Nacional Migratório (CRNM). O agendamento para ser atendido na Polícia Federal é feito online e, após a aprovação, você poderá acompanhar o status do seu pedido pela internet. O tempo médio para emissão da CRNM é de 30 dias úteis.</p>
+                        <p><span>Cidadania Brasileira:</span> Estrangeiros e refugiados podem se tornar cidadãos brasileiros por meio da naturalização. Este processo geralmente leva cerca de 180 dias e há quatro tipos principais de naturalização: ordinária, extraordinária, especial e provisória. A naturalização ordinária é para estrangeiros que moram no Brasil há pelo menos quatro anos. É necessário falar português, não ter antecedentes criminais e mostrar capacidade civil. Esse tempo pode ser reduzido para um ano se você for casado com um brasileiro ou tiver filhos brasileiros, ou para dois anos se você contribuir significativamente para o país. A naturalização extraordinária é para aqueles que moram no Brasil há pelo menos 15 anos sem interrupções, sem necessidade de falar português. A naturalização especial é para estrangeiros casados há mais de cinco anos com membros do Serviço Exterior Brasileiro ou que serviram por mais de dez anos em missões diplomáticas brasileiras. A naturalização provisória é para crianças ou adolescentes que chegaram ao Brasil antes dos 10 anos. Esta se torna definitiva quando atingem a maioridade.</p>
+                        <p><span>Leis Recentes de Imigração no Brasil:</span> Nos últimos anos, o Brasil atualizou suas leis de imigração para melhor atender às novas realidades sociais e internacionais. A Lei nº 9.474/1997 implementa o Estatuto dos Refugiados de 1951 no Brasil. A Lei nº 13.344/2016 trata da prevenção e combate ao tráfico de pessoas. A Lei nº 13.445/2017, conhecida como Lei de Migração, regula a entrada, permanência e saída de estrangeiros, substituindo o antigo Estatuto do Estrangeiro. A Lei nº 13.684/2018 estabelece medidas de assistência emergencial para pessoas em situação de vulnerabilidade devido a crises humanitárias. A Lei nº 13.979/2020 introduz medidas para enfrentar a pandemia de COVID-19, incluindo a regulação da entrada e quarentena de estrangeiros.Essas leis refletem a necessidade de adaptar as políticas migratórias do Brasil às novas realidades e garantem que estrangeiros possam viver e contribuir para o desenvolvimento do país de maneira legal e segura.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="sec3">
+            <div class="conteudo">
+                <div class="icone">
+                    <div>
+                        <img src="./img/alerta.png">
+                    </div>
+                </div>
+        
+                <div class="scroll">
+                    <div class="infos">
+                        <h1>Documentos Enganosos</h1>
+                        <p>Existem diversos tipos de documentos falsos utilizados por imigrantes, como passaportes, vistos, carteiras de identidade e certidões de nascimento. Os impactos incluem a facilitação da imigração ilegal, entrada fraudulenta em países, tráfico de pessoas e drogas, além de dificultar a identificação e registro dos indivíduos.</p>
+                        <p>As causas para o uso de documentos falsos incluem a falta de oportunidades nos países de origem, a busca por melhores condições de vida, e a pressão em situações de tráfico humano. Processos burocráticos longos e complexos também incentivam o uso de documentos falsos para acelerar a entrada e permanência em um país. Além disso, a demanda por trabalho barato leva empregadores a contratar imigrantes com documentos falsos, enquanto redes de contrabandistas e fraudadores fornecem esses documentos mediante pagamento.</p>
+                        <p>Para combater a utilização de documentos falsos pelos imigrantes, é necessário investir em políticas de imigração mais justas e humanas, fortalecer os mecanismos de identificação e verificação de documentos, promover a conscientização e a educação sobre a importância da regularização migratória, e o respeito às leis de cada país. Medidas de cooperação internacional também são essenciais para combater o tráfico de pessoas e a falsificação de documentos. são estratégias que podem ajudar a combater os documentos enganosos e garantir a segurança e legalidade nos processos migratórios.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="sec4">
+            <div class="conteudo">
+                <div class="icone">
+                    <div>
+                        <img src="./img/progressivo.png">
+                    </div>
+                </div>
+        
+                <div class="scroll">
+                    <div class="infos">
+                        <h1>Tendencias Futuras</h1>
+                        <p>A Constituição República Federativa do Brasil garante que: “Todos são iguais perante a lei, sem distinção de qualquer natureza, garantindo-se aos brasileiros e aos estrangeiros residentes no País a inviolabilidade do direito à vida, à liberdade, à igualdade, à segurança e à propriedade...”.</p>
+                        <p>Ao chegar no país, o imigrante deve se dirigir a Unidade da Polícia Federal e identificar-se. Lá será feita a solicitação de documentos de identificação como o CPF por exemplo, entretanto, caso o imigrante não possua, ele precisará emitir uma Carteira de Registro Nacional Migratório (CRNM), que servirá como um identificador no país.</p>
+                        <p>Esse documento pode diferir cerca de 90 dias para ficar pronto, logo o imigrante fará uso de um protocolo com número de RNM, que poderá ser usado para qualquer fim de identificação.</p>
+                        <p>A CRNM pode ter validade determinada (até 2 anos) ou indeterminada (com renovação a cada 9 anos). Tal renovação deve ser feita 90 dias antes do vencimento. </p>
+                        <p>Caso o imigrante permaneça no país sem obter a devida autorização e sem o visto renovado, correrá o risco de pagar multa que pode chegar até R$ 10.000 em 100 dias.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button class="proximo"><img src="./img/seta-direita.png"></button>
+
+    </div>
+</main>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('section');
+    const totalSlides = slides.length;
+
+    document.querySelector('.anterior img').addEventListener('click', () => {
+        slides[currentSlide].style.display = 'none';
+        currentSlide = (currentSlide === 0) ? totalSlides - 1 : currentSlide - 1;
+        slides[currentSlide].style.display = 'flex';
+    });
+
+    document.querySelector('.proximo img').addEventListener('click', () => {
+        slides[currentSlide].style.display = 'none';
+        currentSlide = (currentSlide === totalSlides - 1) ? 0 : currentSlide + 1;
+        slides[currentSlide].style.display = 'flex';
+    });
+</script>
+    
+<div class="div-wavefoot">
+    <div class="wave-foot wave1"></div> 
+    <div class="wave-foot wave2"></div> 
+    <div class="wave-foot wave3"></div> 
+    <div class="wave-foot wave4"></div> 
+</div>
+
+<footer>
+
+    <div class="cont-foot">
+    
+        <div class="cont-1-foot">
+            <h1>INFORMAÇÕES</h1>
+            <div class="infos-footer">
+                <div>
+                    <h1>Instituição:</h1>
+                    <p>Centro Paula Souza | Etec De Carapicuiba - Desenvolvimento de Sistemas</p>
+                </div>
+    
+                <div>
+                    <h1>Orientadores:</h1>
+                    <p>Wesley Castanha, Luiz Fernando, Luiz Ricardo, Sabrina Cristiana.</p>
+                </div>
+            </div>
+        </div>
+    
+        <h1>DESENVOLVEDORES</h1>
+        <div class="container">
+            <div class="container-cards">
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Alexia-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Alexia Vitoria</h1>
+                    <p>Redatora de Conteúdo</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/aalexiav_/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/aalexiav_/"><p>@aalexiav_</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Beatriz-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Beatriz Bruna</h1>
+                    <p>Designer</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/biabruna_/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/biabruna_/"><p>@biabruna_</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Evellyn-card2.png">
+                </div>
+                <div class="info-card">
+                    <h1>Evellyn Silva</h1>
+                    <p>Redatora de Conteúdo</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/evee.ws/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/evee.ws_/"><p>@evee.ws</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Felipe-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Felipe Reis</h1>
+                    <p>Programador</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/s4ntk_/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/s4ntk_/"><p>@s4ntk_</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Guilherme-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Guilherme Leandro</h1>
+                    <p>Designer</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/gui.leandrzz/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/gui.leandrzz/"><p>@gui.leandrzz</p></a>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+</footer>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<?php
+
+session_start();
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['user_id'])) {
+    echo "<script>alert('Para acessar esta página conecte-se com uma conta'); window.location.href = 'logar.php';</script>";
+    exit(); // Corrigido de "saída();" para "exit();"
+}
+
+$logado = $_SESSION['user_id']; // Certifique-se de usar o mesmo nome de chave aqui
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexión Migratoria - Home</title>
+
+    <link rel="stylesheet" href="./css/empregos.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
+    <link rel="stylesheet" href="./css/nav-footer.css">
+
+</head>
+<body>
+
+    <script>window.gtranslateSettings = {"default_language":"pt","detect_browser_language":true,"languages":["pt","es"],"wrapper_selector":".gtranslate_wrapper","flag_size":48,"alt_flags":{"pt":"brazil"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
+    
+<nav>
+    <div class="alinhar">
+        <div class="logos">
+            <a href="./homeLogada.php"><img src="./img/logo-branca Conexión Migratoria.png"></a>
+        </div>
+        <div class="links-nav">
+            <ul>
+                <a href="./homeLogada.php#mapa"><li>MAPA INTERATIVO</li></a>
+                <a href="./homeLogada.php#leis"><li>LEIS E DOCUMENTOS</li></a>
+                <a href="./homeLogada.php#leis"><li>EMPREGABILIDADE</li></a>
+                <a href="./homeLogada.php#leis"><li>CURSOS</li></a>
+                <a href="./homeLogada.php#noticias"><li>NOTÍCIAS</li></a>
+            </ul>
+    
+            <div class="traduçao">
+                <div class="gtranslate_wrapper">
+                </div>
+            </div>
+    
+            <div class="user"> 
+                <a href="./pg-perfil.php"><img src="<?php echo isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : './img/do-utilizador.png'; ?>" alt=""></a>
+            </div>
+        </div>
+
+        <div class="menu-hamburguer"  id="menuHamburguer">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+<script>
+    document.getElementById('menuHamburguer').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.getElementById('backMenuMobile').classList.toggle('active');
+});
+</script>
+    
+    <div class="movendo-gradient"></div>
+    
+</nav>
+
+<div class="back-menumobile" id="backMenuMobile">
+    <div class="menu-mobile">
+        <h1>TRADUZIR</h1>
+        
+        <div>
+            <div class="gtranslate_wrapper">
+            </div>
+        </div>
+
+        <a href="./logar.php">Fazer Login</a>
+    </div>
+</div>
+
+
+
+<section class="sec1">
+    <div class="div1-sec1">
+        <img src="./img/sec-1-empregos.jpg">
+    </div>
+
+    <div class="div2-sec1">
+        <h1><span>PREPARE-SE</span> PARA O <span>MERCADO</span> DE TRABALHO</h1>
+        <p>Aqui, reunimos dicas práticas para ajudá-lo a criar um currículo forte, se preparar para entrevistas e usar o LinkedIn de forma eficaz. Com essas orientações, você estará pronto para se destacar no mercado de trabalho</p>
+    </div>
+</section>
+
+
+
+<section class="sec2">
+    <div class="container-curriculo">
+        <div class="curriculo-pt1">
+            <h1>DICAS PARA CRIAR UM <span>CURRICULO</span></h1>
+            <img src="./img/curriculo.png" alt="">
+        </div>
+    
+        <div class="curriculo-pt2">
+            <div class="espaçar-accordions">
+                <button class="accordion">ESCOLHA O FORMATO DO CURRÍCULO</button>
+                <div class="panel">
+                    <p><span>•Currículo cronológico:</span> Lista suas experiências em ordem cronológica, começando pela mais recente. É ideal para quem tem uma carreira estável no mesmo setor.</p>
+                    <p><span>•Currículo funcional:</span> Destaca habilidades em vez de experiências específicas, útil para quem possui lacunas no histórico de trabalho ou quer fazer uma transição de carreira.</p>
+                    <p><span>•Currículo combinado:</span> Une o cronológico e o funcional, destacando tanto as habilidades quanto o histórico de trabalho. É uma boa opção para imigrantes com experiências diversificadas.</p>
+                </div>
+            </div>
+
+            <div class="espaçar-accordions">
+                <button class="accordion">INFORMAÇÕES DE CONTATO</button>
+                <div class="panel">
+                    <p><span>•Nome completo:</span> Use o nome pelo qual deseja ser chamado.</p>
+                    <p><span>•Endereço:</span> Em muitos países, basta listar a cidade e o estado.</p>
+                    <p><span>•Telefone:</span> Coloque o código do país e de área, facilitando o contato.</p>
+                    <p><span>•E-mail profissional:</span>  Use um endereço de e-mail apropriado para o trabalho, de preferência com seu nome.</p>
+                    <p><span>•LinkedIn ou portfólio online (se aplicável):</span> Adicionar links para o LinkedIn ou portfólio pode mostrar suas habilidades e aumentar a credibilidade.</p>
+                </div>
+            </div>
+        
+            <div class="espaçar-accordions">
+                <button class="accordion">RESUMO PROFISSIONAL</button>
+                <div class="panel">
+                    <p><span>•Descreva-se em poucas linhas:</span> Escreva de 2 a 3 frases que resumam suas habilidades, experiência e objetivos de carreira.</p>
+                    <p><span>•Personalize para cada vaga:</span> Adapte o resumo profissional para cada posição a que estiver aplicando, destacando o que é mais relevante para a vaga.</p>
+                    <p><span>•Inclua palavras-chave:</span> Use termos que apareçam na descrição da vaga, para que o recrutador veja logo que você tem as habilidades procuradas.</p>
+                </div>
+            </div>
+        
+            <div class="espaçar-accordions">
+                <button class="accordion">FORMAÇÃO ACADÊMICA</button>
+                <div class="panel">
+                    <p><span>•Nome do curso e instituição:</span> Coloque o nome do seu curso e onde estudou.</p>
+                    <p><span>•Data de conclusão:</span> Se você já finalizou, coloque o ano de conclusão.</p>
+                    <p><span>•Certificados locais:</span> Se fez cursos ou obteve certificações no novo país, inclua essa informação, pois isso demonstra adaptação e interesse em entender o mercado local.</p>
+                </div>
+            </div>
+
+            <div class="espaçar-accordions">
+                <button class="accordion">HABILIDADES PROFISSIONAIS</button>
+                <div class="panel">
+                    <p><span>•Habilidades técnicas:</span> Liste programas de computador, idiomas ou ferramentas específicas da sua área, como Excel.</p>
+                    <p><span>•Habilidades interpessoais:</span> Inclua habilidades como trabalho em equipe, resolução de problemas ou liderança, adaptando para o perfil da vaga.</p>
+                    <p><span>•Idiomas:</span> Para quem é bilíngue ou multilíngue, liste os idiomas que fala e seu nível de proficiência em cada um (básico, intermediário, avançado ou fluente).</p>
+                </div>
+            </div>
+
+            <div class="espaçar-accordions">
+                <button class="accordion">CERTIFICADO</button>
+                <div class="panel">
+                    <p><span>•Certificados relevantes:</span> Inclua cursos e certificações que sejam bem reconhecidos no país em que está buscando emprego, como treinamentos online ou cursos rápidos de universidades locais.</p>
+                    <p><span>•Cursos de idiomas:</span> Se você fez algum curso para aprimorar o idioma local, isso pode demonstrar sua dedicação para se adaptar e melhorar.</p>
+                </div>
+            </div>
+        
+            <div class="espaçar-accordions">
+                <button class="accordion">EXPERIÊNCIA PROFISSIONAL</button>
+                <div class="panel">
+                    <p><span>•Nome da empresa e localização:</span> Liste onde trabalhou e em qual país.</p>
+                    <p><span>•Função e período:</span> Coloque seu cargo e as datas de início e término.</p>
+                    <p><span>•Descreva as responsabilidades e conquistas:</span> Mencione brevemente o que você fazia, destacando os resultados obtidos.</p>
+                </div>
+            </div>
+        
+        </div>
+
+        <script>
+            // Seleciona todos os botões do accordion
+            const accordions = document.querySelectorAll(".accordion");
+
+            accordions.forEach((accordion) => {
+                accordion.addEventListener("click", function() {
+                    // Fecha todos os outros accordions
+                    accordions.forEach((acc) => {
+                        if (acc !== this) {
+                            acc.classList.remove("active");
+                            acc.nextElementSibling.classList.remove("active");
+                        }
+                    });
+
+                    // Alterna o estado ativo do accordion clicado
+                    this.classList.toggle("active");
+                    this.nextElementSibling.classList.toggle("active");
+                });
+            });
+        </script>
+    </div>
+</section>
+
+<section class="sec3">
+    <h1>DICAS PARA ENTREVISTAS DE EMPREGO</h1>
+    <div class="container-dicas-ent">
+        <div class="alinha-dicas">
+            <div class="card-dicas">
+                <div>
+                    <img src="./img/icone-dicas.png" alt="">
+                    <h2>Preparação para o Processo Seletivo</h2>
+                </div>
+                <p>Cargo a exercer: Estude as competências e experiências requeridas para o cargo.</p>
+                <p>Conheça a empresa: Pesquisar sobre o ambiente de trabalho é fundamental para compreender os valores e a cultura organizacional.</p>
+            </div>
+
+            <div class="card-dicas">
+                <div>
+                    <img src="./img/icone-dicas.png" alt="">
+                    <h2>Habilidade de comunicação</h2>
+                </div>
+                <p>Treinar o idioma: se caso a entrevista for em um idioma diferente, praticar as respostas demonstra confiança e preparação.</p>
+                <p>Experiencias: se obtiver experiencia profissional seja de outro país, é bom que seja apresentado e citado na hora da entrevista.</p>
+            </div>
+
+            <div class="card-dicas">
+                <div>
+                    <img src="./img/icone-dicas.png" alt="">
+                    <h2>Currículo e Portifólio</h2>
+                </div>
+                <p>Formato de currículo: pode variar significativamente de acordo com o país. Por isso, é essencial pesquisar e adaptar o estilo de currículo conforme as exigências e preferências locais.</p>
+                <p>Certificação: Ao obter certificações ou cursos reconhecidos no país de interesse, é importante destacá-los no currículo.</p>
+            </div>
+
+            <div class="card-dicas">
+                <div>
+                    <img src="./img/icone-dicas.png" alt="">
+                    <h2>Flexibilidade e adaptação cultural</h2>
+                </div>
+                <p>Compartilhe suas experiências: Relatar suas vivências de adaptação a diferentes culturas é uma vantagem significativa. Empregadores valorizam profissionais capazes de prosperar em ambientes multiculturais.</p>
+                <p>Código de vestimenta: O estilo de vestimenta pode variar conforme a região e o setor de cada empresa. </p>
+            </div>
+
+            <div class="card-dicas">
+                <div>
+                    <img src="./img/icone-dicas.png" alt="">
+                    <h2>Capacidades Aprendizado</h2>
+                </div>
+                <p>Aprendizagem: muitos imigrantes precisam se ajustar a novos sistemas e práticas de trabalho, então compartilhe suas habilidades e experiencias.</p>
+                <p>Resolução de problemas: a experiencia de se estabelecer em um novo país, geralmente exige em resolver desafios dentro da empresa, então ser proativo ajuda sempre.</p>
+            </div>
+
+            <div class="card-dicas">
+                <div>
+                    <img src="./img/icone-dicas.png" alt="">
+                    <h2>Perguntas para Entrevista</h2>
+                </div>
+                <p>Visto ou autorização de trabalho: pode ser comum receber perguntas sobre status de visto, explicar com clareza sua situação e enfatizar que possui toda a documentação necessária, é aplicável.</p>
+                <p>Perguntas comportamentais: se preparar para perguntas como: “Conte-me sobre um desafio que enfrentou e como resolveu”, focando em exemplos que mostrem sua resiliência.</p>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+</section>
+
+<section class="sec4">
+    <div class="titulo-linkedin">
+        <img src="./img/linkedin-colorido.png" alt="">
+        <h1>COMO USAR O LINKEDIN</h1>
+    </div>
+
+    <div class="container-linkedin">
+        <div class="alinha-linkedin">
+                <h2 class="titulos-linkedin">CRIANDO O SEU PERFIL</h2>
+                <p>Após ter feito o cadastro no site, aparecerá um ícone “eu” no topo da página, clique nele e em seguida “visualizar perfil”. Você acabou de entrar na sua página, esse será o seu cartão de visitas profissional na rede.  Ao lado esquerdo de sua página, existe o local para inserir a sua foto:</p>
+            <span class="topico-linkedin"><div></div><p>Clique no local indicado para foto;</p></span>
+            <span class="topico-linkedin"><div></div><p>Escolha uma imagem do seu computador ou celular para adicionar;</p></span>
+            <span class="topico-linkedin"><div></div><p>Ao lado direito da foto, está o primeiro “lápis” para edição de informações. Após clicar, aparecerá uma área para inserir as informações básicas sobre você.</p></span>
+            <span class="subtopicos-linkedin">
+                <p>.Nome e sobrenome;</p>
+                <p>.O título (o que você é e faz ou pretende fazer):</p>
+                <p>.Seu cargo atual;</p>
+                <p>.Sua formação acadêmica (qual universidade ou curso);</p>
+                <p>.O país que está;</p>
+                <p>.O estado que vive;</p>
+                <p>.Qual o setor que atua (selecionar na lista);</p>
+                <p>.Informações de contato (se quiser).</p>
+            </span>
+                <h2 class="titulos-linkedin">SOBRE VOCÊ</h2>
+                <p>Descendo a página, irá encontrar a segunda seção de informações. Aqui o candidato insere um resumo sobre quem ele é, o que já fez, atividades em que se destacou, agilidade promocional.</p>
+                <p>Não precisa ser muito extenso, mas em uma passagem rápida de perfil, essas são as primeiras informações que vão ler sobre a pessoa.</p>
+        </div>
+
+        <div class="alinha-linkedin">
+                <h2 class="titulos-linkedin">DESTAQUES</h2>
+                <p>Nesse espaço o profissional pode inserir informações sobre seus materiais, como:</p>
+            <span class="topico-linkedin"><div></div><p>Publicações (feita no Linkedin);</p></span>
+            <span class="topico-linkedin"><div></div><p>Artigos escritos na rede social;</p></span>
+            <span class="topico-linkedin"><div></div><p>Links para conteúdos web (interessante ser conteúdo próprio);</p></span>
+            <span class="topico-linkedin"><div></div><p>Mídia (pode carregar fotos de momentos, apresentações ou documentos elaborados)</p></span>
+                <h2 class="titulos-linkedin">HISTÓRICO PROFISSIONAL</h2>
+                <p>Nesta seção, coloca-se toda a experiência de sua carreira. Adicione um novo registro clicando no sinal de “+”. Na página flutuante, complete todas as informações sobre cada emprego anterior e o atual, se for o caso.</p>
+            <span class="topico-linkedin"><div></div><p>Nome do cargo;</p></span>
+            <span class="topico-linkedin"><div></div><p>Tipo de emprego (Tempo integral, autônomo, freelancer, etc...);</p></span>
+            <span class="topico-linkedin"><div></div><p>Nome da empresa;</p></span>
+            <span class="topico-linkedin"><div></div><p>Localidade onde trabalhou;</p></span>
+            <span class="topico-linkedin"><div></div><p>Caso seja seu emprego atual, marque a caixinha e coloque a data de início na empresa</p></span>
+            <span class="topico-linkedin"><div></div><p>Em experiências anteriores deve-se colocar a data de início e fim do vínculo;</p></span>
+            <span class="topico-linkedin"><div></div><p>Descreva todas as suas atividades na função</p></span>
+        </div>
+        </div>
+    </div>
+
+</section>
+
+
+<div class="div-wavefoot" id="cor-onda">
+    <div class="wave-foot wave1"></div> 
+    <div class="wave-foot wave2"></div> 
+    <div class="wave-foot wave3"></div> 
+    <div class="wave-foot wave4"></div> 
+</div>
+
+
+<footer>
+
+<div class="cont-foot">
+
+    <div class="cont-1-foot">
+        <h1>INFORMAÇÕES</h1>
+        <div class="infos-footer">
+            <div>
+                <h1>Instituição:</h1>
+                <p>Centro Paula Souza | Etec De Carapicuiba - Desenvolvimento de Sistemas</p>
+            </div>
+
+            <div>
+                <h1>Orientadores:</h1>
+                <p>Wesley Castanha, Luiz Fernando, Luiz Ricardo, Sabrina Cristiana.</p>
+            </div>
+        </div>
+    </div>
+
+    <h1>DESENVOLVEDORES</h1>
+    <div class="container">
+        <div class="container-cards">
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Alexia-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Alexia Vitoria</h1>
+                    <p>Redatora de Conteúdo</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/aalexiav_/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/aalexiav_/"><p>@aalexiav_</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Beatriz-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Beatriz Bruna</h1>
+                    <p>Designer</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/biabruna_/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/biabruna_/"><p>@biabruna_</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Evellyn-card2.png">
+                </div>
+                <div class="info-card">
+                    <h1>Evellyn Silva</h1>
+                    <p>Redatora de Conteúdo</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/evee.ws/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/evee.ws_/"><p>@evee.ws</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Felipe-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Felipe Reis</h1>
+                    <p>Programador</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/s4ntk_/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/s4ntk_/"><p>@s4ntk_</p></a>
+                </div>
+            </div>
+    
+            <div class="card-footer">
+                <div class="div-img">
+                    <img src="./img/Guilherme-card.png">
+                </div>
+                <div class="info-card">
+                    <h1>Guilherme Leandro</h1>
+                    <p>Designer</p>
+                </div>
+                <div class="rede-socias">
+                        <a href="https://www.instagram.com/gui.leandrzz/" class="insta"><img src="./img/instagram.png"></a>
+                        <a href="https://www.instagram.com/gui.leandrzz/"><p>@gui.leandrzz</p></a>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+</footer>
+    
+</body>
+</html>
