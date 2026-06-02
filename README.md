@@ -1,42 +1,43 @@
-# Conexión Migratoria
+<div align="center">
+  <img src="https://raw.githubusercontent.com/biabruna19/Conexion-Migratoria/main/img/logo-branca%20Conexi%C3%B3n%20Migratoria.png" width="300" alt="Conexión Migratoria Logo">
+  
+  # Conexión Migratoria
+  
+  **O seu portal de auxílio para adaptação no Brasil.**
+  
+  [**👉 ACESSAR O SITE AGORA 👈**](https://biabruna19.github.io/Conexion-Migratoria/)
+</div>
 
-Bem-vindo ao repositório do **Conexión Migratoria**!
-Este projeto é um site informativo focado em auxiliar imigrantes na adaptação ao Brasil, oferecendo informações práticas, dicas de empregabilidade, cursos e um mapa interativo.
+---
 
-## 🚀 Tecnologias Utilizadas
+O aumento do movimento migratório em várias partes do mundo tem ocorrido com regularidade. Neste espaço, auxiliamos você, imigrante, a se familiarizar com o Brasil de forma rápida e segura.
 
-Este projeto foi totalmente refatorado para operar como uma aplicação Web Estática moderna e independente de servidores locais como o XAMPP.
+## 🚀 Funcionalidades
 
-- **Frontend**: HTML5, CSS3, JavaScript Vanilla
-- **Backend/Database**: [Supabase](https://supabase.com/) (PostgreSQL & Autenticação)
-- **Design**: Totalmente responsivo, focado em facilidade de uso e estética limpa.
+Nosso projeto oferece recursos essenciais para facilitar a integração e o dia a dia de imigrantes recém-chegados:
 
-## ⚙️ Funcionalidades
+- 🗺️ **Mapa Interativo**: Localize sua região e obtenha informações sobre infraestrutura, saúde e educação local.
+- 📜 **Leis e Documentos**: Guias sobre como regularizar seus documentos, direitos e deveres.
+- 💼 **Empregabilidade**: Dicas para currículos, entrevistas de emprego e integração profissional no mercado brasileiro.
+- 🎓 **Cursos**: Recomendações de cursos de português e profissionalizantes oferecidos por ONGs e parceiros.
+- 🌐 **Tradução Automática**: Suporte nativo para múltiplos idiomas integrado para facilitar a leitura.
+- 🔒 **Sistema de Autenticação**: Cadastro simples e seguro para salvar e visualizar suas preferências.
 
-- Cadastro e Login de usuários integrados ao Supabase.
-- Acesso a informações locais através de mapas interativos.
-- Diretório de Leis, Documentos, Cursos e dicas de Empregabilidade.
-- Perfis de usuário com dados básicos.
-- Sistema multi-idioma integrado via GTranslate.
+## 💻 Tecnologias
 
-## 🛠️ Como executar o projeto localmente
+Este projeto foi construído utilizando as seguintes tecnologias:
 
-Como o projeto agora é totalmente estático e consome a API do Supabase, rodá-lo é extremamente simples:
+- **Frontend**: HTML5, CSS3 e JavaScript (Vanilla)
+- **Backend & Database**: [Supabase](https://supabase.com/) (PostgreSQL) para armazenamento de dados e perfis.
+- **Integrações**: Google Translate API.
 
-1. Clone o repositório:
+## 🛠️ Como rodar localmente
+
+Caso queira visualizar ou contribuir para o projeto no seu computador:
+
+1. Clone este repositório:
    ```bash
    git clone https://github.com/biabruna19/Conexion-Migratoria.git
    ```
-2. Abra a pasta do projeto e dê um duplo-clique no arquivo `index.html` ou `logar.html`.
-3. *(Recomendado)* Para ter uma experiência melhor e não ter problemas com bloqueios de arquivos locais no navegador (CORS), utilize a extensão **Live Server** no VSCode.
-   - Abra o VSCode na pasta do projeto.
-   - Instale a extensão "Live Server".
-   - Clique em "Go Live" na barra inferior.
-
-Não é mais necessário utilizar o PHP ou o XAMPP! 🎉
-
-## 🔒 Variáveis de Configuração
-
-O arquivo `js/supabase-config.js` já está configurado com a `anon_key` e a URL do Supabase fornecida para este ambiente.
-
-Desenvolvido com 🩵.
+2. Abra a pasta do projeto no VSCode (ou seu editor de código preferido).
+3. Utilize a extensão **Live Server** para rodar o arquivo `index.html` ou simplesmente dê dois cliques no arquivo para abri-lo diretamente no seu navegador.
