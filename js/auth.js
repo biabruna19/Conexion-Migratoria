@@ -30,23 +30,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Query Supabase
-            const { data, error } = await supabase
-                .from('tbusuarios')
-                .select('*')
-                .eq('emailusuario', email)
-                .single();
+            try {
+                // Query Supabase
+                const { data, error } = await supabaseClient
+                    .from('tbusuarios')
+                    .select('*')
+                    .eq('emailusuario', email)
+                    .single();
 
-            if (error || !data) {
-                alert('Usuário não encontrado!');
-                return;
-            }
+                if (error || !data) {
+                    alert('Usuário não encontrado!');
+                    return;
+                }
 
-            if (data.senhausuario === senha) {
-                localStorage.setItem('user', JSON.stringify(data));
-                window.location.href = 'homeLogada.html';
-            } else {
-                alert('Senha incorreta!');
+                if (data.senhausuario === senha) {
+                    localStorage.setItem('user', JSON.stringify(data));
+                    window.location.href = 'homeLogada.html';
+                } else {
+                    alert('Senha incorreta!');
+                }
+            } catch (err) {
+                alert('Erro ao realizar login: ' + err.message);
             }
         });
     }
@@ -73,36 +77,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Check if email or phone exists
-            const { data: existingUser } = await supabase
-                .from('tbusuarios')
-                .select('idusuario')
-                .or(`emailusuario.eq.${email},telefoneusuario.eq.${telefone}`);
+            try {
+                // Check if email or phone exists
+                const { data: existingUser, error: checkError } = await supabaseClient
+                    .from('tbusuarios')
+                    .select('idusuario')
+                    .or(`emailusuario.eq.${email},telefoneusuario.eq.${telefone}`);
 
-            if (existingUser && existingUser.length > 0) {
-                alert('Este email ou telefone já está registrado!');
-                return;
+                if (checkError) throw checkError;
+
+                if (existingUser && existingUser.length > 0) {
+                    alert('Este email ou telefone já está registrado!');
+                    return;
+                }
+
+                // Insert
+                const { error } = await supabaseClient
+                    .from('tbusuarios')
+                    .insert([{
+                        nomeusuario: nome,
+                        emailusuario: email,
+                        telefoneusuario: telefone,
+                        nacionalidadeusuario: nacionalidade,
+                        senhausuario: senha,
+                        conf_senha: conf_senha
+                    }]);
+
+                if (error) {
+                    alert('Erro ao criar conta: ' + error.message);
+                    return;
+                }
+
+                alert('Conta criada com sucesso!');
+                window.location.href = 'logar.html';
+            } catch (err) {
+                alert('Erro na comunicação com servidor: ' + err.message);
             }
-
-            // Insert
-            const { error } = await supabase
-                .from('tbusuarios')
-                .insert([{
-                    nomeusuario: nome,
-                    emailusuario: email,
-                    telefoneusuario: telefone,
-                    nacionalidadeusuario: nacionalidade,
-                    senhausuario: senha,
-                    conf_senha: conf_senha
-                }]);
-
-            if (error) {
-                alert('Erro ao criar conta: ' + error.message);
-                return;
-            }
-
-            alert('Conta criada com sucesso!');
-            window.location.href = 'logar.html';
         });
     }
 
