@@ -6,13 +6,13 @@
     <title>Estado · Conexión Migratoria</title>
     <meta name="theme-color" content="#053344">
     <link rel="icon" href="./img/ico-CM.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/estilo.css?v=202611231612">
-    <script src="./js/idioma.js?v=202611231612"></script>
-    <script src="./js/demo-store.js?v=202611231612"></script>
+    <link rel="stylesheet" href="./css/estilo.css?v=202611231657">
+    <script src="./js/idioma.js?v=202611231657"></script>
+    <script src="./js/demo-store.js?v=202611231657"></script>
 </head>
 <body>
 <div id="cm-topo"></div>
-<script src="./js/layout.js?v=202611231612"></script>
+<script src="./js/layout.js?v=202611231657"></script>
 
 <main id="conteudo">
     <section class="estado-hero">
@@ -23,14 +23,18 @@
                 <a href="./index.html#mapa"><span lang="pt">Mapa</span><span lang="es">Mapa</span></a><span>/</span>
                 <span data-campo="titulo-trilha"></span>
             </nav>
-            <span class="etiqueta" data-campo="regiao"></span>
             <h1 data-campo="titulo"></h1>
+            <div class="chips-estado">
+                <span class="chip"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3z"/><path d="M9 3v15M15 6v15"/></svg><span data-campo="regiao"></span></span>
+                <span class="chip"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M12 3l9 5H3z"/></svg><span lang="pt">Capital:</span><span lang="es">Capital:</span> <strong data-campo="capital"></strong></span>
+                <a class="chip chip-link" href="#pontos"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span lang="pt">4 pontos turísticos</span><span lang="es">4 lugares turísticos</span></a>
+            </div>
             <p data-campo="resumo" data-ler-mais="3"></p>
         </div>
     </section>
 
     <div class="container" lang="es" style="padding-top: 24px">
-        <div class="nota"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><p>El resumen está en español. El contenido detallado de cada estado (cultura, lugares turísticos, salud, educación y ciudades) está disponible en portugués.</p></div>
+        <div class="nota"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><p>El resumen está en español. El contenido detallado de cada estado está en portugués; puedes usar el globo para traducirlo automáticamente a otros idiomas.</p></div>
     </div>
 
     <!-- Cultura -->
@@ -45,64 +49,80 @@
         </div>
     </section>
 
-    <!-- Pontos turísticos -->
+    <!-- Pontos turísticos: galeria -->
     <section class="secao secao-escura" id="pontos">
         <div class="container">
             <div class="cabecalho-secao">
                 <span class="sobretitulo"><span lang="pt">Para conhecer</span><span lang="es">Para conocer</span></span>
                 <h2><span lang="pt">Pontos turísticos</span><span lang="es">Lugares turísticos</span></h2>
+                <p><span lang="pt">Toque numa foto para ver em tela cheia.</span><span lang="es">Toca una foto para verla en pantalla completa.</span></p>
             </div>
-            <div class="pontos">
-                <div class="pontos-lista" role="tablist" aria-orientation="vertical" data-campo="pontosLista" data-pt-aria-label="Pontos turísticos" data-es-aria-label="Lugares turísticos"></div>
-                <div class="ponto-destaque" role="tabpanel" id="pontoDestaque" aria-live="polite">
-                    <img data-campo="pontoImagem" alt="">
-                    <div class="legenda">
-                        <h3 data-campo="pontoNome"></h3>
-                        <p data-campo="pontoDescricao" lang="pt-BR"></p>
-                    </div>
-                </div>
-            </div>
+            <div class="galeria" data-campo="galeria"></div>
         </div>
     </section>
 
-    <!-- Mais informações -->
+    <!-- Mais informações: cartões -->
     <section class="secao" id="informacoes">
         <div class="container">
             <div class="cabecalho-secao">
                 <span class="sobretitulo"><span lang="pt">Mais informações</span><span lang="es">Más información</span></span>
                 <h2><span lang="pt">Saúde, ensino e onde morar</span><span lang="es">Salud, educación y dónde vivir</span></h2>
             </div>
-            <div class="abas" role="tablist" data-pt-aria-label="Mais informações" data-es-aria-label="Más información">
-                <button type="button" role="tab" id="saude" aria-controls="infos1" aria-selected="true"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg><span lang="pt">Saúde</span><span lang="es">Salud</span></button>
-                <button type="button" role="tab" id="ensino" aria-controls="infos2" aria-selected="false"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span lang="pt">Ensino</span><span lang="es">Educación</span></button>
-                <button type="button" role="tab" id="localidade" aria-controls="infos3" aria-selected="false"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span lang="pt">Cidades</span><span lang="es">Ciudades</span></button>
-            </div>
-            <div class="bloco">
-                <div role="tabpanel" id="infos1" aria-labelledby="saude" class="info-painel">
-                    <div>
-                        <h3 style="font-size:1.6rem;margin-bottom:16px"><span lang="pt">Sistema de saúde</span><span lang="es">Sistema de salud</span></h3>
-                        <div class="texto" data-campo="saude" lang="pt-BR"></div>
-                    </div>
+            <div class="grade grade-3 info-cartoes">
+                <article class="cartao info-cartao revelar" id="infos1">
                     <figure><img data-campo="imagemSaude" alt="" loading="lazy"></figure>
-                </div>
-                <div role="tabpanel" id="infos2" aria-labelledby="ensino" class="info-painel" hidden>
-                    <div>
-                        <h3 style="font-size:1.6rem;margin-bottom:16px"><span lang="pt">Sistema de ensino</span><span lang="es">Sistema educativo</span></h3>
-                        <div class="texto" data-campo="ensino" lang="pt-BR"></div>
-                        <ul class="escolas" data-campo="escolas" lang="pt-BR"></ul>
-                    </div>
+                    <span class="icone-redondo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></span>
+                    <h3><span lang="pt">Saúde</span><span lang="es">Salud</span></h3>
+                    <div class="texto" data-campo="saude" lang="pt-BR" data-ler-mais="4"></div>
+                </article>
+                <article class="cartao info-cartao revelar" id="infos2">
                     <figure><img data-campo="imagemEnsino" alt="" loading="lazy"></figure>
-                </div>
-                <div role="tabpanel" id="infos3" aria-labelledby="localidade" class="info-painel" hidden>
-                    <div>
-                        <h3 style="font-size:1.6rem;margin-bottom:16px"><span lang="pt">Cidades bem localizadas</span><span lang="es">Ciudades bien ubicadas</span></h3>
-                        <ul class="cidades" data-campo="cidades" lang="pt-BR"></ul>
-                    </div>
+                    <span class="icone-redondo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+                    <h3><span lang="pt">Ensino</span><span lang="es">Educación</span></h3>
+                    <div class="texto" data-campo="ensino" lang="pt-BR" data-ler-mais="4"></div>
+                    <ul class="escolas-chips" data-campo="escolas" lang="pt-BR"></ul>
+                </article>
+                <article class="cartao info-cartao revelar" id="infos3">
                     <figure><img data-campo="imagemCidades" alt="" loading="lazy"></figure>
-                </div>
+                    <span class="icone-redondo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                    <h3><span lang="pt">Cidades bem localizadas</span><span lang="es">Ciudades bien ubicadas</span></h3>
+                    <div class="texto" data-campo="cidades" lang="pt-BR" data-ler-mais="4"></div>
+                </article>
             </div>
         </div>
     </section>
+
+    <!-- Estados da mesma região -->
+    <section class="secao secao-papel" id="vizinhos">
+        <div class="container carrossel" data-carrossel>
+            <div class="carrossel-cabecalho">
+                <div class="cabecalho-secao">
+                    <span class="sobretitulo"><span lang="pt">Continue explorando</span><span lang="es">Sigue explorando</span></span>
+                    <h2 data-campo="tituloVizinhos"></h2>
+                </div>
+                <div class="carrossel-setas">
+                    <button type="button" class="carrossel-seta" data-pt-aria-label="Anteriores" data-es-aria-label="Anteriores"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+                    <button type="button" class="carrossel-seta" data-pt-aria-label="Próximos" data-es-aria-label="Siguientes"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                </div>
+            </div>
+            <div class="carrossel-trilho vizinhos" data-campo="vizinhos"></div>
+        </div>
+    </section>
+
+    <!-- Galeria em tela cheia -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden>
+        <button type="button" class="lightbox-fechar" id="lightboxFechar" data-pt-aria-label="Fechar" data-es-aria-label="Cerrar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+        <button type="button" class="lightbox-seta anterior" id="lightboxAnterior" data-pt-aria-label="Anterior" data-es-aria-label="Anterior"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+        <figure>
+            <img id="lightboxImagem" alt="">
+            <figcaption>
+                <span class="lightbox-contador" id="lightboxContador"></span>
+                <h3 id="lightboxNome"></h3>
+                <p id="lightboxDescricao" lang="pt-BR"></p>
+            </figcaption>
+        </figure>
+        <button type="button" class="lightbox-seta proxima" id="lightboxProxima" data-pt-aria-label="Próxima" data-es-aria-label="Siguiente"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
 
     <!-- Outros estados -->
     <section class="secao-compacta secao-papel">
@@ -120,8 +140,8 @@
     </section>
 </main>
 <div id="cm-rodape"></div>
-<script src="./data/estados.js?v=202611231612"></script>
-<script src="./js/estado.js?v=202611231612"></script>
-<script src="./js/interacoes.js?v=202611231612"></script>
+<script src="./data/estados.js?v=202611231657"></script>
+<script src="./js/estado.js?v=202611231657"></script>
+<script src="./js/interacoes.js?v=202611231657"></script>
 </body>
 </html>

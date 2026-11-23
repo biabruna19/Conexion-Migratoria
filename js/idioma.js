@@ -108,7 +108,7 @@
                 ${ICONE_GLOBO}<span class="globo-sigla"></span>
             </button>
             <ul class="globo-lista" id="${id}" role="listbox" aria-label="Idioma · Language" hidden>
-                ${IDIOMAS.map(i => `<li role="option" tabindex="-1" data-cod="${i.cod}" lang="${i.cod}" aria-selected="false">
+                ${IDIOMAS.map(i => `<li role="option" tabindex="-1" data-cod="${i.cod}" aria-selected="false"${['ar', 'fa'].includes(i.cod) ? ' dir="rtl"' : ''}>
                     <span>${i.nome}</span>${MANUAIS.includes(i.cod) ? '' : '<small>auto</small>'}
                 </li>`).join('')}
             </ul>`;
