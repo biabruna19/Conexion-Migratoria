@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="img/favicon.svg" width="88" alt="Conexión Migratoria">
+  <img src="img/logo-branca-conexion-migratoria.png" width="260" alt="Conexión Migratoria">
 
   # Conexión Migratoria
 
@@ -36,7 +36,7 @@ O site roda **100% no GitHub Pages, sem servidor e sem banco de dados**, para qu
 ## 💻 Tecnologias
 
 - HTML5, CSS3 e JavaScript puro, sem frameworks nem dependências.
-- Sistema visual próprio (`css/estilo.css`) com as fontes Fraunces e Inter.
+- Sistema visual próprio (`css/estilo.css`) com a identidade original do projeto: tons de azul e fonte Inter.
 - Ícones em SVG embutidos no próprio código.
 - Histórico: o projeto nasceu com PHP + MySQL (XAMPP), passou por Supabase e hoje é um site estático.
 
@@ -62,7 +62,7 @@ O site roda **100% no GitHub Pages, sem servidor e sem banco de dados**, para qu
 │   ├── componentes.js    # Abas e sumário
 │   ├── conta.js          # Login, cadastro e recuperação de senha
 │   └── perfil.js         # Página de perfil
-├── img/                  # Ícone do site e avatar padrão
+├── img/                  # Logotipo, ícone do site e avatar padrão
 └── imgs-estado/          # Fotos dos estados (WebP)
 ```
 
