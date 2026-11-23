@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/biabruna19/Conexion-Migratoria/main/img/logo-branca%20Conexi%C3%B3n%20Migratoria.png" width="300" alt="Conexión Migratoria Logo">
+  <img src="https://raw.githubusercontent.com/biabruna19/Conexion-Migratoria/main/img/logo-branca-conexion-migratoria.png" width="300" alt="Conexión Migratoria Logo">
   
   # Conexión Migratoria
   
