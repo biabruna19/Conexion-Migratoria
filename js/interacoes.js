@@ -156,7 +156,10 @@
     });
 
     // ---------- Tradução dos cartões em várias línguas ----------
-    const NOMES_LINGUA = { es: 'Español', en: 'English', fr: 'Français', ht: 'Kreyòl ayisyen', ar: 'العربية' };
+    const NOMES_LINGUA = {
+        es: { pt: 'Espanhol', es: 'Español' }, en: { pt: 'Inglês', es: 'Inglés' }, fr: { pt: 'Francês', es: 'Francés' },
+        ht: { pt: 'Crioulo haitiano', es: 'Criollo haitiano' }, ar: { pt: 'Árabe', es: 'Árabe' },
+    };
     document.querySelectorAll('[data-traduzir-para]').forEach(grupo => {
         const botoes = [...grupo.querySelectorAll('[data-lingua]')];
         const area = grupo.nextElementSibling;
@@ -169,9 +172,10 @@
                 el.setAttribute('lang', lingua === 'es' ? 'es-ES' : lingua);
                 el.classList.toggle('rtl', lingua === 'ar');
             });
-            area.querySelectorAll('[data-rotulo-lingua]').forEach(el => { el.textContent = NOMES_LINGUA[lingua]; });
+            area.querySelectorAll('[data-rotulo-lingua]').forEach(el => { el.textContent = t(NOMES_LINGUA[lingua].pt, NOMES_LINGUA[lingua].es); });
         };
         botoes.forEach(b => b.addEventListener('click', () => escolher(b.dataset.lingua)));
+        if (window.I18N) I18N.aoTrocar(() => escolher(localStorage.getItem('cm_lingua_cartoes') || 'es'));
         const globo = window.I18N ? I18N.escolha() : 'es';
         escolher(localStorage.getItem('cm_lingua_cartoes') || (NOMES_LINGUA[globo] ? globo : 'es'));
     });
