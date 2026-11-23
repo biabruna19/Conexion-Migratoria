@@ -1,16 +1,3 @@
-<?php
-
-session_start();
-
-// Verifica se o usuário está logado
-if (!isset($_SESSION['user_id'])) {
-    echo "<script>alert('Para acessar esta página conecte-se com uma conta'); window.location.href = 'logar.php';</script>";
-    exit(); // Corrigido de "saída();" para "exit();"
-}
-
-$logado = $_SESSION['user_id']; // Certifique-se de usar o mesmo nome de chave aqui
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,66 +11,14 @@ $logado = $_SESSION['user_id']; // Certifique-se de usar o mesmo nome de chave a
     <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
     <link rel="stylesheet" href="./css/nav-footer.css">
 
+    <script src="./js/demo-store.js"></script>
+    <script>CM.exigirLogin();</script>
+    <link rel="stylesheet" href="./css/repaginada.css">
 </head>
 <body>
 
-    <script>window.gtranslateSettings = {"default_language":"pt","detect_browser_language":true,"languages":["pt","es"],"wrapper_selector":".gtranslate_wrapper","flag_size":48,"alt_flags":{"pt":"brazil"}}</script>
-    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
-    
-<nav>
-    <div class="alinhar">
-        <div class="logos">
-            <a href="./homeLogada.php"><img src="./img/logo-branca-conexion-migratoria.png"></a>
-        </div>
-        <div class="links-nav">
-            <ul>
-                <a href="./homeLogada.php#mapa"><li>MAPA INTERATIVO</li></a>
-                <a href="./homeLogada.php#leis"><li>LEIS E DOCUMENTOS</li></a>
-                <a href="./homeLogada.php#leis"><li>EMPREGABILIDADE</li></a>
-                <a href="./homeLogada.php#leis"><li>CURSOS</li></a>
-                <a href="./homeLogada.php#noticias"><li>NOTÍCIAS</li></a>
-            </ul>
-    
-            <div class="traduçao">
-                <div class="gtranslate_wrapper">
-                </div>
-            </div>
-    
-            <div class="user"> 
-                <a href="./pg-perfil.php"><img src="<?php echo isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : './img/do-utilizador.png'; ?>" alt=""></a>
-            </div>
-        </div>
-
-        <div class="menu-hamburguer"  id="menuHamburguer">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-
-<script>
-    document.getElementById('menuHamburguer').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.getElementById('backMenuMobile').classList.toggle('active');
-});
-</script>
-    
-    <div class="movendo-gradient"></div>
-    
-</nav>
-
-<div class="back-menumobile" id="backMenuMobile">
-    <div class="menu-mobile">
-        <h1>TRADUZIR</h1>
-        
-        <div>
-            <div class="gtranslate_wrapper">
-            </div>
-        </div>
-
-        <a href="./logar.php">Fazer Login</a>
-    </div>
-</div>
+<div id="cm-topo"></div>
+<script src="./js/layout.js"></script>
 
 <section class="sec1">
     <div class="titulo-sec1">
@@ -210,10 +145,6 @@ $logado = $_SESSION['user_id']; // Certifique-se de usar o mesmo nome de chave a
         <p style="margin-top: 10px; font-size: 14px;">O seu portal de auxílio para adaptação no Brasil.</p>
     </div>
 </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
 </body>
 </html>
 

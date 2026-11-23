@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/biabruna19/Conexion-Migratoria/main/img/logo-branca-conexion-migratoria.png" width="300" alt="Conexión Migratoria Logo">
+  <img src="img/logo-branca-conexion-migratoria.png" width="300" alt="Conexión Migratoria Logo">
   
   # Conexión Migratoria
   
@@ -21,23 +21,57 @@ Nosso projeto oferece recursos essenciais para facilitar a integração e o dia 
 - 💼 **Empregabilidade**: Dicas para currículos, entrevistas de emprego e integração profissional no mercado brasileiro.
 - 🎓 **Cursos**: Recomendações de cursos de português e profissionalizantes oferecidos por ONGs e parceiros.
 - 🌐 **Tradução Automática**: Suporte nativo para múltiplos idiomas integrado para facilitar a leitura.
-- 🔒 **Sistema de Autenticação**: Cadastro simples e seguro para salvar e visualizar suas preferências.
+- 👤 **Conta e Perfil**: cadastro, login, recuperação de senha, edição de dados e foto de perfil.
+- 📱 **Responsivo e acessível**: menu mobile, navegação pelo teclado (inclusive no mapa) e respeito a quem prefere menos animações.
+
+## 🧪 Modo demonstração
+
+Este repositório roda **100% no GitHub Pages, sem servidor e sem banco de dados**, para que qualquer pessoa consiga testar todas as funções:
+
+- O conteúdo dos 27 estados (cultura, pontos turísticos, saúde, ensino e cidades) fica em [`data/estados.js`](data/estados.js), recuperado do banco de dados original do projeto.
+- Contas, sessão e foto de perfil ficam salvas **apenas no navegador** de quem está testando (`localStorage`). As senhas são guardadas como hash SHA-256, nunca em texto puro.
+- Na tela de login há o botão **"entrar como visitante"**, para conhecer o site sem criar conta.
 
 ## 💻 Tecnologias
 
-Este projeto foi construído utilizando as seguintes tecnologias:
+- **Frontend**: HTML5, CSS3 e JavaScript (Vanilla), sem frameworks.
+- **Dados**: conteúdo estático em JavaScript + `localStorage` (modo demonstração).
+- **Integrações**: GTranslate (tradução português/espanhol).
+- **Histórico**: o projeto nasceu com PHP + MySQL (XAMPP), passou por Supabase e hoje é um site estático.
 
-- **Frontend**: HTML5, CSS3 e JavaScript (Vanilla)
-- **Backend & Database**: [Supabase](https://supabase.com/) (PostgreSQL) para armazenamento de dados e perfis.
-- **Integrações**: Google Translate API.
+## 📁 Estrutura
+
+```
+├── index.html            # Página inicial com o mapa interativo
+├── pg-estados.html       # Página de cada estado (?uf=SP, ?uf=BA...)
+├── leis.html             # Leis e documentos
+├── pg-empregos.html      # Empregabilidade
+├── pg-cursos.html        # Cursos
+├── pg-perfil.html        # Perfil do usuário
+├── logar.html, criarConta.html, recuperarSenha.html, redefinirSenha.html
+├── data/estados.js       # Conteúdo dos 27 estados
+├── js/
+│   ├── demo-store.js     # Contas e sessão no navegador (modo demonstração)
+│   ├── layout.js         # Menu, menu mobile e aviso compartilhados
+│   ├── mapa.js           # Mapa interativo
+│   ├── estado.js         # Preenche a página de cada estado
+│   ├── conta.js          # Login, cadastro e recuperação de senha
+│   └── perfil.js         # Página de perfil
+├── css/                  # Estilos de cada página + repaginada.css
+├── img/                  # Imagens gerais
+└── imgs-estado/          # Imagens dos estados (WebP)
+```
 
 ## 🛠️ Como rodar localmente
-
-Caso queira visualizar ou contribuir para o projeto no seu computador:
 
 1. Clone este repositório:
    ```bash
    git clone https://github.com/biabruna19/Conexion-Migratoria.git
    ```
-2. Abra a pasta do projeto no VSCode (ou seu editor de código preferido).
-3. Utilize a extensão **Live Server** para rodar o arquivo `index.html` ou simplesmente dê dois cliques no arquivo para abri-lo diretamente no seu navegador.
+2. Abra o arquivo `index.html` no navegador (dois cliques) ou use a extensão **Live Server** do VS Code.
+
+Não é preciso instalar nada nem configurar banco de dados.
+
+## 👥 Equipe
+
+Projeto desenvolvido em equipe por **Alexia**, **Beatriz**, **Evellyn**, **Felipe** e **Guilherme**.

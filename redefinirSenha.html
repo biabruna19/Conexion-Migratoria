@@ -1,49 +1,3 @@
-<?php
-session_start();
-require_once 'config.php';
-
-$erro = "";
-$sucesso = "";
-$email_validado = false;
-
-// Processar a redefinição de senha
-if (isset($_POST['redefinir'])) {
-    if (isset($_SESSION['email_recuperacao']) && !empty($_POST['nova_senha']) && !empty($_POST['conf_senha'])) {
-        if ($_POST['nova_senha'] === $_POST['conf_senha']) {
-            $email = $_SESSION['email_recuperacao'];
-            $senha = $_POST['nova_senha'];
-
-            $stmt = $conexao->prepare("UPDATE tbUsuarios SET senhaUsuario = :senha, conf_senha = :senha WHERE emailUsuario = :email");
-            $stmt->execute([':senha' => $senha, ':email' => $email]);
-
-            unset($_SESSION['email_recuperacao']);
-            echo "<script>alert('Senha redefinida com sucesso!'); window.location.href='logar.php';</script>";
-            exit();
-        } else {
-            $erro = "As senhas não coincidem!";
-            $email_validado = true; // Mantém o formulário de senha aberto
-        }
-    }
-}
-// Verificar e-mail inicial
-elseif (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $stmt = $conexao->prepare("SELECT idUsuario FROM tbUsuarios WHERE emailUsuario = :email");
-    $stmt->execute([':email' => $email]);
-
-    if ($stmt->rowCount() > 0) {
-        $_SESSION['email_recuperacao'] = $email;
-        $email_validado = true;
-    } else {
-        echo "<script>alert('E-mail não encontrado!'); window.location.href='recuperarSenha.php';</script>";
-        exit();
-    }
-} else {
-    header("Location: recuperarSenha.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -53,23 +7,25 @@ elseif (isset($_POST['submit'])) {
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
+    <script src="./js/demo-store.js"></script>
+    <link rel="stylesheet" href="./css/repaginada.css">
 </head>
 <body>
     <section>
         <div class="infos">
-            <h1>NOVA SENHA</h1>
+            <a href="./index.html" class="voltar-site">&larr; Voltar para o site</a>
+                        <h1>NOVA SENHA</h1>
             <img src="./img/logo-branca-conexion-migratoria.png" alt="">
-            <a href="./logar.php"><button class="creat">VOLTAR AO LOGIN</button></a>
+            <a href="./logar.html"><button class="creat">VOLTAR AO LOGIN</button></a>
         </div>
 
         <div id="login1" class="login1">
             <h1 class="title">CRIAR NOVA SENHA</h1>
-            <?php if ($erro) echo "<p style='color:red; text-align:center;'>$erro</p>"; ?>
-            <form action="redefinirSenha.php" method="POST">
+            <form id="resetForm">
                 <div class="input">
                     <img src="./img/cadeado.png" style="filter: brightness(0) invert(1);">
                     <div></div>
-                    <input type="password" name="nova_senha" placeholder="Nova Senha" required>
+                    <input type="password" name="nova_senha" placeholder="Nova Senha" autocomplete="new-password" minlength="4" required>
                 </div>
                 <div class="input">
                     <img src="./img/cadeado.png" style="filter: brightness(0) invert(1);">
@@ -82,9 +38,7 @@ elseif (isset($_POST['submit'])) {
             </form>
         </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
+    <script src="./js/conta.js"></script>
 </body>
 </html>
 

@@ -9,14 +9,18 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
 
+    <script src="./js/demo-store.js"></script>
+    <link rel="stylesheet" href="./css/repaginada.css">
 </head>
 
     
 <body>
     <section>
         <div class="infos">
-            <h1>BEM VINDO!</h1>
+            <a href="./index.html" class="voltar-site">&larr; Voltar para o site</a>
+                        <h1>BEM VINDO!</h1>
             <img src="./img/logo-branca-conexion-migratoria.png" alt="">
+            <a href="./logar.html"><button class="creat" type="button">JÁ TENHO CONTA</button></a>
         </div>
 
         <div id="login2" class="login2">
@@ -26,12 +30,12 @@
                     <div class="input">
                         <img src="./img/do-utilizador.png">
                         <div></div>
-                        <input type="name" name="nome" placeholder="Nome">
+                        <input type="text" name="nome" placeholder="Nome" autocomplete="name" required>
                     </div>
                     <div class="input">
                         <img src="./img/o-email.png">
                         <div></div>
-                        <input type="email" name="email" placeholder="E-mail">
+                        <input type="email" name="email" placeholder="E-mail" autocomplete="email" required>
                     </div>
                 </div>
 
@@ -39,12 +43,12 @@
                     <div class="input">
                         <img src="./img/telefone.png">
                         <div></div>
-                        <input type="tel" name="telefone" placeholder="Telefone">
+                        <input type="tel" name="telefone" placeholder="Telefone" autocomplete="tel" required>
                     </div>
                     <div class="input">
                         <img src="./img/cidadania.png">
                         <div></div>
-                        <input type="text" name="nacionalidade" placeholder="Nacionalidade">
+                        <input type="text" name="nacionalidade" placeholder="Nacionalidade" required>
                     </div>
                 </div>
 
@@ -52,12 +56,12 @@
                     <div class="input">
                         <img src="./img/cadeado.png">
                         <div></div>
-                        <input type="password" name="senha" placeholder="Senha">
+                        <input type="password" name="senha" placeholder="Senha" autocomplete="new-password" minlength="4" required>
                     </div>
                     <div class="input">
                         <img src="./img/cadeado.png">
                         <div></div>
-                        <input type="password" name="conf_senha" placeholder="Confirmar senha">
+                        <input type="password" name="conf_senha" placeholder="Confirmar senha" autocomplete="new-password" required>
                     </div>
                 </div>
 
@@ -67,9 +71,6 @@
             </form>
         </div>
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
+    <script src="./js/conta.js"></script>
 </body>
 </html>

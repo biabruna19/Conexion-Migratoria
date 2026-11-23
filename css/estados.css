@@ -235,14 +235,12 @@ main{
 
 
 #imgponto1{
-    background-image: url('<?php echo $imgPonto1; ?>');
     background-position: center;
     background-size: cover;
     filter: brightness(1.30);
 }
 
 #imgponto2{
-    background-image: url('<?php echo $imgPonto2; ?>');
     background-position: center;
     background-size: cover;
     filter: brightness(1.30);
@@ -250,14 +248,12 @@ main{
 }
 
 #imgponto3{
-    background-image: url('<?php echo $imgPonto3; ?>');
     background-position: center;
     background-size: cover;
     filter: brightness(1.30);
 }
 
 #imgponto4{
-    background-image: url('<?php echo $imgPonto4; ?>');
     background-position: center;
     background-size: cover;
     filter: brightness(1.30);
