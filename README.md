@@ -17,17 +17,17 @@
 
 O Conexión Migratoria é um portal para quem acabou de chegar ao Brasil como imigrante ou refugiado. A ideia é juntar num lugar só o que normalmente fica espalhado: como é cada estado, quais documentos tirar primeiro, como procurar emprego, onde aprender português e a quem pedir ajuda.
 
-O site tem versão em português e em espanhol, com os textos escritos à mão em vez de tradução automática, porque boa parte de quem chega fala espanhol.
+O português e o espanhol têm textos escritos à mão, porque boa parte de quem chega fala espanhol. Pelo globo no topo dá para ler o site em mais 16 línguas, como inglês, francês, crioulo haitiano e árabe, com tradução automática.
 
 ## O que dá para fazer
 
-- Explorar o mapa do Brasil, buscar um estado pelo nome ou deixar o site sortear um, e abrir a página de cada estado com cultura, pontos turísticos, saúde, ensino e cidades.
+- Explorar o mapa do Brasil, buscar um estado pelo nome ou deixar o site sortear um, e abrir a página de cada estado com cultura, galeria de pontos turísticos, saúde, ensino, cidades e os outros estados da região.
 - Marcar os primeiros passos e os documentos que já tem. O progresso fica salvo.
-- Praticar frases do dia a dia em cartões que viram e falam a pronúncia.
+- Praticar frases do dia a dia em cartões que viram, falam a pronúncia e mostram a tradução em espanhol, inglês, francês, crioulo haitiano ou árabe.
 - Descobrir o nível de português com um teste rápido de três perguntas.
 - Ver dicas de currículo, entrevista e LinkedIn.
 - Encontrar números de emergência, órgãos públicos e organizações de apoio por região.
-- Criar conta, entrar, editar o perfil e trocar a foto.
+- Criar uma conta, se quiser, para guardar o perfil e a foto. Nenhuma página exige login.
 
 <p align="center">
   <img src="docs/preview-passos.webp" width="45%" alt="Checklist de primeiros passos">
@@ -40,7 +40,7 @@ O site tem versão em português e em espanhol, com os textos escritos à mão e
 
 ## Como testar
 
-Abra o [site](https://biabruna19.github.io/Conexion-Migratoria/), clique em **Entrar** e escolha **entrar como visitante**. Não precisa criar conta. O botão **PT / ES** no topo troca o idioma.
+É só abrir o [site](https://biabruna19.github.io/Conexion-Migratoria/): todas as páginas funcionam sem login. O globo no topo troca o idioma. Para testar a parte de conta, use **Entrar → entrar como visitante**.
 
 O site roda direto no GitHub Pages, sem servidor nem banco de dados. As contas e fotos ficam guardadas só no navegador de quem está testando, e as senhas são salvas em hash, nunca em texto puro.
 

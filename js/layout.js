@@ -56,6 +56,9 @@
     // Logotipo original do projeto (versão branca, sobre fundo azul-escuro)
     const MARCA = `<img src="./img/logo-branca-conexion-migratoria.png" alt="Conexión Migratoria">`;
 
+    // "Bem-vindo" em várias línguas (faixa do rodapé)
+    const SAUDACOES = ['Bem-vindo', 'Bienvenido', 'Welcome', 'Bienvenue', 'Byenveni', 'أهلاً وسهلاً', 'خوش آمدید', 'Добро пожаловать', 'Ласкаво просимо', '欢迎', 'स्वागत है', 'Benvenuto', 'Willkommen', 'Hoş geldiniz', 'Karibu', 'Boyei malamu', 'Allin hamusqayki', 'Tereguahẽ porã'];
+
     const LINKS = [
         { href: naHome ? '#mapa' : './index.html#mapa', pt: 'Mapa', es: 'Mapa' },
         { href: './leis.html', pt: 'Leis e documentos', es: 'Leyes y documentos' },
@@ -74,11 +77,7 @@
     const conta = usuario
         ? `<a class="conta-topo" href="./pg-perfil.html" data-pt-aria-label="Minha conta" data-es-aria-label="Mi cuenta">${avatar}<span class="nome-conta">${escapar(usuario.nome.split(' ')[0])}</span></a>`
         : `<a class="conta-topo sem-login" href="./logar.html">${pt('Entrar', 'Iniciar sesión')}</a>`;
-    const seletor = `
-        <div class="seletor-idioma" role="group" data-pt-aria-label="Idioma" data-es-aria-label="Idioma">
-            <button type="button" data-idioma-botao="pt" aria-pressed="false" title="Português">PT</button>
-            <button type="button" data-idioma-botao="es" aria-pressed="false" title="Español">ES</button>
-        </div>`;
+    const seletor = `<div data-seletor-idioma></div>`; // globo de idiomas (montado por idioma.js)
 
     const topo = `
 <a class="visualmente-oculto" href="#conteudo">${pt('Pular para o conteúdo', 'Ir al contenido')}</a>
@@ -113,6 +112,9 @@
 
     const rodape = `
 <footer class="rodape">
+    <div class="faixa-saudacoes notranslate" translate="no" aria-hidden="true">
+        <div class="faixa-saudacoes-trilho">${SAUDACOES.concat(SAUDACOES).map(w => `<span>${w}</span>`).join('')}</div>
+    </div>
     <div class="container">
         <div class="rodape-grade">
             <div>

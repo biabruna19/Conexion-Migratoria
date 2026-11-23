@@ -1,27 +1,87 @@
 /*
- * Idiomas do site: português (pt) e espanhol (es), com textos escritos à mão.
+ * Idiomas do site
  *
- * Carregado no <head> para escolher o idioma antes de a página aparecer
- * (evita "piscar" no idioma errado). O HTML traz os dois idiomas lado a lado:
- *   <span lang="pt">Olá</span><span lang="es">Hola</span>
- * e o CSS mostra só o idioma ativo (html[data-idioma]).
+ * - Português (pt) e espanhol (es) têm textos escritos à mão. O HTML traz os
+ *   dois lado a lado (<span lang="pt">…</span><span lang="es">…</span>) e o
+ *   CSS mostra só o idioma ativo (html[data-idioma]).
+ * - Os outros idiomas do globo usam o Tradutor do Google, a partir do português.
+ *
+ * Carregado no <head> para escolher o idioma antes de a página aparecer.
  * Atributos usam data-pt-placeholder / data-es-placeholder (também aria-label, title, alt).
+ * O seletor (globo) é montado em qualquer elemento com [data-seletor-idioma].
  */
 (function () {
     const CHAVE = 'cm_idioma';
     const ATRIBUTOS = ['placeholder', 'aria-label', 'title', 'alt'];
     const ouvintes = [];
 
-    function inicial() {
+    // Idiomas do globo: nome escrito na própria língua
+    const IDIOMAS = [
+        { cod: 'pt', nome: 'Português', sigla: 'PT' },
+        { cod: 'es', nome: 'Español', sigla: 'ES' },
+        { cod: 'en', nome: 'English', sigla: 'EN' },
+        { cod: 'fr', nome: 'Français', sigla: 'FR' },
+        { cod: 'ht', nome: 'Kreyòl ayisyen', sigla: 'HT' },
+        { cod: 'ar', nome: 'العربية', sigla: 'AR' },
+        { cod: 'fa', nome: 'فارسی', sigla: 'FA' },
+        { cod: 'ru', nome: 'Русский', sigla: 'RU' },
+        { cod: 'uk', nome: 'Українська', sigla: 'UK' },
+        { cod: 'zh-CN', nome: '中文', sigla: 'ZH' },
+        { cod: 'hi', nome: 'हिन्दी', sigla: 'HI' },
+        { cod: 'it', nome: 'Italiano', sigla: 'IT' },
+        { cod: 'de', nome: 'Deutsch', sigla: 'DE' },
+        { cod: 'tr', nome: 'Türkçe', sigla: 'TR' },
+        { cod: 'sw', nome: 'Kiswahili', sigla: 'SW' },
+        { cod: 'ln', nome: 'Lingála', sigla: 'LN' },
+        { cod: 'qu', nome: 'Runa Simi', sigla: 'QU' },
+        { cod: 'gn', nome: 'Avañe\'ẽ', sigla: 'GN' },
+    ];
+    const MANUAIS = ['pt', 'es'];
+    const raiz = document.documentElement;
+
+    // ---------- Escolha inicial ----------
+    function escolhaSalva() {
         const salvo = localStorage.getItem(CHAVE);
-        if (salvo === 'pt' || salvo === 'es') return salvo;
-        return (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'pt';
+        if (IDIOMAS.some(i => i.cod === salvo)) return salvo;
+        const nav = (navigator.language || 'pt').toLowerCase();
+        if (nav.startsWith('es')) return 'es';
+        return 'pt';
+    }
+    const escolha = escolhaSalva();
+    let escolhaAtual = escolha; // muda sem recarregar só entre PT e ES
+    const automatico = !MANUAIS.includes(escolha);
+    raiz.dataset.idioma = automatico ? 'pt' : escolha; // a tradução automática parte do português
+    raiz.lang = escolha === 'pt' ? 'pt-BR' : escolha;
+    if (automatico) raiz.classList.add('traducao-automatica');
+
+    // ---------- Tradutor do Google (idiomas que não são PT/ES) ----------
+    function cookieTraducao(cod) {
+        const dominios = ['', `; domain=${location.hostname}`, `; domain=.${location.hostname}`];
+        dominios.forEach(d => {
+            document.cookie = cod
+                ? `googtrans=/pt/${cod}; path=/${d}`
+                : `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${d}`;
+        });
+    }
+    if (automatico) {
+        cookieTraducao(escolha);
+        window.cmIniciarTradutor = function () {
+            new google.translate.TranslateElement({ pageLanguage: 'pt', autoDisplay: false }, 'cm-tradutor');
+        };
+        document.addEventListener('DOMContentLoaded', () => {
+            const caixa = document.createElement('div');
+            caixa.id = 'cm-tradutor';
+            caixa.hidden = true;
+            document.body.appendChild(caixa);
+            const s = document.createElement('script');
+            s.src = 'https://translate.google.com/translate_a/element.js?cb=cmIniciarTradutor';
+            document.body.appendChild(s);
+        });
+    } else if (document.cookie.includes('googtrans=')) {
+        cookieTraducao(null);
     }
 
-    const raiz = document.documentElement;
-    raiz.dataset.idioma = inicial();
-    raiz.lang = raiz.dataset.idioma === 'es' ? 'es' : 'pt-BR';
-
+    // ---------- Aplicar textos e atributos ----------
     function aplicar(escopo) {
         const idioma = raiz.dataset.idioma;
         (escopo || document).querySelectorAll(ATRIBUTOS.map(a => `[data-${idioma}-${a}]`).join(',')).forEach(el => {
@@ -32,32 +92,87 @@
         });
         const titulo = raiz.getAttribute(`data-titulo-${idioma}`);
         if (titulo) document.title = titulo;
-        document.querySelectorAll('[data-idioma-botao]').forEach(b => {
-            b.setAttribute('aria-pressed', b.dataset.idiomaBotao === idioma);
+        atualizarSeletores();
+    }
+
+    // ---------- Globo de idiomas ----------
+    const ICONE_GLOBO = '<svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>';
+    let contador = 0;
+
+    function montarSeletor(alvo) {
+        const id = 'cm-idiomas-' + (++contador);
+        alvo.classList.add('globo', 'notranslate');
+        alvo.setAttribute('translate', 'no');
+        alvo.innerHTML = `
+            <button type="button" class="globo-botao" aria-haspopup="listbox" aria-expanded="false" aria-controls="${id}" title="Idioma · Language · Langue">
+                ${ICONE_GLOBO}<span class="globo-sigla"></span>
+            </button>
+            <ul class="globo-lista" id="${id}" role="listbox" aria-label="Idioma · Language" hidden>
+                ${IDIOMAS.map(i => `<li role="option" tabindex="-1" data-cod="${i.cod}" aria-selected="false"${['ar', 'fa'].includes(i.cod) ? ' dir="rtl"' : ''}>
+                    <span>${i.nome}</span>${MANUAIS.includes(i.cod) ? '' : '<small>auto</small>'}
+                </li>`).join('')}
+            </ul>`;
+        const botao = alvo.querySelector('.globo-botao');
+        const lista = alvo.querySelector('.globo-lista');
+        const itens = [...lista.querySelectorAll('li')];
+        const abrir = (sim) => {
+            lista.hidden = !sim;
+            botao.setAttribute('aria-expanded', sim);
+            if (sim) (itens.find(li => li.getAttribute('aria-selected') === 'true') || itens[0]).focus();
+        };
+        botao.addEventListener('click', (e) => { e.stopPropagation(); abrir(lista.hidden); });
+        lista.addEventListener('click', (e) => {
+            const li = e.target.closest('li[data-cod]');
+            if (li) { abrir(false); window.I18N.definir(li.dataset.cod); }
+        });
+        lista.addEventListener('keydown', (e) => {
+            const i = itens.indexOf(document.activeElement);
+            if (e.key === 'ArrowDown') { e.preventDefault(); itens[(i + 1) % itens.length].focus(); }
+            else if (e.key === 'ArrowUp') { e.preventDefault(); itens[(i - 1 + itens.length) % itens.length].focus(); }
+            else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); document.activeElement.click(); }
+            else if (e.key === 'Escape') { abrir(false); botao.focus(); }
+        });
+        document.addEventListener('click', (e) => { if (!alvo.contains(e.target)) abrir(false); });
+        atualizarSeletores();
+    }
+
+    function atualizarSeletores() {
+        const atual = IDIOMAS.find(i => i.cod === escolhaAtual) || IDIOMAS[0];
+        document.querySelectorAll('.globo').forEach(g => {
+            const sigla = g.querySelector('.globo-sigla');
+            if (sigla) sigla.textContent = atual.sigla;
+            g.querySelectorAll('li[data-cod]').forEach(li => li.setAttribute('aria-selected', li.dataset.cod === escolhaAtual));
         });
     }
 
     window.I18N = {
-        idioma: () => raiz.dataset.idioma,
+        idioma: () => raiz.dataset.idioma,   // 'pt' ou 'es' (textos escritos à mão)
+        escolha: () => escolhaAtual,         // qualquer idioma do globo
+        idiomas: IDIOMAS,
         // t({ pt: '...', es: '...' }) devolve o texto no idioma ativo
         t: (textos) => textos[raiz.dataset.idioma] ?? textos.pt,
-        definir(idioma) {
-            if (idioma !== 'pt' && idioma !== 'es') return;
-            localStorage.setItem(CHAVE, idioma);
-            raiz.dataset.idioma = idioma;
-            raiz.lang = idioma === 'es' ? 'es' : 'pt-BR';
+        definir(cod) {
+            if (!IDIOMAS.some(i => i.cod === cod) || cod === escolhaAtual) return;
+            localStorage.setItem(CHAVE, cod);
+            // Entrar ou sair da tradução automática exige recarregar a página
+            if (automatico || !MANUAIS.includes(cod)) {
+                cookieTraducao(MANUAIS.includes(cod) ? null : cod);
+                location.reload();
+                return;
+            }
+            escolhaAtual = cod;
+            raiz.dataset.idioma = cod;
+            raiz.lang = cod === 'pt' ? 'pt-BR' : cod;
             aplicar();
-            ouvintes.forEach(fn => fn(idioma));
+            ouvintes.forEach(fn => fn(cod));
         },
         aoTrocar: (fn) => ouvintes.push(fn),
         aplicar,
+        montarSeletor,
     };
 
-    document.addEventListener('DOMContentLoaded', () => aplicar());
-
-    // Botões PT/ES (data-idioma-botao="pt" | "es") em qualquer página
-    document.addEventListener('click', (e) => {
-        const b = e.target.closest('[data-idioma-botao]');
-        if (b) window.I18N.definir(b.dataset.idiomaBotao);
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-seletor-idioma]').forEach(montarSeletor);
+        aplicar();
     });
 })();
