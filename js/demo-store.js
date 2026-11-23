@@ -9,6 +9,7 @@
  */
 (function () {
     const CHAVE_USUARIOS = 'cm_usuarios';
+    const msg = (pt, es) => (window.I18N ? I18N.t({ pt, es }) : pt);
     const CHAVE_SESSAO = 'cm_sessao';
     const CHAVE_RECUPERACAO = 'cm_recuperacao';
 
@@ -58,7 +59,7 @@
             email = normalizarEmail(email);
             telefone = String(telefone || '').replace(/\D/g, '');
             if (lista.some(u => u.email === email || (telefone && u.telefone === telefone))) {
-                throw new Error('Este e-mail ou telefone já está registrado!');
+                throw new Error(msg('Este e-mail ou telefone já está cadastrado.', 'Este correo o teléfono ya está registrado.'));
             }
             const usuario = {
                 id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
@@ -72,8 +73,8 @@
 
         async entrar(email, senha) {
             const usuario = usuarios().find(u => u.email === normalizarEmail(email));
-            if (!usuario) throw new Error('Usuário não encontrado!');
-            if (usuario.senhaHash !== await hash(senha)) throw new Error('Senha incorreta!');
+            if (!usuario) throw new Error(msg('Não encontramos uma conta com este e-mail.', 'No encontramos una cuenta con este correo.'));
+            if (usuario.senhaHash !== await hash(senha)) throw new Error(msg('Senha incorreta. Tente novamente.', 'Contraseña incorrecta. Inténtalo de nuevo.'));
             gravar(CHAVE_SESSAO, usuario.id);
             return semSenha(usuario);
         },
@@ -82,7 +83,7 @@
             const email = 'visitante@demo.conexion';
             if (!CM.emailCadastrado(email)) {
                 await CM.cadastrar({
-                    nome: 'Visitante', email, telefone: '', nacionalidade: 'Demonstração', senha: 'demo1234',
+                    nome: 'Visitante', email, telefone: '', nacionalidade: msg('Demonstração', 'Demostración'), senha: 'demo1234',
                 });
             }
             return CM.entrar(email, 'demo1234');
@@ -94,11 +95,11 @@
 
         async atualizarPerfil(dados) {
             const atual = CM.usuarioAtual();
-            if (!atual) throw new Error('Faça login novamente.');
+            if (!atual) throw new Error(msg('Faça login novamente.', 'Inicia sesión de nuevo.'));
             const lista = usuarios();
             const email = normalizarEmail(dados.email ?? atual.email);
             if (lista.some(u => u.id !== atual.id && u.email === email)) {
-                throw new Error('Este e-mail já pertence a outra conta.');
+                throw new Error(msg('Este e-mail já pertence a outra conta.', 'Este correo ya pertenece a otra cuenta.'));
             }
             const usuario = lista.find(u => u.id === atual.id);
             Object.assign(usuario, {
@@ -115,7 +116,7 @@
 
         // Recuperação de senha em duas etapas (recuperarSenha → redefinirSenha)
         iniciarRecuperacao(email) {
-            if (!CM.emailCadastrado(email)) throw new Error('E-mail não encontrado!');
+            if (!CM.emailCadastrado(email)) throw new Error(msg('Não encontramos uma conta com este e-mail.', 'No encontramos una cuenta con este correo.'));
             sessionStorage.setItem(CHAVE_RECUPERACAO, normalizarEmail(email));
         },
 
@@ -125,7 +126,7 @@
 
         async redefinirSenha(novaSenha) {
             const email = CM.emailEmRecuperacao();
-            if (!email) throw new Error('Informe seu e-mail novamente.');
+            if (!email) throw new Error(msg('Informe seu e-mail novamente.', 'Ingresa tu correo de nuevo.'));
             const lista = usuarios();
             const usuario = lista.find(u => u.email === email);
             usuario.senhaHash = await hash(novaSenha);
@@ -151,9 +152,9 @@
         redimensionarFoto(arquivo, tamanho = 256) {
             return new Promise((resolve, reject) => {
                 if (!/^image\/(png|jpe?g|webp)$/.test(arquivo.type)) {
-                    return reject(new Error('Apenas imagens JPG, PNG ou WEBP são permitidas.'));
+                    return reject(new Error(msg('Use uma imagem JPG, PNG ou WEBP.', 'Usa una imagen JPG, PNG o WEBP.')));
                 }
-                if (arquivo.size > 5 * 1024 * 1024) return reject(new Error('A imagem deve ter no máximo 5 MB.'));
+                if (arquivo.size > 5 * 1024 * 1024) return reject(new Error(msg('A imagem deve ter no máximo 5 MB.', 'La imagen debe tener como máximo 5 MB.')));
                 const img = new Image();
                 img.onload = () => {
                     const lado = Math.min(img.width, img.height);
@@ -164,7 +165,7 @@
                     URL.revokeObjectURL(img.src);
                     resolve(canvas.toDataURL('image/jpeg', 0.85));
                 };
-                img.onerror = () => reject(new Error('Não foi possível ler a imagem.'));
+                img.onerror = () => reject(new Error(msg('Não foi possível ler a imagem.', 'No fue posible leer la imagen.')));
                 img.src = URL.createObjectURL(arquivo);
             });
         },
