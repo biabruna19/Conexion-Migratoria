@@ -1,335 +1,171 @@
-<?php
-
-session_start();
-
-// Verifica se o usuário está logado
-if (!isset($_SESSION['user_id'])) {
-    echo "<script>alert('Para acessar esta página conecte-se com uma conta'); window.location.href = 'logar.php';</script>";
-    exit(); // Corrigido de "saída();" para "exit();"
-}
-
-$logado = $_SESSION['user_id']; // Certifique-se de usar o mesmo nome de chave aqui
-?>
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-titulo-pt="Empregabilidade · Conexión Migratoria" data-titulo-es="Empleo · Conexión Migratoria">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conexión Migratoria - Home</title>
-
-    <link rel="stylesheet" href="./css/empregos.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
-    <link rel="stylesheet" href="./css/nav-footer.css">
-
+    <title>Empregabilidade · Conexión Migratoria</title>
+    <meta name="theme-color" content="#053344">
+    <link rel="icon" href="./img/ico-CM.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/idioma.js"></script>
+    <script src="./js/demo-store.js"></script>
+    <script>CM.exigirLogin();</script>
 </head>
 <body>
+<div id="cm-topo"></div>
+<script src="./js/layout.js"></script>
 
-    <script>window.gtranslateSettings = {"default_language":"pt","detect_browser_language":true,"languages":["pt","es"],"wrapper_selector":".gtranslate_wrapper","flag_size":48,"alt_flags":{"pt":"brazil"}}</script>
-    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
-    
-<nav>
-    <div class="alinhar">
-        <div class="logos">
-            <a href="./homeLogada.php"><img src="./img/logo-branca Conexión Migratoria.png"></a>
+<main id="conteudo">
+    <header class="cabecalho-pagina">
+        <div class="container">
+            <nav class="trilha" aria-label="Trilha"><a href="./index.html"><span lang="pt">Início</span><span lang="es">Inicio</span></a><span>/</span><span lang="pt">Empregabilidade</span><span lang="es">Empleo</span></nav>
+            <span class="sobretitulo"><span lang="pt">Mercado de trabalho</span><span lang="es">Mercado laboral</span></span>
+            <h1><span lang="pt">Prepare-se para o mercado de trabalho</span><span lang="es">Prepárate para el mercado laboral</span></h1>
+            <p><span lang="pt">Dicas práticas para criar um currículo forte, se preparar para entrevistas e usar o LinkedIn de forma eficaz.</span><span lang="es">Consejos prácticos para crear un currículum sólido, prepararte para entrevistas y usar LinkedIn de forma eficaz.</span></p>
         </div>
-        <div class="links-nav">
-            <ul>
-                <a href="./homeLogada.php#mapa"><li>MAPA INTERATIVO</li></a>
-                <a href="./homeLogada.php#leis"><li>LEIS E DOCUMENTOS</li></a>
-                <a href="./homeLogada.php#leis"><li>EMPREGABILIDADE</li></a>
-                <a href="./homeLogada.php#leis"><li>CURSOS</li></a>
-                <a href="./homeLogada.php#noticias"><li>NOTÍCIAS</li></a>
-            </ul>
-    
-            <div class="traduçao">
-                <div class="gtranslate_wrapper">
-                </div>
-            </div>
-    
-            <div class="user"> 
-                <a href="./pg-perfil.php"><img src="<?php echo isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : './img/do-utilizador.png'; ?>" alt=""></a>
-            </div>
-        </div>
+    </header>
 
-        <div class="menu-hamburguer"  id="menuHamburguer">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-
-<script>
-    document.getElementById('menuHamburguer').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.getElementById('backMenuMobile').classList.toggle('active');
-});
-</script>
-    
-    <div class="movendo-gradient"></div>
-    
-</nav>
-
-<div class="back-menumobile" id="backMenuMobile">
-    <div class="menu-mobile">
-        <h1>TRADUZIR</h1>
-        
-        <div>
-            <div class="gtranslate_wrapper">
-            </div>
-        </div>
-
-        <a href="./logar.php">Fazer Login</a>
-    </div>
-</div>
-
-
-
-<section class="sec1">
-    <div class="div1-sec1">
-        <img src="./img/sec-1-empregos.jpg">
-    </div>
-
-    <div class="div2-sec1">
-        <h1><span>PREPARE-SE</span> PARA O <span>MERCADO</span> DE TRABALHO</h1>
-        <p>Aqui, reunimos dicas práticas para ajudá-lo a criar um currículo forte, se preparar para entrevistas e usar o LinkedIn de forma eficaz. Com essas orientações, você estará pronto para se destacar no mercado de trabalho</p>
-    </div>
-</section>
-
-
-
-<section class="sec2">
-    <div class="container-curriculo">
-        <div class="curriculo-pt1">
-            <h1>DICAS PARA CRIAR UM <span>CURRICULO</span></h1>
-            <img src="./img/curriculo.png" alt="">
-        </div>
-    
-        <div class="curriculo-pt2">
-            <div class="espaçar-accordions">
-                <button class="accordion">ESCOLHA O FORMATO DO CURRÍCULO</button>
-                <div class="panel">
-                    <p><span>•Currículo cronológico:</span> Lista suas experiências em ordem cronológica, começando pela mais recente. É ideal para quem tem uma carreira estável no mesmo setor.</p>
-                    <p><span>•Currículo funcional:</span> Destaca habilidades em vez de experiências específicas, útil para quem possui lacunas no histórico de trabalho ou quer fazer uma transição de carreira.</p>
-                    <p><span>•Currículo combinado:</span> Une o cronológico e o funcional, destacando tanto as habilidades quanto o histórico de trabalho. É uma boa opção para imigrantes com experiências diversificadas.</p>
+    <section class="secao" style="padding-top: 0">
+        <div class="container">
+            <div style="display:flex;justify-content:center">
+                <div class="abas" role="tablist" data-pt-aria-label="Temas" data-es-aria-label="Temas">
+                    <button type="button" role="tab" id="aba-curriculo" aria-controls="painel-curriculo" aria-selected="true"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><span lang="pt">Currículo</span><span lang="es">Currículum</span></button>
+                    <button type="button" role="tab" id="aba-entrevista" aria-controls="painel-entrevista" aria-selected="false"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span lang="pt">Entrevista</span><span lang="es">Entrevista</span></button>
+                    <button type="button" role="tab" id="aba-linkedin" aria-controls="painel-linkedin" aria-selected="false"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</button>
                 </div>
             </div>
 
-            <div class="espaçar-accordions">
-                <button class="accordion">INFORMAÇÕES DE CONTATO</button>
-                <div class="panel">
-                    <p><span>•Nome completo:</span> Use o nome pelo qual deseja ser chamado.</p>
-                    <p><span>•Endereço:</span> Em muitos países, basta listar a cidade e o estado.</p>
-                    <p><span>•Telefone:</span> Coloque o código do país e de área, facilitando o contato.</p>
-                    <p><span>•E-mail profissional:</span>  Use um endereço de e-mail apropriado para o trabalho, de preferência com seu nome.</p>
-                    <p><span>•LinkedIn ou portfólio online (se aplicável):</span> Adicionar links para o LinkedIn ou portfólio pode mostrar suas habilidades e aumentar a credibilidade.</p>
+            <!-- Currículo -->
+            <div role="tabpanel" id="painel-curriculo" aria-labelledby="aba-curriculo" tabindex="0">
+                <div class="cabecalho-secao centro">
+                    <h2><span lang="pt">Dicas para criar um currículo</span><span lang="es">Consejos para crear un currículum</span></h2>
                 </div>
-            </div>
-        
-            <div class="espaçar-accordions">
-                <button class="accordion">RESUMO PROFISSIONAL</button>
-                <div class="panel">
-                    <p><span>•Descreva-se em poucas linhas:</span> Escreva de 2 a 3 frases que resumam suas habilidades, experiência e objetivos de carreira.</p>
-                    <p><span>•Personalize para cada vaga:</span> Adapte o resumo profissional para cada posição a que estiver aplicando, destacando o que é mais relevante para a vaga.</p>
-                    <p><span>•Inclua palavras-chave:</span> Use termos que apareçam na descrição da vaga, para que o recrutador veja logo que você tem as habilidades procuradas.</p>
-                </div>
-            </div>
-        
-            <div class="espaçar-accordions">
-                <button class="accordion">FORMAÇÃO ACADÊMICA</button>
-                <div class="panel">
-                    <p><span>•Nome do curso e instituição:</span> Coloque o nome do seu curso e onde estudou.</p>
-                    <p><span>•Data de conclusão:</span> Se você já finalizou, coloque o ano de conclusão.</p>
-                    <p><span>•Certificados locais:</span> Se fez cursos ou obteve certificações no novo país, inclua essa informação, pois isso demonstra adaptação e interesse em entender o mercado local.</p>
+                <div class="acordeao" style="max-width: 860px; margin-inline: auto">
+                    <details open>
+                        <summary><span lang="pt">Escolha o formato do currículo</span><span lang="es">Elige el formato del currículum</span></summary>
+                        <div class="acordeao-corpo"><ul class="lista-check">
+                            <li><span lang="pt"><strong>Cronológico:</strong> lista as experiências da mais recente para a mais antiga. Ideal para quem tem carreira estável na mesma área.</span><span lang="es"><strong>Cronológico:</strong> enumera las experiencias de la más reciente a la más antigua. Ideal para quien tiene una carrera estable en la misma área.</span></li>
+                            <li><span lang="pt"><strong>Funcional:</strong> destaca habilidades em vez de empregos. Útil para quem tem intervalos no histórico ou está mudando de área.</span><span lang="es"><strong>Funcional:</strong> destaca habilidades en lugar de empleos. Útil para quien tiene períodos sin trabajo o está cambiando de área.</span></li>
+                            <li><span lang="pt"><strong>Combinado:</strong> une os dois, mostrando habilidades e histórico. Boa opção para imigrantes com experiências diversas.</span><span lang="es"><strong>Combinado:</strong> une los dos, mostrando habilidades e historial. Buena opción para inmigrantes con experiencias diversas.</span></li>
+                        </ul></div>
+                    </details>
+                    <details>
+                        <summary><span lang="pt">Informações de contato</span><span lang="es">Información de contacto</span></summary>
+                        <div class="acordeao-corpo"><ul class="lista-check">
+                            <li><span lang="pt"><strong>Nome completo:</strong> use o nome pelo qual deseja ser chamado.</span><span lang="es"><strong>Nombre completo:</strong> usa el nombre con el que quieres que te llamen.</span></li>
+                            <li><span lang="pt"><strong>Endereço:</strong> basta informar cidade e estado.</span><span lang="es"><strong>Dirección:</strong> basta con indicar ciudad y estado.</span></li>
+                            <li><span lang="pt"><strong>Telefone:</strong> inclua o código do país e o DDD.</span><span lang="es"><strong>Teléfono:</strong> incluye el código del país y el código de área.</span></li>
+                            <li><span lang="pt"><strong>E-mail profissional:</strong> de preferência com o seu nome.</span><span lang="es"><strong>Correo profesional:</strong> preferiblemente con tu nombre.</span></li>
+                            <li><span lang="pt"><strong>LinkedIn ou portfólio:</strong> mostra suas habilidades e aumenta a credibilidade.</span><span lang="es"><strong>LinkedIn o portafolio:</strong> muestra tus habilidades y aumenta tu credibilidad.</span></li>
+                        </ul></div>
+                    </details>
+                    <details>
+                        <summary><span lang="pt">Resumo profissional</span><span lang="es">Resumen profesional</span></summary>
+                        <div class="acordeao-corpo"><ul class="lista-check">
+                            <li><span lang="pt">Escreva de 2 a 3 frases sobre suas habilidades, experiência e objetivos.</span><span lang="es">Escribe de 2 a 3 frases sobre tus habilidades, experiencia y objetivos.</span></li>
+                            <li><span lang="pt">Adapte o resumo para cada vaga, destacando o que é mais relevante.</span><span lang="es">Adapta el resumen a cada vacante, destacando lo más relevante.</span></li>
+                            <li><span lang="pt">Use palavras-chave que aparecem na descrição da vaga.</span><span lang="es">Usa palabras clave que aparecen en la descripción de la vacante.</span></li>
+                        </ul></div>
+                    </details>
+                    <details>
+                        <summary><span lang="pt">Formação acadêmica</span><span lang="es">Formación académica</span></summary>
+                        <div class="acordeao-corpo"><ul class="lista-check">
+                            <li><span lang="pt">Informe o nome do curso, a instituição e o ano de conclusão.</span><span lang="es">Indica el nombre del curso, la institución y el año de finalización.</span></li>
+                            <li><span lang="pt">Cursos feitos no Brasil mostram adaptação e interesse pelo mercado local.</span><span lang="es">Los cursos hechos en Brasil muestran adaptación e interés por el mercado local.</span></li>
+                        </ul></div>
+                    </details>
+                    <details>
+                        <summary><span lang="pt">Habilidades</span><span lang="es">Habilidades</span></summary>
+                        <div class="acordeao-corpo"><ul class="lista-check">
+                            <li><span lang="pt"><strong>Técnicas:</strong> programas, ferramentas e conhecimentos da sua área.</span><span lang="es"><strong>Técnicas:</strong> programas, herramientas y conocimientos de tu área.</span></li>
+                            <li><span lang="pt"><strong>Interpessoais:</strong> trabalho em equipe, resolução de problemas, liderança.</span><span lang="es"><strong>Interpersonales:</strong> trabajo en equipo, resolución de problemas, liderazgo.</span></li>
+                            <li><span lang="pt"><strong>Idiomas:</strong> liste cada idioma com o nível (básico, intermediário, avançado ou fluente).</span><span lang="es"><strong>Idiomas:</strong> enumera cada idioma con su nivel (básico, intermedio, avanzado o fluido).</span></li>
+                        </ul></div>
+                    </details>
+                    <details>
+                        <summary><span lang="pt">Certificados</span><span lang="es">Certificados</span></summary>
+                        <div class="acordeao-corpo"><ul class="lista-check">
+                            <li><span lang="pt">Inclua cursos e certificações reconhecidos no Brasil, inclusive cursos on-line e de universidades.</span><span lang="es">Incluye cursos y certificaciones reconocidos en Brasil, incluso cursos en línea y de universidades.</span></li>
+                            <li><span lang="pt">Cursos de português mostram sua dedicação em se adaptar.</span><span lang="es">Los cursos de portugués muestran tu dedicación para adaptarte.</span></li>
+                        </ul></div>
+                    </details>
+                    <details>
+                        <summary><span lang="pt">Experiência profissional</span><span lang="es">Experiencia profesional</span></summary>
+                        <div class="acordeao-corpo"><ul class="lista-check">
+                            <li><span lang="pt">Empresa, cidade e país onde trabalhou.</span><span lang="es">Empresa, ciudad y país donde trabajaste.</span></li>
+                            <li><span lang="pt">Cargo e período (início e fim).</span><span lang="es">Cargo y período (inicio y fin).</span></li>
+                            <li><span lang="pt">Responsabilidades e resultados alcançados, de forma breve.</span><span lang="es">Responsabilidades y resultados obtenidos, de forma breve.</span></li>
+                        </ul></div>
+                    </details>
                 </div>
             </div>
 
-            <div class="espaçar-accordions">
-                <button class="accordion">HABILIDADES PROFISSIONAIS</button>
-                <div class="panel">
-                    <p><span>•Habilidades técnicas:</span> Liste programas de computador, idiomas ou ferramentas específicas da sua área, como Excel.</p>
-                    <p><span>•Habilidades interpessoais:</span> Inclua habilidades como trabalho em equipe, resolução de problemas ou liderança, adaptando para o perfil da vaga.</p>
-                    <p><span>•Idiomas:</span> Para quem é bilíngue ou multilíngue, liste os idiomas que fala e seu nível de proficiência em cada um (básico, intermediário, avançado ou fluente).</p>
+            <!-- Entrevista -->
+            <div role="tabpanel" id="painel-entrevista" aria-labelledby="aba-entrevista" tabindex="0" hidden>
+                <div class="cabecalho-secao centro">
+                    <h2><span lang="pt">Dicas para entrevistas de emprego</span><span lang="es">Consejos para entrevistas de trabajo</span></h2>
+                </div>
+                <div class="grade grade-3">
+                    <div class="dica"><span class="numero">01</span><h3><span lang="pt">Prepare-se para o processo</span><span lang="es">Prepárate para el proceso</span></h3>
+                        <p><span lang="pt">Estude as competências exigidas para o cargo e pesquise a empresa para entender seus valores e sua cultura.</span><span lang="es">Estudia las competencias exigidas para el cargo e investiga la empresa para entender sus valores y su cultura.</span></p></div>
+                    <div class="dica"><span class="numero">02</span><h3><span lang="pt">Comunicação</span><span lang="es">Comunicación</span></h3>
+                        <p><span lang="pt">Se a entrevista for em outro idioma, treine as respostas. Valorize experiências profissionais de outros países.</span><span lang="es">Si la entrevista es en otro idioma, practica las respuestas. Valora tus experiencias profesionales de otros países.</span></p></div>
+                    <div class="dica"><span class="numero">03</span><h3><span lang="pt">Currículo e portfólio</span><span lang="es">Currículum y portafolio</span></h3>
+                        <p><span lang="pt">O formato de currículo muda de país para país: adapte ao padrão brasileiro e destaque certificações reconhecidas aqui.</span><span lang="es">El formato del currículum cambia de un país a otro: adáptalo al estándar brasileño y destaca certificaciones reconocidas aquí.</span></p></div>
+                    <div class="dica"><span class="numero">04</span><h3><span lang="pt">Adaptação cultural</span><span lang="es">Adaptación cultural</span></h3>
+                        <p><span lang="pt">Conte como você se adaptou a culturas diferentes: empresas valorizam ambientes multiculturais. Observe o código de vestimenta da área.</span><span lang="es">Cuenta cómo te adaptaste a culturas diferentes: las empresas valoran los ambientes multiculturales. Observa el código de vestimenta del sector.</span></p></div>
+                    <div class="dica"><span class="numero">05</span><h3><span lang="pt">Capacidade de aprender</span><span lang="es">Capacidad de aprender</span></h3>
+                        <p><span lang="pt">Mostre que se adapta a novos sistemas e práticas. Ter se estabelecido em outro país é prova de que você resolve problemas.</span><span lang="es">Muestra que te adaptas a nuevos sistemas y prácticas. Haberte establecido en otro país demuestra que resuelves problemas.</span></p></div>
+                    <div class="dica"><span class="numero">06</span><h3><span lang="pt">Perguntas comuns</span><span lang="es">Preguntas comunes</span></h3>
+                        <p><span lang="pt">Explique com clareza sua situação de visto e documentos. Prepare exemplos para perguntas como “conte um desafio que você superou”.</span><span lang="es">Explica con claridad tu situación de visa y documentos. Prepara ejemplos para preguntas como “cuéntame un desafío que superaste”.</span></p></div>
                 </div>
             </div>
 
-            <div class="espaçar-accordions">
-                <button class="accordion">CERTIFICADO</button>
-                <div class="panel">
-                    <p><span>•Certificados relevantes:</span> Inclua cursos e certificações que sejam bem reconhecidos no país em que está buscando emprego, como treinamentos online ou cursos rápidos de universidades locais.</p>
-                    <p><span>•Cursos de idiomas:</span> Se você fez algum curso para aprimorar o idioma local, isso pode demonstrar sua dedicação para se adaptar e melhorar.</p>
+            <!-- LinkedIn -->
+            <div role="tabpanel" id="painel-linkedin" aria-labelledby="aba-linkedin" tabindex="0" hidden>
+                <div class="cabecalho-secao centro">
+                    <h2><span lang="pt">Como usar o LinkedIn</span><span lang="es">Cómo usar LinkedIn</span></h2>
+                    <p><span lang="pt">Seu perfil é o seu cartão de visitas profissional na internet.</span><span lang="es">Tu perfil es tu tarjeta de presentación profesional en internet.</span></p>
                 </div>
-            </div>
-        
-            <div class="espaçar-accordions">
-                <button class="accordion">EXPERIÊNCIA PROFISSIONAL</button>
-                <div class="panel">
-                    <p><span>•Nome da empresa e localização:</span> Liste onde trabalhou e em qual país.</p>
-                    <p><span>•Função e período:</span> Coloque seu cargo e as datas de início e término.</p>
-                    <p><span>•Descreva as responsabilidades e conquistas:</span> Mencione brevemente o que você fazia, destacando os resultados obtidos.</p>
+                <div class="grade grade-2">
+                    <div class="bloco">
+                        <h3 style="font-size:1.4rem;margin-bottom:16px"><span lang="pt">1. Crie o seu perfil</span><span lang="es">1. Crea tu perfil</span></h3>
+                        <p><span lang="pt">Depois do cadastro, clique em “Eu” no topo da página e em “Visualizar perfil”. Adicione uma foto e, no ícone de lápis, preencha:</span><span lang="es">Después de registrarte, haz clic en “Yo” en la parte superior y en “Ver perfil”. Agrega una foto y, en el ícono de lápiz, completa:</span></p>
+                        <ul class="lista-check" style="margin-top:14px">
+                            <li><span lang="pt">Nome e sobrenome</span><span lang="es">Nombre y apellido</span></li>
+                            <li><span lang="pt">Título: o que você faz ou pretende fazer</span><span lang="es">Título: lo que haces o quieres hacer</span></li>
+                            <li><span lang="pt">Cargo atual e formação</span><span lang="es">Cargo actual y formación</span></li>
+                            <li><span lang="pt">País, estado e setor de atuação</span><span lang="es">País, estado y sector</span></li>
+                            <li><span lang="pt">Informações de contato (opcional)</span><span lang="es">Información de contacto (opcional)</span></li>
+                        </ul>
+                    </div>
+                    <div class="bloco">
+                        <h3 style="font-size:1.4rem;margin-bottom:16px"><span lang="pt">2. Sobre você</span><span lang="es">2. Acerca de ti</span></h3>
+                        <p><span lang="pt">Um resumo curto sobre quem você é, o que já fez e onde se destacou. São as primeiras informações que um recrutador lê.</span><span lang="es">Un resumen breve sobre quién eres, qué has hecho y en qué te destacaste. Es lo primero que lee un reclutador.</span></p>
+                        <h3 style="font-size:1.4rem;margin:28px 0 16px"><span lang="pt">3. Destaques</span><span lang="es">3. Destacados</span></h3>
+                        <ul class="lista-check">
+                            <li><span lang="pt">Publicações e artigos feitos no LinkedIn</span><span lang="es">Publicaciones y artículos hechos en LinkedIn</span></li>
+                            <li><span lang="pt">Links para conteúdos seus na internet</span><span lang="es">Enlaces a tus contenidos en internet</span></li>
+                            <li><span lang="pt">Fotos, apresentações ou documentos que você produziu</span><span lang="es">Fotos, presentaciones o documentos que produjiste</span></li>
+                        </ul>
+                    </div>
+                    <div class="bloco" style="grid-column: 1 / -1">
+                        <h3 style="font-size:1.4rem;margin-bottom:16px"><span lang="pt">4. Histórico profissional</span><span lang="es">4. Experiencia profesional</span></h3>
+                        <p><span lang="pt">Clique no “+” para adicionar cada emprego, o atual e os anteriores:</span><span lang="es">Haz clic en el “+” para agregar cada empleo, el actual y los anteriores:</span></p>
+                        <ul class="lista-check grade grade-2" style="margin-top:14px;gap:8px 24px">
+                            <li><span lang="pt">Nome do cargo</span><span lang="es">Nombre del cargo</span></li>
+                            <li><span lang="pt">Tipo de emprego (integral, autônomo, freelancer…)</span><span lang="es">Tipo de empleo (tiempo completo, autónomo, freelance…)</span></li>
+                            <li><span lang="pt">Nome da empresa e cidade</span><span lang="es">Nombre de la empresa y ciudad</span></li>
+                            <li><span lang="pt">Data de início (e de fim, nas experiências anteriores)</span><span lang="es">Fecha de inicio (y de fin, en las experiencias anteriores)</span></li>
+                            <li><span lang="pt">Descrição das atividades na função</span><span lang="es">Descripción de las actividades en el cargo</span></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        
-        </div>
-
-        <script>
-            // Seleciona todos os botões do accordion
-            const accordions = document.querySelectorAll(".accordion");
-
-            accordions.forEach((accordion) => {
-                accordion.addEventListener("click", function() {
-                    // Fecha todos os outros accordions
-                    accordions.forEach((acc) => {
-                        if (acc !== this) {
-                            acc.classList.remove("active");
-                            acc.nextElementSibling.classList.remove("active");
-                        }
-                    });
-
-                    // Alterna o estado ativo do accordion clicado
-                    this.classList.toggle("active");
-                    this.nextElementSibling.classList.toggle("active");
-                });
-            });
-        </script>
-    </div>
-</section>
-
-<section class="sec3">
-    <h1>DICAS PARA ENTREVISTAS DE EMPREGO</h1>
-    <div class="container-dicas-ent">
-        <div class="alinha-dicas">
-            <div class="card-dicas">
-                <div>
-                    <img src="./img/icone-dicas.png" alt="">
-                    <h2>Preparação para o Processo Seletivo</h2>
-                </div>
-                <p>Cargo a exercer: Estude as competências e experiências requeridas para o cargo.</p>
-                <p>Conheça a empresa: Pesquisar sobre o ambiente de trabalho é fundamental para compreender os valores e a cultura organizacional.</p>
-            </div>
-
-            <div class="card-dicas">
-                <div>
-                    <img src="./img/icone-dicas.png" alt="">
-                    <h2>Habilidade de comunicação</h2>
-                </div>
-                <p>Treinar o idioma: se caso a entrevista for em um idioma diferente, praticar as respostas demonstra confiança e preparação.</p>
-                <p>Experiencias: se obtiver experiencia profissional seja de outro país, é bom que seja apresentado e citado na hora da entrevista.</p>
-            </div>
-
-            <div class="card-dicas">
-                <div>
-                    <img src="./img/icone-dicas.png" alt="">
-                    <h2>Currículo e Portifólio</h2>
-                </div>
-                <p>Formato de currículo: pode variar significativamente de acordo com o país. Por isso, é essencial pesquisar e adaptar o estilo de currículo conforme as exigências e preferências locais.</p>
-                <p>Certificação: Ao obter certificações ou cursos reconhecidos no país de interesse, é importante destacá-los no currículo.</p>
-            </div>
-
-            <div class="card-dicas">
-                <div>
-                    <img src="./img/icone-dicas.png" alt="">
-                    <h2>Flexibilidade e adaptação cultural</h2>
-                </div>
-                <p>Compartilhe suas experiências: Relatar suas vivências de adaptação a diferentes culturas é uma vantagem significativa. Empregadores valorizam profissionais capazes de prosperar em ambientes multiculturais.</p>
-                <p>Código de vestimenta: O estilo de vestimenta pode variar conforme a região e o setor de cada empresa. </p>
-            </div>
-
-            <div class="card-dicas">
-                <div>
-                    <img src="./img/icone-dicas.png" alt="">
-                    <h2>Capacidades Aprendizado</h2>
-                </div>
-                <p>Aprendizagem: muitos imigrantes precisam se ajustar a novos sistemas e práticas de trabalho, então compartilhe suas habilidades e experiencias.</p>
-                <p>Resolução de problemas: a experiencia de se estabelecer em um novo país, geralmente exige em resolver desafios dentro da empresa, então ser proativo ajuda sempre.</p>
-            </div>
-
-            <div class="card-dicas">
-                <div>
-                    <img src="./img/icone-dicas.png" alt="">
-                    <h2>Perguntas para Entrevista</h2>
-                </div>
-                <p>Visto ou autorização de trabalho: pode ser comum receber perguntas sobre status de visto, explicar com clareza sua situação e enfatizar que possui toda a documentação necessária, é aplicável.</p>
-                <p>Perguntas comportamentais: se preparar para perguntas como: “Conte-me sobre um desafio que enfrentou e como resolveu”, focando em exemplos que mostrem sua resiliência.</p>
             </div>
         </div>
-        <div>
-
-        </div>
-    </div>
-</section>
-
-<section class="sec4">
-    <div class="titulo-linkedin">
-        <img src="./img/linkedin-colorido.png" alt="">
-        <h1>COMO USAR O LINKEDIN</h1>
-    </div>
-
-    <div class="container-linkedin">
-        <div class="alinha-linkedin">
-                <h2 class="titulos-linkedin">CRIANDO O SEU PERFIL</h2>
-                <p>Após ter feito o cadastro no site, aparecerá um ícone “eu” no topo da página, clique nele e em seguida “visualizar perfil”. Você acabou de entrar na sua página, esse será o seu cartão de visitas profissional na rede.  Ao lado esquerdo de sua página, existe o local para inserir a sua foto:</p>
-            <span class="topico-linkedin"><div></div><p>Clique no local indicado para foto;</p></span>
-            <span class="topico-linkedin"><div></div><p>Escolha uma imagem do seu computador ou celular para adicionar;</p></span>
-            <span class="topico-linkedin"><div></div><p>Ao lado direito da foto, está o primeiro “lápis” para edição de informações. Após clicar, aparecerá uma área para inserir as informações básicas sobre você.</p></span>
-            <span class="subtopicos-linkedin">
-                <p>.Nome e sobrenome;</p>
-                <p>.O título (o que você é e faz ou pretende fazer):</p>
-                <p>.Seu cargo atual;</p>
-                <p>.Sua formação acadêmica (qual universidade ou curso);</p>
-                <p>.O país que está;</p>
-                <p>.O estado que vive;</p>
-                <p>.Qual o setor que atua (selecionar na lista);</p>
-                <p>.Informações de contato (se quiser).</p>
-            </span>
-                <h2 class="titulos-linkedin">SOBRE VOCÊ</h2>
-                <p>Descendo a página, irá encontrar a segunda seção de informações. Aqui o candidato insere um resumo sobre quem ele é, o que já fez, atividades em que se destacou, agilidade promocional.</p>
-                <p>Não precisa ser muito extenso, mas em uma passagem rápida de perfil, essas são as primeiras informações que vão ler sobre a pessoa.</p>
-        </div>
-
-        <div class="alinha-linkedin">
-                <h2 class="titulos-linkedin">DESTAQUES</h2>
-                <p>Nesse espaço o profissional pode inserir informações sobre seus materiais, como:</p>
-            <span class="topico-linkedin"><div></div><p>Publicações (feita no Linkedin);</p></span>
-            <span class="topico-linkedin"><div></div><p>Artigos escritos na rede social;</p></span>
-            <span class="topico-linkedin"><div></div><p>Links para conteúdos web (interessante ser conteúdo próprio);</p></span>
-            <span class="topico-linkedin"><div></div><p>Mídia (pode carregar fotos de momentos, apresentações ou documentos elaborados)</p></span>
-                <h2 class="titulos-linkedin">HISTÓRICO PROFISSIONAL</h2>
-                <p>Nesta seção, coloca-se toda a experiência de sua carreira. Adicione um novo registro clicando no sinal de “+”. Na página flutuante, complete todas as informações sobre cada emprego anterior e o atual, se for o caso.</p>
-            <span class="topico-linkedin"><div></div><p>Nome do cargo;</p></span>
-            <span class="topico-linkedin"><div></div><p>Tipo de emprego (Tempo integral, autônomo, freelancer, etc...);</p></span>
-            <span class="topico-linkedin"><div></div><p>Nome da empresa;</p></span>
-            <span class="topico-linkedin"><div></div><p>Localidade onde trabalhou;</p></span>
-            <span class="topico-linkedin"><div></div><p>Caso seja seu emprego atual, marque a caixinha e coloque a data de início na empresa</p></span>
-            <span class="topico-linkedin"><div></div><p>Em experiências anteriores deve-se colocar a data de início e fim do vínculo;</p></span>
-            <span class="topico-linkedin"><div></div><p>Descreva todas as suas atividades na função</p></span>
-        </div>
-        </div>
-    </div>
-
-</section>
-
-
-<div class="div-wavefoot" id="cor-onda">
-    <div class="wave-foot wave1"></div> 
-    <div class="wave-foot wave2"></div> 
-    <div class="wave-foot wave3"></div> 
-    <div class="wave-foot wave4"></div> 
-</div>
-
-
-<footer>
-    <div style="text-align: center; padding: 40px; color: #fff; background: rgba(0,0,0,0.2);">
-        <p>Conexi�n Migratoria &copy; 2026. Todos os direitos reservados.</p>
-        <p style="margin-top: 10px; font-size: 14px;">O seu portal de aux�lio para adapta��o no Brasil.</p>
-    </div>
-</footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
+    </section>
+</main>
+<div id="cm-rodape"></div>
+<script src="./js/componentes.js"></script>
 </body>
 </html>
-

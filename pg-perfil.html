@@ -1,364 +1,81 @@
-<?php
-// Inicia a sessão para armazenar dados temporariamente
-session_start();
-
-// Conexão com o banco de dados
-$dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = '';
-$dbName = 'dbcm';
-
-$conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-if ($conn->connect_error) {
-    die("<script>alert('Conexão falhou: " . $conn->connect_error . "');</script>");
-}
-
-// Verifica se o ID do usuário está definido na sessão
-if (!isset($_SESSION['user_id'])) {
-    echo "<script>alert('Erro: Usuário não autenticado.');</script>";
-    exit();
-}
-
-$idUsuario = $_SESSION['user_id'];
-
-// Diretório de upload
-$upload_dir = 'uploads/';
-
-// Verifica se houve um envio de arquivo
-if (isset($_FILES['profile_picture'])) {
-    $file_name = basename($_FILES['profile_picture']['name']);
-    $target_file = $upload_dir . $file_name;
-    $upload_ok = true;
-    $image_file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-    // Verifica se o arquivo é uma imagem
-    $check = getimagesize($_FILES['profile_picture']['tmp_name']);
-    if ($check === false) {
-        echo "<script>alert('O arquivo não é uma imagem.');</script>";
-        $upload_ok = false;
-    }
-
-    // Limita o tamanho do arquivo (2MB)
-    if ($_FILES['profile_picture']['size'] > 2000000) {
-        echo "<script>alert('Desculpe, o arquivo é muito grande.');</script>";
-        $upload_ok = false;
-    }
-
-    // Permite apenas certos tipos de arquivo
-    if ($image_file_type != "jpg" && $image_file_type != "jpeg" && $image_file_type != "png") {
-        echo "<script>alert('Desculpe, apenas arquivos JPG, JPEG e PNG são permitidos.');</script>";
-        $upload_ok = false;
-    }
-
-    // Se tudo estiver correto, tenta fazer o upload
-    if ($upload_ok) {
-        // Exclui a imagem antiga, se existir
-        $query = "SELECT profile_picture_path FROM tbUsuarios WHERE idUsuario = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $idUsuario);
-        $stmt->execute();
-        $stmt->bind_result($old_image);
-        if ($stmt->fetch() && file_exists($old_image)) {
-            unlink($old_image);
-        }
-        $stmt->close();
-
-        // Move a nova imagem para o diretório
-        if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_file)) {
-            // Atualiza o caminho da imagem no banco de dados
-            $query = "UPDATE tbUsuarios SET profile_picture_path = ? WHERE idUsuario = ?";
-            $stmt = $conn->prepare($query);
-            $stmt->bind_param("si", $target_file, $idUsuario);
-            if ($stmt->execute()) {
-                $_SESSION['profile_picture'] = $target_file;
-            } else {
-                echo "<script>alert('Erro ao salvar a imagem no banco de dados.');</script>";
-            }
-            $stmt->close();
-        } else {
-            echo "<script>alert('Desculpe, houve um erro ao enviar seu arquivo.');</script>";
-        }
-    }
-}
-
-// Lógica para excluir a imagem quando solicitado
-if (isset($_POST['delete_image'])) {
-    $query = "SELECT profile_picture_path FROM tbUsuarios WHERE idUsuario = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $idUsuario);
-    $stmt->execute();
-    $stmt->bind_result($image_path);
-    if ($stmt->fetch() && file_exists($image_path)) {
-        unlink($image_path);
-        // Remove o caminho da imagem do banco de dados
-        $query = "UPDATE tbUsuarios SET profile_picture_path = NULL WHERE idUsuario = ?";
-        $stmt->close();
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $idUsuario);
-        $stmt->execute();
-        unset($_SESSION['profile_picture']);
-    }
-    $stmt->close();
-}
-
-// Carrega o caminho da imagem do banco de dados na sessão
-$query = "SELECT profile_picture_path FROM tbUsuarios WHERE idUsuario = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $idUsuario);
-$stmt->execute();
-$stmt->bind_result($profile_picture);
-if ($stmt->fetch()) {
-    $_SESSION['profile_picture'] = $profile_picture;
-}
-$stmt->close();
-?>
-
-
-
-<?php
-include_once('config.php');
-
-// Verifica se o ID do usuário está na sessão
-if (!isset($_SESSION['user_id'])) {
-    die("Erro: ID do usuário não encontrado na sessão.");
-}
-
-$idUsuario = $_SESSION['user_id'];
-
-// Consulta ao banco de dados
-$stmt = $conn->prepare("SELECT idUsuario, nomeUsuario, emailUsuario, telefoneUsuario, nacionalidadeUsuario, senhaUsuario FROM tbUsuarios WHERE idUsuario = ?");
-$stmt->bind_param("i", $idUsuario);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
-} else {
-    $user = null; // Usuário não encontrado
-}
-
-$stmt->close();
-$conn->close();
-?>
-
-
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-titulo-pt="Meu perfil · Conexión Migratoria" data-titulo-es="Mi perfil · Conexión Migratoria">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conexión Migratoria - Perfil</title>
-
-    <link rel="stylesheet" href="./css/perfil.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
-    <link rel="stylesheet" href="./css/nav-footer.css">
-
+    <title>Meu perfil · Conexión Migratoria</title>
+    <meta name="theme-color" content="#053344">
+    <link rel="icon" href="./img/ico-CM.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/idioma.js"></script>
+    <script src="./js/demo-store.js"></script>
+    <script>CM.exigirLogin();</script>
 </head>
-
 <body>
+<div id="cm-topo"></div>
+<script src="./js/layout.js"></script>
 
-    <script>window.gtranslateSettings = {"default_language":"pt","detect_browser_language":true,"languages":["pt","es"],"wrapper_selector":".gtranslate_wrapper","flag_size":48,"alt_flags":{"pt":"brazil"}}</script>
-    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
-
-    <nav>
-        <div class="alinhar">
-            <div class="logos">
-                <a href="./homeLogada.php"><img src="./img/logo-branca Conexión Migratoria.png"></a>
-            </div>
-            <div class="links-nav">
-                <ul>
-                    <a href="./homeLogada.php#mapa"><li>MAPA INTERATIVO</li></a>
-                    <a href="./homeLogada.php#leis"><li>LEIS E DOCUMENTOS</li></a>
-                    <a href="./homeLogada.php#leis"><li>EMPREGABILIDADE</li></a>
-                    <a href="./homeLogada.php#leis"><li>CURSOS</li></a>
-                    <a href="./homeLogada.php#noticias"><li>NOTÍCIAS</li></a>
-                </ul>
-        
-                <div class="traduçao">
-                    <div class="gtranslate_wrapper">
-                    </div>
-                </div>
-        
-                <div class="user"> 
-                    <a href=""><img src="<?php echo isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : './img/do-utilizador.png'; ?>" alt=""></a>
-                </div>
-            </div>
-    
-            <div class="menu-hamburguer"  id="menuHamburguer">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+<main id="conteudo">
+    <header class="cabecalho-pagina" style="padding-bottom: 40px">
+        <div class="container">
+            <span class="sobretitulo"><span lang="pt">Sua conta</span><span lang="es">Tu cuenta</span></span>
+            <h1><span lang="pt">Perfil do imigrante</span><span lang="es">Perfil del inmigrante</span></h1>
         </div>
-    
-    <script>
-        document.getElementById('menuHamburguer').addEventListener('click', function() {
-        this.classList.toggle('active');
-        document.getElementById('backMenuMobile').classList.toggle('active');
-    });
-    </script>
-        
-        <div class="movendo-gradient"></div>
-        
-    </nav>
+    </header>
 
-<section>
-
-
-
-
-
-
-
-
-
-
-    <h1>Perfil do Imigrante</h1>
-
-    <div class="container">
-        <div class="alinar-1">
-            <div class="inputs-image">
-                <h1><?php echo htmlspecialchars($user["nomeUsuario"]); ?></h1>
-                <div>
-                    <form action="" method="post" class="excluir-foto">
-                        <button type="submit" name="delete_image" class="">
-                            <img src="./img/lixeira-de-reciclagem.png" alt="Excluir Foto">
-                        </button>
-                    </form>
-                    <img class="foto-perfil" src="<?php echo isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : './img/perfil-de-usuario.png'; ?>" alt="Foto de Perfil">
+    <section class="secao" style="padding-top: 0">
+        <div class="container perfil-grade">
+            <aside class="perfil-cartao">
+                <div class="foto-perfil-moldura">
+                    <img class="foto-perfil" id="fotoPerfil" src="./img/perfil-de-usuario.png" alt="Foto de perfil" data-pt-alt="Foto de perfil" data-es-alt="Foto de perfil">
+                    <button type="button" class="foto-acao excluir" id="excluirFoto" data-pt-aria-label="Excluir foto" data-es-aria-label="Eliminar foto" data-pt-title="Excluir foto" data-es-title="Eliminar foto"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
                 </div>
-                <!-- Formulário de Upload de Imagem -->
-                <form action="" method="post" enctype="multipart/form-data" class="upload-ft">
-                    <label for="profile_picture" style="display:none;">
-                        <input type="file" name="profile_picture" id="profile_picture" onchange="this.form.submit()">
-                    </label>
-                    <button type="button" onclick="document.getElementById('profile_picture').click()">Upload foto</button>
+                <div>
+                    <h2 id="nomeTitulo"></h2>
+                    <p id="nacionalidadeTitulo" style="margin-top:4px"></p>
+                </div>
+                <input type="file" id="profile_picture" accept="image/png, image/jpeg, image/webp" hidden>
+                <button type="button" class="botao botao-contorno botao-bloco" onclick="document.getElementById('profile_picture').click()"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3.5"/></svg><span lang="pt">Enviar foto</span><span lang="es">Subir foto</span></button>
+                <p class="texto-pequeno"><span lang="pt">JPG, PNG ou WEBP até 5 MB. A foto fica salva só neste navegador.</span><span lang="es">JPG, PNG o WEBP hasta 5 MB. La foto se guarda solo en este navegador.</span></p>
+            </aside>
+
+            <div class="bloco perfil-form">
+                <div class="bloco-cabecalho">
+                    <h2 style="font-size:1.6rem"><span lang="pt">Informações de usuário</span><span lang="es">Información del usuario</span></h2>
+                    <button type="button" class="botao botao-contorno botao-pequeno" id="botaoEditar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg><span id="editarTexto"></span></button>
+                </div>
+                <form id="formDados" novalidate>
+                    <div class="campo">
+                        <label for="nomeInput"><span lang="pt">Nome</span><span lang="es">Nombre</span></label>
+                        <input type="text" name="nome" id="nomeInput" required readonly>
+                    </div>
+                    <div class="campo">
+                        <label for="emailInput">E-mail</label>
+                        <input type="email" name="email" id="emailInput" required readonly>
+                    </div>
+                    <div class="campo">
+                        <label for="telefoneInput"><span lang="pt">Telefone</span><span lang="es">Teléfono</span></label>
+                        <input type="tel" name="telefone" id="telefoneInput" readonly>
+                    </div>
+                    <div class="campo">
+                        <label for="nacionalidadeInput"><span lang="pt">Nacionalidade</span><span lang="es">Nacionalidad</span></label>
+                        <input type="text" name="nacionalidade" id="nacionalidadeInput" readonly>
+                    </div>
+                    <div class="campo">
+                        <label for="senhaInput"><span lang="pt">Senha</span><span lang="es">Contraseña</span></label>
+                        <input type="password" name="senha" id="senhaInput" placeholder="••••••••" autocomplete="new-password" readonly>
+                    </div>
+                    <p class="mensagem-form" role="alert" hidden style="grid-column: 1 / -1"></p>
+                    <div class="acoes-form">
+                        <button type="button" class="botao botao-fantasma" data-sair><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg><span lang="pt">Sair da minha conta</span><span lang="es">Cerrar sesión</span></button>
+                        <button type="submit" class="botao botao-primario" id="salvarButton" disabled><span lang="pt">Salvar alterações</span><span lang="es">Guardar cambios</span></button>
+                    </div>
                 </form>
             </div>
         </div>
-
-        <div class="alinar-2">
-            <div class="inputs-infos">
-                <div class="pt-perfil">
-                    <div class="ali-tlt">
-                        <div class="titulo-infos-perfil">
-                            <h1>Informações de usuário</h1>
-                        </div>
-                        <div class="editar" onclick="toggleEditMode(this)">
-                            <a><img src="./img/editar.png" alt="Editar" id="editarIcone"></a>
-                            <p id="editarTexto">Editar</p>
-                        </div>
-                    </div>
-                    <form action="salvar_dados.php" method="POST" id="formDados">
-                        <div class="infos-perfil">
-                            <div class="infos-perfil-alinhar">
-                                <div>
-                                    <h2>Nome</h2>
-                                    <input type="text" name="nome" id="nomeInput" value="<?php echo htmlspecialchars($user["nomeUsuario"]); ?>" readonly>
-                                </div>
-                                <div>
-                                    <h2>E-mail</h2>
-                                    <input type="text" name="email" id="emailInput" value="<?php echo htmlspecialchars($user["emailUsuario"]); ?>" readonly>
-                                </div>
-                            </div>
-
-                            <div class="infos-perfil-alinhar">
-                                <div>
-                                    <h2>Telefone</h2>
-                                    <input type="text" name="telefone" id="telefoneInput" value="<?php echo htmlspecialchars($user["telefoneUsuario"]); ?>" readonly>
-                                </div>
-                                <div>
-                                    <h2>Nacionalidade</h2>
-                                    <input type="text" name="nacionalidade" id="nacionalidadeInput" value="<?php echo htmlspecialchars($user["nacionalidadeUsuario"]); ?>" readonly>
-                                </div>
-                            </div>
-
-                            <div class="infos-perfil-alinhar">
-                                <div>
-                                    <h2>Senha</h2>
-                                    <input type="text" name="senha" id="senhaInput" value="<?php echo htmlspecialchars($user["senhaUsuario"]); ?>" readonly>
-                                </div>
-                                <div class="salvar-alt">
-                                    <button type="submit" id="salvarButton" disabled>SALVAR ALTERAÇÕES</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="sair-caonta">
-                        <form action="logout.php" method="post"><button>SAIR DA MINHA CONTA</button><img src="" alt=""></form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-    let originalValues = {};
-
-    function toggleEditMode(button) {
-        const isEditing = button.classList.contains("editing");
-        const inputs = ['nomeInput', 'emailInput', 'telefoneInput', 'nacionalidadeInput', 'senhaInput'];
-        const salvarButton = document.getElementById('salvarButton');
-
-        if (!isEditing) {
-            // Salvar valores originais antes de editar
-            inputs.forEach(id => {
-                const input = document.getElementById(id);
-                originalValues[id] = input.value;
-                input.removeAttribute('readonly');
-                input.style.borderColor = '#1AAADF';
-            });
-        } else {
-            // Restaurar valores originais e desativar edição
-            inputs.forEach(id => {
-                const input = document.getElementById(id);
-                input.value = originalValues[id];
-                input.setAttribute('readonly', true);
-                input.style.border = '1px solid #ccc';
-            });
-        }
-
-        // Alternar o estado do botão de salvar
-        salvarButton.disabled = isEditing;
-
-        const icon = document.getElementById("editarIcone");
-        const text = document.getElementById("editarTexto");
-
-        if (isEditing) {
-            icon.src = "./img/editar.png";
-            text.innerText = "Editar";
-            button.classList.remove("editing");
-        } else {
-            icon.src = "./img/fechar.png";
-            text.innerText = "Cancelar";
-            button.classList.add("editing");
-        }
-    }
-</script>
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
+    </section>
+</main>
+<div id="cm-rodape"></div>
+<script src="./js/perfil.js"></script>
 </body>
 </html>
-

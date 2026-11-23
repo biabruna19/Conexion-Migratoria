@@ -1,75 +1,75 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-titulo-pt="Criar conta · Conexión Migratoria" data-titulo-es="Crear cuenta · Conexión Migratoria">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conexión Migratoria - Login</title>
-
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
-
+    <title>Criar conta · Conexión Migratoria</title>
+    <meta name="theme-color" content="#053344">
+    <link rel="icon" href="./img/ico-CM.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/idioma.js"></script>
+    <script src="./js/demo-store.js"></script>
 </head>
-
-    
 <body>
-    <section>
-        <div class="infos">
-            <h1>BEM VINDO!</h1>
-            <img src="./img/logo-branca Conexión Migratoria.png" alt="">
+
+<main class="acesso" id="conteudo">
+    <aside class="acesso-arte">
+        <img src="./imgs-estado/img1sc-sc.webp" alt="">
+        <a class="marca" href="./index.html" aria-label="Conexión Migratoria"><img src="./img/logo-branca-conexion-migratoria.png" alt="Conexión Migratoria"></a>
+        <div>
+            <blockquote><span lang="pt">Um novo país. O mesmo direito de recomeçar.</span><span lang="es">Un nuevo país. El mismo derecho a empezar de nuevo.</span></blockquote>
+            <p><span lang="pt">Crie sua conta para explorar o mapa dos estados, os guias de documentos, emprego e cursos.</span><span lang="es">Crea tu cuenta para explorar el mapa de los estados y las guías de documentos, empleo y cursos.</span></p>
         </div>
-
-        <div id="login2" class="login2">
-            <h1 class="title">CRIAR CONTA</h1>
-            <form id="registerForm">
-                <div class="alinhar">
-                    <div class="input">
-                        <img src="./img/do-utilizador.png">
-                        <div></div>
-                        <input type="name" name="nome" placeholder="Nome">
+    </aside>
+    <section class="acesso-form">
+        <div class="topo-form">
+            <a class="botao botao-fantasma" href="./index.html"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span lang="pt">Voltar para o site</span><span lang="es">Volver al sitio</span></a>
+            <div class="seletor-idioma" role="group" aria-label="Idioma">
+                <button type="button" data-idioma-botao="pt" aria-pressed="false" title="Português">PT</button>
+                <button type="button" data-idioma-botao="es" aria-pressed="false" title="Español">ES</button>
+            </div>
+        </div>
+        <div class="caixa">
+            <div>
+                <span class="sobretitulo"><span lang="pt">É gratuito</span><span lang="es">Es gratis</span></span>
+                <h1 style="margin-top:12px"><span lang="pt">Criar conta</span><span lang="es">Crear cuenta</span></h1>
+            </div>
+            <form id="registerForm" novalidate>
+                <div class="campo">
+                    <label for="nome"><span lang="pt">Nome</span><span lang="es">Nombre</span></label>
+                    <input id="nome" type="text" name="nome" autocomplete="name" required>
+                </div>
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" name="email" autocomplete="email" required>
+                </div>
+                <div class="duas-colunas">
+                    <div class="campo">
+                        <label for="telefone"><span lang="pt">Telefone</span><span lang="es">Teléfono</span></label>
+                        <input id="telefone" type="tel" name="telefone" autocomplete="tel" required>
                     </div>
-                    <div class="input">
-                        <img src="./img/o-email.png">
-                        <div></div>
-                        <input type="email" name="email" placeholder="E-mail">
+                    <div class="campo">
+                        <label for="nacionalidade"><span lang="pt">Nacionalidade</span><span lang="es">Nacionalidad</span></label>
+                        <input id="nacionalidade" type="text" name="nacionalidade" required>
                     </div>
                 </div>
-
-                <div class="alinhar">
-                    <div class="input">
-                        <img src="./img/telefone.png">
-                        <div></div>
-                        <input type="tel" name="telefone" placeholder="Telefone">
+                <div class="duas-colunas">
+                    <div class="campo">
+                        <label for="senha"><span lang="pt">Senha</span><span lang="es">Contraseña</span></label>
+                        <input id="senha" type="password" name="senha" autocomplete="new-password" minlength="4" required>
                     </div>
-                    <div class="input">
-                        <img src="./img/cidadania.png">
-                        <div></div>
-                        <input type="text" name="nacionalidade" placeholder="Nacionalidade">
+                    <div class="campo">
+                        <label for="conf_senha"><span lang="pt">Confirmar senha</span><span lang="es">Confirmar contraseña</span></label>
+                        <input id="conf_senha" type="password" name="conf_senha" autocomplete="new-password" required>
                     </div>
                 </div>
-
-                <div class="alinhar">
-                    <div class="input">
-                        <img src="./img/cadeado.png">
-                        <div></div>
-                        <input type="password" name="senha" placeholder="Senha">
-                    </div>
-                    <div class="input">
-                        <img src="./img/cadeado.png">
-                        <div></div>
-                        <input type="password" name="conf_senha" placeholder="Confirmar senha">
-                    </div>
-                </div>
-
-                <div class="botao">
-                    <input type="submit" name="submit" id="submit" value="CRIAR">
-                </div>
+                <p class="mensagem-form" role="alert" hidden></p>
+                <button class="botao botao-primario botao-bloco" type="submit" id="submit"><span lang="pt">Criar conta</span><span lang="es">Crear cuenta</span></button>
             </form>
+            <p class="texto-pequeno"><span lang="pt">Já tem conta?</span><span lang="es">¿Ya tienes cuenta?</span> <a href="./logar.html"><span lang="pt">Entrar</span><span lang="es">Iniciar sesión</span></a></p>
         </div>
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
+</main>
+<script src="./js/conta.js"></script>
 </body>
 </html>

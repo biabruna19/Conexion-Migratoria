@@ -1,91 +1,55 @@
-<?php
-session_start();
-require_once 'config.php';
-
-$erro = "";
-$sucesso = "";
-$email_validado = false;
-
-// Processar a redefinição de senha
-if (isset($_POST['redefinir'])) {
-    if (isset($_SESSION['email_recuperacao']) && !empty($_POST['nova_senha']) && !empty($_POST['conf_senha'])) {
-        if ($_POST['nova_senha'] === $_POST['conf_senha']) {
-            $email = $_SESSION['email_recuperacao'];
-            $senha = $_POST['nova_senha'];
-
-            $stmt = $conexao->prepare("UPDATE tbUsuarios SET senhaUsuario = :senha, conf_senha = :senha WHERE emailUsuario = :email");
-            $stmt->execute([':senha' => $senha, ':email' => $email]);
-
-            unset($_SESSION['email_recuperacao']);
-            echo "<script>alert('Senha redefinida com sucesso!'); window.location.href='logar.php';</script>";
-            exit();
-        } else {
-            $erro = "As senhas não coincidem!";
-            $email_validado = true; // Mantém o formulário de senha aberto
-        }
-    }
-}
-// Verificar e-mail inicial
-elseif (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $stmt = $conexao->prepare("SELECT idUsuario FROM tbUsuarios WHERE emailUsuario = :email");
-    $stmt->execute([':email' => $email]);
-
-    if ($stmt->rowCount() > 0) {
-        $_SESSION['email_recuperacao'] = $email;
-        $email_validado = true;
-    } else {
-        echo "<script>alert('E-mail não encontrado!'); window.location.href='recuperarSenha.php';</script>";
-        exit();
-    }
-} else {
-    header("Location: recuperarSenha.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-titulo-pt="Nova senha · Conexión Migratoria" data-titulo-es="Nueva contraseña · Conexión Migratoria">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conexión Migratoria - Nova Senha</title>
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
+    <title>Nova senha · Conexión Migratoria</title>
+    <meta name="theme-color" content="#053344">
+    <link rel="icon" href="./img/ico-CM.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/idioma.js"></script>
+    <script src="./js/demo-store.js"></script>
 </head>
 <body>
-    <section>
-        <div class="infos">
-            <h1>NOVA SENHA</h1>
-            <img src="./img/logo-branca Conexión Migratoria.png" alt="">
-            <a href="./logar.php"><button class="creat">VOLTAR AO LOGIN</button></a>
-        </div>
 
-        <div id="login1" class="login1">
-            <h1 class="title">CRIAR NOVA SENHA</h1>
-            <?php if ($erro) echo "<p style='color:red; text-align:center;'>$erro</p>"; ?>
-            <form action="redefinirSenha.php" method="POST">
-                <div class="input">
-                    <img src="./img/cadeado.png" style="filter: brightness(0) invert(1);">
-                    <div></div>
-                    <input type="password" name="nova_senha" placeholder="Nova Senha" required>
+<main class="acesso" id="conteudo">
+    <aside class="acesso-arte">
+        <img src="./imgs-estado/img1sc-sc.webp" alt="">
+        <a class="marca" href="./index.html" aria-label="Conexión Migratoria"><img src="./img/logo-branca-conexion-migratoria.png" alt="Conexión Migratoria"></a>
+        <div>
+            <blockquote><span lang="pt">Um novo país. O mesmo direito de recomeçar.</span><span lang="es">Un nuevo país. El mismo derecho a empezar de nuevo.</span></blockquote>
+            <p><span lang="pt">Crie sua conta para explorar o mapa dos estados, os guias de documentos, emprego e cursos.</span><span lang="es">Crea tu cuenta para explorar el mapa de los estados y las guías de documentos, empleo y cursos.</span></p>
+        </div>
+    </aside>
+    <section class="acesso-form">
+        <div class="topo-form">
+            <a class="botao botao-fantasma" href="./index.html"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span lang="pt">Voltar para o site</span><span lang="es">Volver al sitio</span></a>
+            <div class="seletor-idioma" role="group" aria-label="Idioma">
+                <button type="button" data-idioma-botao="pt" aria-pressed="false" title="Português">PT</button>
+                <button type="button" data-idioma-botao="es" aria-pressed="false" title="Español">ES</button>
+            </div>
+        </div>
+        <div class="caixa">
+            <div>
+                <span class="sobretitulo"><span lang="pt">Passo 2 de 2</span><span lang="es">Paso 2 de 2</span></span>
+                <h1 style="margin-top:12px"><span lang="pt">Criar nova senha</span><span lang="es">Crear nueva contraseña</span></h1>
+            </div>
+            <form id="resetForm" novalidate>
+                <div class="campo">
+                    <label for="nova_senha"><span lang="pt">Nova senha</span><span lang="es">Nueva contraseña</span></label>
+                    <input id="nova_senha" type="password" name="nova_senha" autocomplete="new-password" minlength="4" required>
                 </div>
-                <div class="input">
-                    <img src="./img/cadeado.png" style="filter: brightness(0) invert(1);">
-                    <div></div>
-                    <input type="password" name="conf_senha" placeholder="Confirmar Nova Senha" required>
+                <div class="campo">
+                    <label for="conf_senha"><span lang="pt">Confirmar nova senha</span><span lang="es">Confirmar nueva contraseña</span></label>
+                    <input id="conf_senha" type="password" name="conf_senha" autocomplete="new-password" required>
                 </div>
-                <div class="botao">
-                    <input type="submit" name="redefinir" id="submit" value="REDEFINIR SENHA">
-                </div>
+                <p class="mensagem-form" role="alert" hidden></p>
+                <button class="botao botao-primario botao-bloco" type="submit" id="submit"><span lang="pt">Redefinir senha</span><span lang="es">Restablecer contraseña</span></button>
             </form>
+            <p class="texto-pequeno"><a href="./logar.html"><span lang="pt">Voltar ao login</span><span lang="es">Volver al inicio de sesión</span></a></p>
         </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
+</main>
+<script src="./js/conta.js"></script>
 </body>
 </html>
-
-

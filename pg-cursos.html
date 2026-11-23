@@ -1,219 +1,103 @@
-<?php
-
-session_start();
-
-// Verifica se o usuário está logado
-if (!isset($_SESSION['user_id'])) {
-    echo "<script>alert('Para acessar esta página conecte-se com uma conta'); window.location.href = 'logar.php';</script>";
-    exit(); // Corrigido de "saída();" para "exit();"
-}
-
-$logado = $_SESSION['user_id']; // Certifique-se de usar o mesmo nome de chave aqui
-?>
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-titulo-pt="Cursos · Conexión Migratoria" data-titulo-es="Cursos · Conexión Migratoria">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conexión Migratoria - Home</title>
-
-    <link rel="stylesheet" href="./css/cursos.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
-    <link rel="stylesheet" href="./css/nav-footer.css">
-
+    <title>Cursos · Conexión Migratoria</title>
+    <meta name="theme-color" content="#053344">
+    <link rel="icon" href="./img/ico-CM.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/idioma.js"></script>
+    <script src="./js/demo-store.js"></script>
+    <script>CM.exigirLogin();</script>
 </head>
 <body>
+<div id="cm-topo"></div>
+<script src="./js/layout.js"></script>
 
-    <script>window.gtranslateSettings = {"default_language":"pt","detect_browser_language":true,"languages":["pt","es"],"wrapper_selector":".gtranslate_wrapper","flag_size":48,"alt_flags":{"pt":"brazil"}}</script>
-    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
-    
-<nav>
-    <div class="alinhar">
-        <div class="logos">
-            <a href="./homeLogada.php"><img src="./img/logo-branca Conexión Migratoria.png"></a>
+<main id="conteudo">
+    <header class="cabecalho-pagina">
+        <div class="container">
+            <nav class="trilha" aria-label="Trilha"><a href="./index.html"><span lang="pt">Início</span><span lang="es">Inicio</span></a><span>/</span><span>Cursos</span></nav>
+            <span class="sobretitulo"><span lang="pt">Aprender português</span><span lang="es">Aprender portugués</span></span>
+            <h1><span lang="pt">Cursos para imigrantes</span><span lang="es">Cursos para inmigrantes</span></h1>
+            <p><span lang="pt">Videoaulas de português do básico ao avançado e ONGs que oferecem cursos para ampliar seus conhecimentos.</span><span lang="es">Videoclases de portugués del nivel básico al avanzado y ONG que ofrecen cursos para ampliar tus conocimientos.</span></p>
         </div>
-        <div class="links-nav">
-            <ul>
-                <a href="./homeLogada.php#mapa"><li>MAPA INTERATIVO</li></a>
-                <a href="./homeLogada.php#leis"><li>LEIS E DOCUMENTOS</li></a>
-                <a href="./homeLogada.php#leis"><li>EMPREGABILIDADE</li></a>
-                <a href="./homeLogada.php#leis"><li>CURSOS</li></a>
-                <a href="./homeLogada.php#noticias"><li>NOTÍCIAS</li></a>
-            </ul>
-    
-            <div class="traduçao">
-                <div class="gtranslate_wrapper">
-                </div>
+    </header>
+
+    <section class="secao" style="padding-top: 0">
+        <div class="container">
+            <div class="cabecalho-secao">
+                <span class="sobretitulo"><span lang="pt">Videoaulas gratuitas</span><span lang="es">Videoclases gratuitas</span></span>
+                <h2><span lang="pt">Escolha o seu nível</span><span lang="es">Elige tu nivel</span></h2>
             </div>
-    
-            <div class="user"> 
-                <a href="./pg-perfil.php"><img src="<?php echo isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : './img/do-utilizador.png'; ?>" alt=""></a>
-            </div>
-        </div>
-
-        <div class="menu-hamburguer"  id="menuHamburguer">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-
-<script>
-    document.getElementById('menuHamburguer').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.getElementById('backMenuMobile').classList.toggle('active');
-});
-</script>
-    
-    <div class="movendo-gradient"></div>
-    
-</nav>
-
-<div class="back-menumobile" id="backMenuMobile">
-    <div class="menu-mobile">
-        <h1>TRADUZIR</h1>
-        
-        <div>
-            <div class="gtranslate_wrapper">
+            <div class="grade grade-3">
+                <article class="nivel revelar">
+                    <div class="barra"><span class="cheio"></span><span></span><span></span></div>
+                    <span class="etiqueta"><span lang="pt">Básico</span><span lang="es">Básico</span></span>
+                    <h3><span lang="pt">Português essencial</span><span lang="es">Portugués esencial</span></h3>
+                    <p><span lang="pt">Estruturas essenciais do português: cumprimentos, apresentação pessoal e vocabulário do dia a dia, com uma abordagem prática para deixar suas conversas mais confortáveis.</span><span lang="es">Las estructuras esenciales del portugués: saludos, presentación personal y vocabulario cotidiano, con un enfoque práctico para que tus conversaciones sean más cómodas.</span></p>
+                    <a class="botao botao-mar" href="https://www.youtube.com/watch?v=zd8_NUqoZH4&amp;list=PLJkrSwK-K9zB_9PoZT5Hwb4w8UF0i0uXh" target="_blank" rel="noopener"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/></svg><span lang="pt">Assistir às aulas</span><span lang="es">Ver las clases</span></a>
+                </article>
+                <article class="nivel revelar">
+                    <div class="barra"><span class="cheio"></span><span class="cheio"></span><span></span></div>
+                    <span class="etiqueta etiqueta-sol"><span lang="pt">Intermediário</span><span lang="es">Intermedio</span></span>
+                    <h3><span lang="pt">Conectando culturas</span><span lang="es">Conectando culturas</span></h3>
+                    <p><span lang="pt">Para quem já conhece o básico: gramática, conversação fluente e vocabulário para contextos como trabalho e lazer.</span><span lang="es">Para quien ya conoce lo básico: gramática, conversación fluida y vocabulario para contextos como el trabajo y el ocio.</span></p>
+                    <a class="botao botao-mar" href="https://www.youtube.com/watch?v=Rxo6xTWgZGI&amp;list=PLJkrSwK-K9zBj7U-DmdVhZ7kkLdtaK5br" target="_blank" rel="noopener"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/></svg><span lang="pt">Assistir às aulas</span><span lang="es">Ver las clases</span></a>
+                </article>
+                <article class="nivel revelar">
+                    <div class="barra"><span class="cheio"></span><span class="cheio"></span><span class="cheio"></span></div>
+                    <span class="etiqueta" style="background:#E1EEF3;color:var(--coral-escuro)"><span lang="pt">Avançado</span><span lang="es">Avanzado</span></span>
+                    <h3><span lang="pt">Fluência e profundidade</span><span lang="es">Fluidez y profundidad</span></h3>
+                    <p><span lang="pt">Aperfeiçoe suas habilidades para situações mais desafiadoras: amplie o vocabulário, a argumentação e a compreensão em diferentes contextos.</span><span lang="es">Perfecciona tus habilidades para situaciones más desafiantes: amplía el vocabulario, la argumentación y la comprensión en distintos contextos.</span></p>
+                    <a class="botao botao-mar" href="https://www.youtube.com/watch?v=oziOOkwah2E&amp;list=PLJkrSwK-K9zC0KWa5loqHPm9WpbEV0lQM" target="_blank" rel="noopener"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/></svg><span lang="pt">Assistir às aulas</span><span lang="es">Ver las clases</span></a>
+                </article>
             </div>
         </div>
+    </section>
 
-        <a href="./logar.php">Fazer Login</a>
-    </div>
-</div>
-
-<section class="sec1">
-    <div class="titulo-sec1">
-        <h1>CURSOS PARA IMIGRANTES</h1>
-        <p>Oferecemos uma variedade de videoaulas projetadas especialmente para atender às suas necessidades linguísticas. Com conteúdos que variam desde o básico até níveis mais avançados! E ongs que oferecem uma variedade de cursos para que você possa ampliar seus conhecimentos</p>
-        <a href="#planos"><button>Ongs disponiveis</button></a>
-    </div>
-
-    <div class="info-sec1">
-        <div>
-            <img src="./img/image-cursos.png">
-        </div>
-    </div>
-</section>
-
-<section class="sec2">
-
-    <div class="container-cards-aulas">
-
-        <div class="card-aulas">
-            <div class="pt1">
-                <h1>CURSO BÁSICO</h1>
-                <img src="./img/img-videosaulas.png">
+    <section class="secao secao-papel" id="ongs">
+        <div class="container">
+            <div class="cabecalho-secao">
+                <span class="sobretitulo">ONGs</span>
+                <h2><span lang="pt">Amplie seus conhecimentos</span><span lang="es">Amplía tus conocimientos</span></h2>
+                <p><span lang="pt">Organizações que oferecem aulas de idiomas, capacitação profissional e oficinas culturais para imigrantes e refugiados.</span><span lang="es">Organizaciones que ofrecen clases de idiomas, capacitación profesional y talleres culturales para inmigrantes y refugiados.</span></p>
             </div>
-            <div class="linha-card"></div>
-            <div class="pt2">
-                <h2>Português Essencial</h2>
-                <p>Neste nível básico, você aprenderá as estruturas essenciais do português, incluindo cumprimentos, apresentação pessoal, e vocabulário do dia a dia. Nossa abordagem prática e interativa permitirá que você se familiarize, tornando suas interações cotidianas mais confortáveis e eficazes.</p>
-                <a href="https://www.youtube.com/watch?v=zd8_NUqoZH4&list=PLJkrSwK-K9zB_9PoZT5Hwb4w8UF0i0uXh" target="_blank"><button>IR PARA VIDEO AULAS</button></a>
-            </div>
-        </div>
-
-        <div class="card-aulas">
-            <div class="pt1">
-                <h1>CURSO INTERMEDIÁRIO</h1>
-                <img src="./img/img-videosaulas.png">
-            </div>
-            <div class="linha-card"></div>
-            <div class="pt2">
-                <h2>Conectando Culturas</h2>
-                <p>Se você já possui um conhecimento básico da língua, vamos explorar tópicos mais complexos, como gramática, conversação fluente, e vocabulário específico relacionado a diversos contextos, como trabalho e lazer. Este nível é projetado para fortalecer suas habilidades de comunicação.</p>
-                <a href="https://www.youtube.com/watch?v=Rxo6xTWgZGI&list=PLJkrSwK-K9zBj7U-DmdVhZ7kkLdtaK5br" target="_blank"><button>VER MAIS DETALHES</button></a>
+            <div class="grade grade-2">
+                <article class="ong revelar">
+                    <span class="icone-redondo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.8-2.9l-4.2 3.9M2 15l6 6"/></svg></span>
+                    <div>
+                        <h3>Instituto ADUS</h3>
+                        <p><span lang="pt">Unidos em prol dos refugiados no Brasil.</span><span lang="es">Unidos por los refugiados en Brasil.</span></p>
+                        <div class="tags">
+                            <span class="etiqueta"><span lang="pt">Oficina de português</span><span lang="es">Taller de portugués</span></span>
+                            <span class="etiqueta"><span lang="pt">Costura e modelagem</span><span lang="es">Costura y patronaje</span></span>
+                            <span class="etiqueta"><span lang="pt">Estamparia</span><span lang="es">Estampado</span></span>
+                            <span class="etiqueta"><span lang="pt">Empreendedorismo</span><span lang="es">Emprendimiento</span></span>
+                            <span class="etiqueta"><span lang="pt">Outras capacitações</span><span lang="es">Otras capacitaciones</span></span>
+                        </div>
+                        <a class="link-seta" href="https://adus.org.br/programas/cursos-de-idiomas/" target="_blank" rel="noopener"><span lang="pt">Conhecer os cursos</span><span lang="es">Conocer los cursos</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
+                    </div>
+                </article>
+                <article class="ong revelar">
+                    <span class="icone-redondo" style="background:var(--sol-claro);color:#0E5C79"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>
+                    <div>
+                        <h3>Cerzindo</h3>
+                        <p><span lang="pt">Acolhendo histórias e transformando vidas.</span><span lang="es">Acogiendo historias y transformando vidas.</span></p>
+                        <div class="tags">
+                            <span class="etiqueta etiqueta-sol"><span lang="pt">Português básico</span><span lang="es">Portugués básico</span></span>
+                            <span class="etiqueta etiqueta-sol"><span lang="pt">Português intermediário</span><span lang="es">Portugués intermedio</span></span>
+                            <span class="etiqueta etiqueta-sol"><span lang="pt">Português avançado</span><span lang="es">Portugués avanzado</span></span>
+                            <span class="etiqueta etiqueta-sol"><span lang="pt">Cursos de idiomas</span><span lang="es">Cursos de idiomas</span></span>
+                        </div>
+                        <a class="link-seta" href="https://www.cerzindo.org.br" target="_blank" rel="noopener"><span lang="pt">Conhecer os cursos</span><span lang="es">Conocer los cursos</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
+                    </div>
+                </article>
             </div>
         </div>
-
-        <div class="card-aulas">
-            <div class="pt1">
-                <h1>CURSO AVANÇADO</h1>
-                <img src="./img/img-videosaulas.png">
-            </div>
-            <div class="linha-card"></div>
-            <div class="pt2">
-                <h2>Fluência e Profundidade</h2>
-                <p>Neste estágio, nossa missão é aperfeiçoar suas habilidades linguísticas e prepará-lo(a) para situações mais desafiadoras e complexas,Vamos ampliar seu vocabulário e suas capacidades de argumentação.  Além disso, pode praticar e refinar sua habilidade de compreender e responder em diferentes contextos.</p>
-                <a href="https://www.youtube.com/watch?v=oziOOkwah2E&list=PLJkrSwK-K9zC0KWa5loqHPm9WpbEV0lQM" target="_blank"><button>VER MAIS DETALHES</button></a>
-                <div id="planos"></div>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<section class="sec3">
-    <div class="titulo-sec3">
-        <h1>AMPLIE SEUS CONHECIMENTOS!</h1>
-        <div></div>
-    </div>
-
-    <div class="text-ongs">
-        <p>Nesta sessão vamos conctar você a ONGs que oferecem cursos para imigrantes, promovendo inclusão e desenvolvimento por meio de aulas de idiomas, capacitação técnica e workshops culturais. Descubra como participar ou contribuir para essas iniciativas que ajudam a construir uma sociedade mais inclusiva e solidária.</p>
-    </div>
-
-    <div class="cards-sec3">
-        <div class="card-sec3">
-            <div class="valor-card">
-                <span>INSTITUO ADUS</span>
-                <h1>UNIDOS EM PROL DOS REFUGIADOS NO BRASIL</h1>
-            </div>
-            <div class="info-card-sec3">
-                <div><h1>CURSOS OFRECIDOS</h1></div>
-                <div><p>• COSTURA E MODELAGEM</p></div>
-                <div><p>• ESTAMPARIA</p></div>
-                <div><p>• OFICINA DE PORTUGUÊS</p></div>
-                <div><p>• OUTRAS CAPITAÇÕES</p></div>
-                <div><p>• EMPREENDEDORISMO</p></div>
-                <div class="btns">
-                    <a href="https://adus.org.br/programas/cursos-de-idiomas/"><button>VER MAIS</button></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-sec3">
-            <div class="valor-card">
-                <span>CERZINDO</span>
-                <h1>ACOLHENDO HISTÓRIAS E TRANSFORMANDO VIDAS¢</h1>
-            </div>
-            <div class="info-card-sec3">
-                <div><h1>CURSOS OFERECIDOS</h1></div>
-                <div><p>AULAS DE PORTUGUÊS:</p></div>
-                <div><p>• MÓDULO BÁSICO</p></div>
-                <div><p>• MÓDULO INTERMEDIÁRIO</p></div>
-                <div><p>• MÓDULO AVANÇADO</p></div>
-                <div><p>• CURSOS DE IDIOMA</p></div>
-                <div class="btns">
-                    <a href="https://www.cerzindo.org.br"><button>VER MAIS</button></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<div class="div-wavefoot" style="background-color: white;">
-    <div class="wave-foot wave1"></div> 
-    <div class="wave-foot wave2"></div> 
-    <div class="wave-foot wave3"></div> 
-    <div class="wave-foot wave4"></div> 
-</div>
-
-<footer>
-    <div style="text-align: center; padding: 40px; color: #fff; background: rgba(0,0,0,0.2);">
-        <p>Conexi�n Migratoria &copy; 2026. Todos os direitos reservados.</p>
-        <p style="margin-top: 10px; font-size: 14px;">O seu portal de aux�lio para adapta��o no Brasil.</p>
-    </div>
-</footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
+    </section>
+</main>
+<div id="cm-rodape"></div>
 </body>
 </html>
-
