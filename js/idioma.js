@@ -51,7 +51,9 @@
     let escolhaAtual = escolha; // muda sem recarregar só entre PT e ES
     const automatico = !MANUAIS.includes(escolha);
     raiz.dataset.idioma = automatico ? 'pt' : escolha; // a tradução automática parte do português
-    raiz.lang = escolha === 'pt' ? 'pt-BR' : escolha;
+    // Na tradução automática a página continua marcada como português:
+    // o tradutor do Google lê esse atributo para saber de qual língua traduzir.
+    raiz.lang = escolha === 'es' ? 'es' : 'pt-BR';
     if (automatico) raiz.classList.add('traducao-automatica');
 
     // ---------- Tradutor do Google (idiomas que não são PT/ES) ----------
@@ -67,17 +69,46 @@
         cookieTraducao(escolha);
         window.cmIniciarTradutor = function () {
             new google.translate.TranslateElement({ pageLanguage: 'pt', autoDisplay: false }, 'cm-tradutor');
+            // Além do cookie, escolhe o idioma na caixa do próprio tradutor
+            let tentativas = 0;
+            const escolherNaCaixa = setInterval(() => {
+                const caixa = document.querySelector('select.goog-te-combo');
+                if (caixa && caixa.options.length > 1) {
+                    clearInterval(escolherNaCaixa);
+                    if (caixa.value !== escolha) {
+                        caixa.value = escolha;
+                        caixa.dispatchEvent(new Event('change'));
+                    }
+                } else if (++tentativas > 40) {
+                    clearInterval(escolherNaCaixa);
+                }
+            }, 250);
         };
         document.addEventListener('DOMContentLoaded', () => {
             const caixa = document.createElement('div');
             caixa.id = 'cm-tradutor';
-            caixa.hidden = true;
+            caixa.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none';
             document.body.appendChild(caixa);
             const s = document.createElement('script');
             s.src = 'https://translate.google.com/translate_a/element.js?cb=cmIniciarTradutor';
+            s.onerror = avisarFalha;
             document.body.appendChild(s);
+            // Se em 10 segundos o tradutor não aparecer, avisa a pessoa
+            setTimeout(() => { if (!document.querySelector('select.goog-te-combo')) avisarFalha(); }, 10000);
         });
-    } else if (document.cookie.includes('googtrans=')) {
+    }
+    function avisarFalha() {
+        if (document.getElementById('cm-aviso-traducao')) return;
+        const aviso = document.createElement('div');
+        aviso.id = 'cm-aviso-traducao';
+        aviso.className = 'aviso-traducao notranslate';
+        aviso.setAttribute('role', 'alert');
+        aviso.innerHTML = `<span>Não foi possível carregar a tradução automática. Verifique a conexão ou escolha Português/Español.<br><small>Automatic translation could not be loaded.</small></span>
+            <button type="button">Português</button>`;
+        aviso.querySelector('button').addEventListener('click', () => window.I18N.definir('pt'));
+        document.body.appendChild(aviso);
+    }
+    if (!automatico && document.cookie.includes('googtrans=')) {
         cookieTraducao(null);
     }
 
@@ -162,7 +193,7 @@
             }
             escolhaAtual = cod;
             raiz.dataset.idioma = cod;
-            raiz.lang = cod === 'pt' ? 'pt-BR' : cod;
+            raiz.lang = cod === 'es' ? 'es' : 'pt-BR';
             aplicar();
             ouvintes.forEach(fn => fn(cod));
         },
