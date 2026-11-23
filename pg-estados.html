@@ -26,7 +26,7 @@
             </nav>
             <span class="etiqueta" data-campo="regiao"></span>
             <h1 data-campo="titulo"></h1>
-            <p data-campo="resumo"></p>
+            <p data-campo="resumo" data-ler-mais="3"></p>
         </div>
     </section>
 
@@ -40,7 +40,7 @@
             <div class="texto">
                 <span class="sobretitulo"><span lang="pt">Cultura</span><span lang="es">Cultura</span></span>
                 <h2 style="font-size: clamp(2rem, 3.6vw, 2.75rem); margin: 14px 0 22px"><span lang="pt">Um pouco sobre a cultura</span><span lang="es">Un poco sobre la cultura</span></h2>
-                <div data-campo="cultura" lang="pt-BR"></div>
+                <div data-campo="cultura" lang="pt-BR" data-ler-mais="6"></div>
             </div>
             <figure class="revelar"><img data-campo="imagemCultura" alt="" loading="lazy"></figure>
         </div>
@@ -109,6 +109,10 @@
     <section class="secao-compacta secao-papel">
         <div class="container navegar-estados">
             <a class="botao botao-contorno" href="./index.html#mapa"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span lang="pt">Voltar ao mapa</span><span lang="es">Volver al mapa</span></a>
+            <div class="setas-estado">
+                <a class="botao botao-contorno" id="estadoAnterior" href="#"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span></span></a>
+                <a class="botao botao-mar" id="estadoProximo" href="#"><span></span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
             <label style="display:flex;align-items:center;gap:12px;font-weight:600">
                 <span lang="pt">Ver outro estado</span><span lang="es">Ver otro estado</span>
                 <select id="outroEstado"></select>
@@ -119,5 +123,6 @@
 <div id="cm-rodape"></div>
 <script src="./data/estados.js"></script>
 <script src="./js/estado.js"></script>
+<script src="./js/interacoes.js"></script>
 </body>
 </html>

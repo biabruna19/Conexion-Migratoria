@@ -120,6 +120,18 @@
     }
     ativar(abas[0]);
 
+    // Estado anterior / próximo (ordem alfabética)
+    const ordem = Object.keys(ESTADOS).sort((a, b) => ESTADOS[a].titulo.localeCompare(ESTADOS[b].titulo));
+    const pos = ordem.indexOf(uf);
+    const anterior = ordem[(pos - 1 + ordem.length) % ordem.length];
+    const proximo = ordem[(pos + 1) % ordem.length];
+    const linkAnt = document.getElementById('estadoAnterior');
+    const linkProx = document.getElementById('estadoProximo');
+    linkAnt.href = `./pg-estados.html?uf=${anterior}`;
+    linkAnt.querySelector('span').textContent = ESTADOS[anterior].titulo;
+    linkProx.href = `./pg-estados.html?uf=${proximo}`;
+    linkProx.querySelector('span').textContent = ESTADOS[proximo].titulo;
+
     // Ver outro estado
     const seletor = document.getElementById('outroEstado');
     Object.keys(ESTADOS)
