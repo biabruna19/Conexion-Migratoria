@@ -45,6 +45,8 @@
         balanca: '<path d="M12 3v18M5 21h14M3 7h18M6 7l-3 7a3 3 0 0 0 6 0zM18 7l-3 7a3 3 0 0 0 6 0z"/>',
         maos: '<path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.8-2.9l-4.2 3.9M2 15l6 6"/>',
         linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>',
+        github: '<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.1-1.3-.3-2.5-1-3.5.3-1.2.3-2.4 0-3.5 0 0-1 0-3 1.5a13.4 13.4 0 0 0-8 0C6 2 5 2 5 2c-.3 1.2-.3 2.4 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.4.5-.7 1-.9 1.7-.2.6-.2 1.2-.1 1.8v4"/><path d="M9 18c-4.5 2-5-2-7-2"/>',
+        email: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
         check: '<path d="M20 6 9 17l-5-5"/>',
         som: '<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>',
         aleatorio: '<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>',
@@ -145,6 +147,17 @@
                         ? `<li><a href="./pg-perfil.html">${pt('Meu perfil', 'Mi perfil')}</a></li><li><a href="#" data-sair>${pt('Sair', 'Salir')}</a></li>`
                         : `<li><a href="./logar.html">${pt('Entrar', 'Iniciar sesión')}</a></li><li><a href="./criarConta.html">${pt('Criar conta', 'Crear cuenta')}</a></li>`}
                 </ul>
+            </div>
+        </div>
+        <div class="desenvolvedora">
+            <div>
+                <span class="desenvolvedora-rotulo">${pt('Desenvolvido por', 'Desarrollado por')}</span>
+                <strong>Beatriz Oliveira</strong>
+            </div>
+            <div class="desenvolvedora-links">
+                <a href="https://github.com/biabruna19" target="_blank" rel="noopener" aria-label="GitHub de Beatriz Oliveira">${icone('github')}<span>GitHub</span></a>
+                <a href="https://www.linkedin.com/in/beatriz-oliveira-759867294/" target="_blank" rel="noopener" aria-label="LinkedIn de Beatriz Oliveira">${icone('linkedin')}<span>LinkedIn</span></a>
+                <a href="mailto:biabruna.1901@gmail.com" aria-label="E-mail de Beatriz Oliveira">${icone('email')}<span>E-mail</span></a>
             </div>
         </div>
         <div class="rodape-base">

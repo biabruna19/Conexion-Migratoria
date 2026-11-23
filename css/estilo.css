@@ -1086,3 +1086,23 @@ font { background: none !important; box-shadow: none !important; }
 }
 .aviso-traducao small { color: rgba(255, 255, 255, .7); }
 .aviso-traducao button { flex: none; height: 38px; padding: 0 16px; border-radius: 999px; background: var(--azul-claro); color: #fff; font-weight: 600; }
+
+/* Crédito da desenvolvedora (rodapé e telas de conta) */
+.desenvolvedora {
+    margin-top: 48px; padding: 22px 26px; border-radius: var(--raio);
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;
+    background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .1);
+}
+.desenvolvedora-rotulo { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .5); margin-bottom: 2px; }
+.desenvolvedora strong { color: #fff; font-size: 1.15rem; }
+.desenvolvedora-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.desenvolvedora-links a {
+    display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .2); color: #fff; font-size: .9rem; font-weight: 600;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+.desenvolvedora-links a:hover { background: var(--azul-claro); border-color: var(--azul-claro); color: #fff; }
+.desenvolvedora-links .icone { width: 18px; height: 18px; }
+.rodape .desenvolvedora + .rodape-base { margin-top: 24px; }
+.credito-arte { font-size: .9rem; margin-top: 22px !important; }
+.credito-arte a { color: #fff; font-weight: 700; }

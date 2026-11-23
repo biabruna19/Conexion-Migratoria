@@ -167,6 +167,21 @@
         atualizarSeletores();
     }
 
+    // Nome de um idioma escrito na língua escolhida no globo.
+    // PT e ES usam a nossa lista; as outras línguas usam o próprio navegador (Intl.DisplayNames).
+    function nomeIdioma(cod) {
+        const idioma = IDIOMAS.find(i => i.cod === cod);
+        if (!idioma) return cod;
+        if (escolhaAtual === 'pt' || escolhaAtual === 'es') return idioma[escolhaAtual];
+        try {
+            const nome = new Intl.DisplayNames([escolhaAtual], { type: 'language' }).of(cod);
+            if (nome && nome.toLowerCase() !== cod.toLowerCase()) {
+                return nome.charAt(0).toLocaleUpperCase(escolhaAtual) + nome.slice(1);
+            }
+        } catch (e) { /* navegador sem suporte: usa o nome em português */ }
+        return idioma.pt;
+    }
+
     function atualizarSeletores() {
         const atual = IDIOMAS.find(i => i.cod === escolhaAtual) || IDIOMAS[0];
         document.querySelectorAll('.globo').forEach(g => {
@@ -174,8 +189,7 @@
             if (sigla) sigla.textContent = atual.sigla;
             g.querySelectorAll('li[data-cod]').forEach(li => {
                 li.setAttribute('aria-selected', li.dataset.cod === escolhaAtual);
-                const idioma = IDIOMAS.find(i => i.cod === li.dataset.cod);
-                li.querySelector('.globo-nome').textContent = raiz.dataset.idioma === 'es' ? idioma.es : idioma.pt;
+                li.querySelector('.globo-nome').textContent = nomeIdioma(li.dataset.cod);
             });
         });
     }
@@ -204,6 +218,7 @@
         aoTrocar: (fn) => ouvintes.push(fn),
         aplicar,
         montarSeletor,
+        nomeIdioma,
     };
 
     document.addEventListener('DOMContentLoaded', () => {

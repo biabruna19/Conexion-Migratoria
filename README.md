@@ -72,6 +72,11 @@ imgs-estado/                                    fotos dos estados
 docs/                                           imagens deste README
 ```
 
+## Desenvolvido por
+
+**Beatriz Oliveira**<br>
+[GitHub](https://github.com/biabruna19) · [LinkedIn](https://www.linkedin.com/in/beatriz-oliveira-759867294/) · [E-mail](mailto:biabruna.1901@gmail.com)
+
 ---
 
 As informações do site servem como referência e não substituem a orientação dos órgãos oficiais.

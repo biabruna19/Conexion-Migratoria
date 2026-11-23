@@ -172,7 +172,10 @@
                 el.setAttribute('lang', lingua === 'es' ? 'es-ES' : lingua);
                 el.classList.toggle('rtl', lingua === 'ar');
             });
-            area.querySelectorAll('[data-rotulo-lingua]').forEach(el => { el.textContent = t(NOMES_LINGUA[lingua].pt, NOMES_LINGUA[lingua].es); });
+            const nome = (cod) => (window.I18N && I18N.nomeIdioma ? I18N.nomeIdioma(cod) : t(NOMES_LINGUA[cod].pt, NOMES_LINGUA[cod].es));
+            area.querySelectorAll('[data-rotulo-lingua]').forEach(el => { el.textContent = nome(lingua); });
+            // Botões com o nome do idioma na língua escolhida no globo
+            botoes.forEach(b => { b.textContent = nome(b.dataset.lingua); });
         };
         botoes.forEach(b => b.addEventListener('click', () => escolher(b.dataset.lingua)));
         if (window.I18N) I18N.aoTrocar(() => escolher(localStorage.getItem('cm_lingua_cartoes') || 'es'));
