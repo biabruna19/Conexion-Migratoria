@@ -15,26 +15,26 @@
     const ATRIBUTOS = ['placeholder', 'aria-label', 'title', 'alt'];
     const ouvintes = [];
 
-    // Idiomas do globo: nome escrito na própria língua
+    // Idiomas do globo: nomes em português (ou em espanhol, quando o site está em espanhol)
     const IDIOMAS = [
-        { cod: 'pt', nome: 'Português', sigla: 'PT' },
-        { cod: 'es', nome: 'Español', sigla: 'ES' },
-        { cod: 'en', nome: 'English', sigla: 'EN' },
-        { cod: 'fr', nome: 'Français', sigla: 'FR' },
-        { cod: 'ht', nome: 'Kreyòl ayisyen', sigla: 'HT' },
-        { cod: 'ar', nome: 'العربية', sigla: 'AR' },
-        { cod: 'fa', nome: 'فارسی', sigla: 'FA' },
-        { cod: 'ru', nome: 'Русский', sigla: 'RU' },
-        { cod: 'uk', nome: 'Українська', sigla: 'UK' },
-        { cod: 'zh-CN', nome: '中文', sigla: 'ZH' },
-        { cod: 'hi', nome: 'हिन्दी', sigla: 'HI' },
-        { cod: 'it', nome: 'Italiano', sigla: 'IT' },
-        { cod: 'de', nome: 'Deutsch', sigla: 'DE' },
-        { cod: 'tr', nome: 'Türkçe', sigla: 'TR' },
-        { cod: 'sw', nome: 'Kiswahili', sigla: 'SW' },
-        { cod: 'ln', nome: 'Lingála', sigla: 'LN' },
-        { cod: 'qu', nome: 'Runa Simi', sigla: 'QU' },
-        { cod: 'gn', nome: 'Avañe\'ẽ', sigla: 'GN' },
+        { cod: 'pt', pt: 'Português', es: 'Portugués', sigla: 'PT' },
+        { cod: 'es', pt: 'Espanhol', es: 'Español', sigla: 'ES' },
+        { cod: 'en', pt: 'Inglês', es: 'Inglés', sigla: 'EN' },
+        { cod: 'fr', pt: 'Francês', es: 'Francés', sigla: 'FR' },
+        { cod: 'ht', pt: 'Crioulo haitiano', es: 'Criollo haitiano', sigla: 'HT' },
+        { cod: 'ar', pt: 'Árabe', es: 'Árabe', sigla: 'AR' },
+        { cod: 'fa', pt: 'Persa', es: 'Persa', sigla: 'FA' },
+        { cod: 'ru', pt: 'Russo', es: 'Ruso', sigla: 'RU' },
+        { cod: 'uk', pt: 'Ucraniano', es: 'Ucraniano', sigla: 'UK' },
+        { cod: 'zh-CN', pt: 'Chinês', es: 'Chino', sigla: 'ZH' },
+        { cod: 'hi', pt: 'Hindi', es: 'Hindi', sigla: 'HI' },
+        { cod: 'it', pt: 'Italiano', es: 'Italiano', sigla: 'IT' },
+        { cod: 'de', pt: 'Alemão', es: 'Alemán', sigla: 'DE' },
+        { cod: 'tr', pt: 'Turco', es: 'Turco', sigla: 'TR' },
+        { cod: 'sw', pt: 'Suaíli', es: 'Suajili', sigla: 'SW' },
+        { cod: 'ln', pt: 'Lingala', es: 'Lingala', sigla: 'LN' },
+        { cod: 'qu', pt: 'Quíchua', es: 'Quechua', sigla: 'QU' },
+        { cod: 'gn', pt: 'Guarani', es: 'Guaraní', sigla: 'GN' },
     ];
     const MANUAIS = ['pt', 'es'];
     const raiz = document.documentElement;
@@ -51,7 +51,9 @@
     let escolhaAtual = escolha; // muda sem recarregar só entre PT e ES
     const automatico = !MANUAIS.includes(escolha);
     raiz.dataset.idioma = automatico ? 'pt' : escolha; // a tradução automática parte do português
-    raiz.lang = escolha === 'pt' ? 'pt-BR' : escolha;
+    // Na tradução automática a página continua marcada como português:
+    // o tradutor do Google lê esse atributo para saber de qual língua traduzir.
+    raiz.lang = escolha === 'es' ? 'es' : 'pt-BR';
     if (automatico) raiz.classList.add('traducao-automatica');
 
     // ---------- Tradutor do Google (idiomas que não são PT/ES) ----------
@@ -67,17 +69,46 @@
         cookieTraducao(escolha);
         window.cmIniciarTradutor = function () {
             new google.translate.TranslateElement({ pageLanguage: 'pt', autoDisplay: false }, 'cm-tradutor');
+            // Além do cookie, escolhe o idioma na caixa do próprio tradutor
+            let tentativas = 0;
+            const escolherNaCaixa = setInterval(() => {
+                const caixa = document.querySelector('select.goog-te-combo');
+                if (caixa && caixa.options.length > 1) {
+                    clearInterval(escolherNaCaixa);
+                    if (caixa.value !== escolha) {
+                        caixa.value = escolha;
+                        caixa.dispatchEvent(new Event('change'));
+                    }
+                } else if (++tentativas > 40) {
+                    clearInterval(escolherNaCaixa);
+                }
+            }, 250);
         };
         document.addEventListener('DOMContentLoaded', () => {
             const caixa = document.createElement('div');
             caixa.id = 'cm-tradutor';
-            caixa.hidden = true;
+            caixa.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none';
             document.body.appendChild(caixa);
             const s = document.createElement('script');
             s.src = 'https://translate.google.com/translate_a/element.js?cb=cmIniciarTradutor';
+            s.onerror = avisarFalha;
             document.body.appendChild(s);
+            // Se em 10 segundos o tradutor não aparecer, avisa a pessoa
+            setTimeout(() => { if (!document.querySelector('select.goog-te-combo')) avisarFalha(); }, 10000);
         });
-    } else if (document.cookie.includes('googtrans=')) {
+    }
+    function avisarFalha() {
+        if (document.getElementById('cm-aviso-traducao')) return;
+        const aviso = document.createElement('div');
+        aviso.id = 'cm-aviso-traducao';
+        aviso.className = 'aviso-traducao notranslate';
+        aviso.setAttribute('role', 'alert');
+        aviso.innerHTML = `<span>Não foi possível carregar a tradução automática. Verifique a conexão ou escolha Português ou Espanhol.<br><small>Automatic translation could not be loaded.</small></span>
+            <button type="button">Português</button>`;
+        aviso.querySelector('button').addEventListener('click', () => window.I18N.definir('pt'));
+        document.body.appendChild(aviso);
+    }
+    if (!automatico && document.cookie.includes('googtrans=')) {
         cookieTraducao(null);
     }
 
@@ -108,8 +139,8 @@
                 ${ICONE_GLOBO}<span class="globo-sigla"></span>
             </button>
             <ul class="globo-lista" id="${id}" role="listbox" aria-label="Idioma · Language" hidden>
-                ${IDIOMAS.map(i => `<li role="option" tabindex="-1" data-cod="${i.cod}" aria-selected="false"${['ar', 'fa'].includes(i.cod) ? ' dir="rtl"' : ''}>
-                    <span>${i.nome}</span>${MANUAIS.includes(i.cod) ? '' : '<small>auto</small>'}
+                ${IDIOMAS.map(i => `<li role="option" tabindex="-1" data-cod="${i.cod}" aria-selected="false">
+                    <span class="globo-nome">${i.pt}</span>${MANUAIS.includes(i.cod) ? '' : '<small>auto</small>'}
                 </li>`).join('')}
             </ul>`;
         const botao = alvo.querySelector('.globo-botao');
@@ -141,7 +172,11 @@
         document.querySelectorAll('.globo').forEach(g => {
             const sigla = g.querySelector('.globo-sigla');
             if (sigla) sigla.textContent = atual.sigla;
-            g.querySelectorAll('li[data-cod]').forEach(li => li.setAttribute('aria-selected', li.dataset.cod === escolhaAtual));
+            g.querySelectorAll('li[data-cod]').forEach(li => {
+                li.setAttribute('aria-selected', li.dataset.cod === escolhaAtual);
+                const idioma = IDIOMAS.find(i => i.cod === li.dataset.cod);
+                li.querySelector('.globo-nome').textContent = raiz.dataset.idioma === 'es' ? idioma.es : idioma.pt;
+            });
         });
     }
 
@@ -162,7 +197,7 @@
             }
             escolhaAtual = cod;
             raiz.dataset.idioma = cod;
-            raiz.lang = cod === 'pt' ? 'pt-BR' : cod;
+            raiz.lang = cod === 'es' ? 'es' : 'pt-BR';
             aplicar();
             ouvintes.forEach(fn => fn(cod));
         },
