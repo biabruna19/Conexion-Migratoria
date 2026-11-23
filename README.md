@@ -1,13 +1,31 @@
 <div align="center">
-  <img src="img/logo-branca-conexion-migratoria.png" width="260" alt="Conexión Migratoria">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="img/logo-branca-conexion-migratoria.png">
+    <img src="docs/logo-azul.png" width="260" alt="Conexión Migratoria">
+  </picture>
 
   # Conexión Migratoria
 
-  **O seu portal de apoio para começar uma nova vida no Brasil.**
+  **O seu portal de apoio para começar uma nova vida no Brasil.**<br>
   *Tu portal de apoyo para empezar una nueva vida en Brasil.*
 
-  [**Acessar o site →**](https://biabruna19.github.io/Conexion-Migratoria/)
+  <a href="https://biabruna19.github.io/Conexion-Migratoria/"><img src="https://img.shields.io/badge/Ver_o_site_funcionando-1AAADF?style=for-the-badge&logo=githubpages&logoColor=white" alt="Ver o site funcionando"></a>
+
+  🔗 **https://biabruna19.github.io/Conexion-Migratoria/**
+
+  ![HTML5](https://img.shields.io/badge/HTML5-053344?style=flat-square&logo=html5&logoColor=white)
+  ![CSS3](https://img.shields.io/badge/CSS3-0E5C79?style=flat-square&logo=css3&logoColor=white)
+  ![JavaScript](https://img.shields.io/badge/JavaScript-1AAADF?style=flat-square&logo=javascript&logoColor=white)
+  ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-053344?style=flat-square&logo=githubpages&logoColor=white)
 </div>
+
+<br>
+
+<p align="center">
+  <a href="https://biabruna19.github.io/Conexion-Migratoria/"><img src="docs/preview.webp" width="90%" alt="Página inicial do Conexión Migratoria"></a>
+</p>
+
+> 💡 **Para testar:** abra o site, clique em **Entrar** e escolha **"entrar como visitante"**. Não é preciso criar conta. Use o botão **PT/ES** no topo para trocar o idioma.
 
 ---
 
@@ -24,6 +42,10 @@ O movimento migratório cresce em várias partes do mundo. O Conexión Migratori
 - 🌐 **Português e espanhol**: textos escritos à mão nos dois idiomas, sem tradução automática.
 - 👤 **Conta e perfil**: cadastro, login, recuperação de senha, edição de dados e foto de perfil.
 - 📱 **Responsivo e acessível**: menu mobile, navegação por teclado (inclusive no mapa) e suporte a quem prefere menos animações.
+
+## 🗺️ Mapa interativo
+
+<p align="center"><img src="docs/preview-mapa.webp" width="90%" alt="Mapa interativo com busca e filtro por região"></p>
 
 ## 🧪 Modo demonstração
 
@@ -63,6 +85,7 @@ O site roda **100% no GitHub Pages, sem servidor e sem banco de dados**, para qu
 │   ├── conta.js          # Login, cadastro e recuperação de senha
 │   └── perfil.js         # Página de perfil
 ├── img/                  # Logotipo, ícone do site e avatar padrão
+├── docs/                 # Imagens usadas neste README
 └── imgs-estado/          # Fotos dos estados (WebP)
 ```
 
