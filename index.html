@@ -23,27 +23,27 @@
             <div>
                 <span class="sobretitulo"><span lang="pt">Portal de acolhimento ao imigrante</span><span lang="es">Portal de acogida al inmigrante</span></span>
                 <h1>
-                    <span lang="pt">Seu novo começo no Brasil, com <em>informação</em> que acolhe.</span>
-                    <span lang="es">Tu nuevo comienzo en Brasil, con <em>información</em> que acoge.</span>
+                    <span class="saudacao" data-saudacao="Bem-vindo|Bienvenido|Welcome|Bienvenue|Byenveni|Benvenuto|Willkommen|Bem-vinda">Bem-vindo</span><br>
+                    <span lang="pt">ao Brasil.</span><span lang="es">a Brasil.</span>
                 </h1>
                 <p class="hero-lead">
-                    <span lang="pt">O movimento migratório cresce em todo o mundo. Aqui reunimos o que você precisa para se familiarizar com o Brasil: cultura de cada estado, documentos, trabalho, cursos e onde pedir ajuda.</span>
-                    <span lang="es">El movimiento migratorio crece en todo el mundo. Aquí reunimos lo que necesitas para familiarizarte con Brasil: la cultura de cada estado, documentos, trabajo, cursos y dónde pedir ayuda.</span>
+                    <span lang="pt">Um guia para os seus primeiros passos: conheça os estados, organize seus documentos e encontre ajuda.</span>
+                    <span lang="es">Una guía para tus primeros pasos: conoce los estados, organiza tus documentos y encuentra ayuda.</span>
                 </p>
                 <div class="hero-acoes">
                     <a class="botao botao-primario" href="#mapa"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3z"/><path d="M9 3v15M15 6v15"/></svg><span lang="pt">Explorar o mapa</span><span lang="es">Explorar el mapa</span></a>
                     <a class="botao botao-contorno" href="./contatos.html"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span lang="pt">Contatos úteis</span><span lang="es">Contactos útiles</span></a>
                 </div>
                 <div class="hero-numeros">
-                    <div><strong>27</strong><span lang="pt">estados para conhecer</span><span lang="es">estados para conocer</span></div>
-                    <div><strong>4</strong><span lang="pt">áreas de apoio</span><span lang="es">áreas de apoyo</span></div>
-                    <div><strong>2</strong><span lang="pt">idiomas</span><span lang="es">idiomas</span></div>
+                    <div><strong data-contar="27">27</strong><span lang="pt">estados para conhecer</span><span lang="es">estados para conocer</span></div>
+                    <div><strong data-contar="5">5</strong><span lang="pt">guias práticos</span><span lang="es">guías prácticas</span></div>
+                    <div><strong data-contar="2">2</strong><span lang="pt">idiomas</span><span lang="es">idiomas</span></div>
                 </div>
             </div>
-            <div class="mosaico">
-                <figure><img src="./imgs-estado/img1rj-rj.webp" alt="" fetchpriority="high"><figcaption>Rio de Janeiro</figcaption></figure>
-                <figure><img src="./imgs-estado/img1ba-ba.webp" alt=""><figcaption>Bahia</figcaption></figure>
-                <figure><img src="./imgs-estado/img1am-am.webp" alt=""><figcaption>Amazonas</figcaption></figure>
+            <div class="mosaico" data-mosaico="RJ,BA,AM,SP,PE,PR,MG,CE,SC,DF,PA,RS,MS,MA,RN,GO">
+                <figure><img src="./imgs-estado/img1rj-rj.webp" alt="" fetchpriority="high"><figcaption><a href="./pg-estados.html?uf=RJ"><span>Rio de Janeiro</span></a></figcaption></figure>
+                <figure><img src="./imgs-estado/img1ba-ba.webp" alt=""><figcaption><a href="./pg-estados.html?uf=BA"><span>Bahia</span></a></figcaption></figure>
+                <figure><img src="./imgs-estado/img1am-am.webp" alt=""><figcaption><a href="./pg-estados.html?uf=AM"><span>Amazonas</span></a></figcaption></figure>
                 <div class="selo">
                     <span class="icone-redondo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg></span>
                     <span><strong><span lang="pt">Português e espanhol</span><span lang="es">Portugués y español</span></strong><br><span lang="pt">Textos escritos para você</span><span lang="es">Textos escritos para ti</span></span>
@@ -57,34 +57,68 @@
         <div class="container">
             <div class="cabecalho-secao">
                 <span class="sobretitulo"><span lang="pt">O que oferecemos</span><span lang="es">Lo que ofrecemos</span></span>
-                <h2><span lang="pt">Tudo o que você precisa para os primeiros passos</span><span lang="es">Todo lo que necesitas para tus primeros pasos</span></h2>
-                <p><span lang="pt">Informações sobre cultura, leis, documentos, infraestrutura e lazer, com dicas práticas para tornar sua adaptação mais tranquila.</span><span lang="es">Información sobre cultura, leyes, documentos, infraestructura y ocio, con consejos prácticos para que tu adaptación sea más tranquila.</span></p>
+                <h2><span lang="pt">Tudo num só lugar</span><span lang="es">Todo en un solo lugar</span></h2>
             </div>
             <div class="grade grade-4">
                 <a class="cartao cartao-servico revelar" href="./leis.html">
                     <span class="icone-redondo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></span>
                     <h3><span lang="pt">Leis e documentos</span><span lang="es">Leyes y documentos</span></h3>
-                    <p><span lang="pt">CPF, carteira de trabalho, CRNM, refúgio e naturalização: o que é cada documento e como obter.</span><span lang="es">CPF, libreta de trabajo, CRNM, refugio y naturalización: qué es cada documento y cómo obtenerlo.</span></p>
+                    <p><span lang="pt">CPF, CRNM, carteira de trabalho e refúgio.</span><span lang="es">CPF, CRNM, libreta de trabajo y refugio.</span></p>
                     <span class="link-seta"><span lang="pt">Ver guia</span><span lang="es">Ver guía</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                 </a>
                 <a class="cartao cartao-servico revelar" href="./pg-empregos.html">
                     <span class="icone-redondo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
                     <h3><span lang="pt">Empregabilidade</span><span lang="es">Empleo</span></h3>
-                    <p><span lang="pt">Dicas para montar o currículo, se preparar para entrevistas e usar o LinkedIn a seu favor.</span><span lang="es">Consejos para armar tu currículum, prepararte para entrevistas y aprovechar LinkedIn.</span></p>
+                    <p><span lang="pt">Currículo, entrevista e LinkedIn.</span><span lang="es">Currículum, entrevista y LinkedIn.</span></p>
                     <span class="link-seta"><span lang="pt">Ver dicas</span><span lang="es">Ver consejos</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                 </a>
                 <a class="cartao cartao-servico revelar" href="./pg-cursos.html">
                     <span class="icone-redondo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
                     <h3><span lang="pt">Cursos</span><span lang="es">Cursos</span></h3>
-                    <p><span lang="pt">Videoaulas de português do básico ao avançado e ONGs que oferecem cursos gratuitos.</span><span lang="es">Videoclases de portugués del nivel básico al avanzado y ONG que ofrecen cursos gratuitos.</span></p>
+                    <p><span lang="pt">Português do básico ao avançado.</span><span lang="es">Portugués del básico al avanzado.</span></p>
                     <span class="link-seta"><span lang="pt">Ver cursos</span><span lang="es">Ver cursos</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                 </a>
                 <a class="cartao cartao-servico revelar" href="./contatos.html">
                     <span class="icone-redondo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
                     <h3><span lang="pt">Contatos úteis</span><span lang="es">Contactos útiles</span></h3>
-                    <p><span lang="pt">Emergências, Polícia Federal, Defensoria Pública, ACNUR e organizações de apoio em cada região.</span><span lang="es">Emergencias, Policía Federal, Defensoría Pública, ACNUR y organizaciones de apoyo en cada región.</span></p>
+                    <p><span lang="pt">Emergências e onde pedir ajuda.</span><span lang="es">Emergencias y dónde pedir ayuda.</span></p>
                     <span class="link-seta"><span lang="pt">Ver contatos</span><span lang="es">Ver contactos</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Primeiros passos (checklist) -->
+    <section class="secao" id="primeiros-passos">
+        <div class="container">
+            <div class="carrossel-cabecalho">
+                <div class="cabecalho-secao">
+                    <span class="sobretitulo"><span lang="pt">Por onde começar?</span><span lang="es">¿Por dónde empezar?</span></span>
+                    <h2><span lang="pt">Seus primeiros passos</span><span lang="es">Tus primeros pasos</span></h2>
+                    <p><span lang="pt">Marque o que você já fez. Seu progresso fica salvo.</span><span lang="es">Marca lo que ya hiciste. Tu progreso queda guardado.</span></p>
+                </div>
+            </div>
+            <div class="progresso revelar" data-progresso="primeiros-passos" style="margin-bottom: 20px">
+                <div class="progresso-topo">
+                    <span><span lang="pt">Seu progresso</span><span lang="es">Tu progreso</span></span>
+                    <span><span class="contagem" data-feitos>0</span> / <span data-total>6</span></span>
+                </div>
+                <div class="progresso-barra"><span></span></div>
+                <p class="parabens"><span lang="pt">Parabéns! Você completou os primeiros passos. 🎉</span><span lang="es">¡Felicitaciones! Completaste los primeros pasos. 🎉</span></p>
+            </div>
+            <div class="passos-grade" data-checklist="primeiros-passos">
+                <label class="item-check revelar"><input type="checkbox" value="crnm"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span><strong><span lang="pt">Pedir a CRNM</span><span lang="es">Solicitar la CRNM</span></strong><p><span lang="pt">Na Polícia Federal.</span><span lang="es">En la Policía Federal.</span></p><a href="./leis.html#primeiros-passos"><span lang="pt">Como fazer</span><span lang="es">Cómo hacerlo</span></a></span></label>
+                <label class="item-check revelar"><input type="checkbox" value="cpf"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span><strong><span lang="pt">Tirar o CPF</span><span lang="es">Obtener el CPF</span></strong><p><span lang="pt">Na Receita Federal.</span><span lang="es">En la Receita Federal.</span></p><a href="./leis.html#documentos"><span lang="pt">Como fazer</span><span lang="es">Cómo hacerlo</span></a></span></label>
+                <label class="item-check revelar"><input type="checkbox" value="sus"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span><strong><span lang="pt">Fazer o Cartão SUS</span><span lang="es">Sacar la Tarjeta SUS</span></strong><p><span lang="pt">Saúde pública gratuita.</span><span lang="es">Salud pública gratuita.</span></p><a href="./leis.html#documentos"><span lang="pt">Como fazer</span><span lang="es">Cómo hacerlo</span></a></span></label>
+                <label class="item-check revelar"><input type="checkbox" value="ctps"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span><strong><span lang="pt">Carteira de Trabalho</span><span lang="es">Libreta de Trabajo</span></strong><p><span lang="pt">Para o emprego formal.</span><span lang="es">Para el empleo formal.</span></p><a href="./leis.html#documentos"><span lang="pt">Como fazer</span><span lang="es">Cómo hacerlo</span></a></span></label>
+                <label class="item-check revelar"><input type="checkbox" value="curriculo"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span><strong><span lang="pt">Montar o currículo</span><span lang="es">Armar el currículum</span></strong><p><span lang="pt">No padrão brasileiro.</span><span lang="es">En el formato brasileño.</span></p><a href="./pg-empregos.html"><span lang="pt">Ver dicas</span><span lang="es">Ver consejos</span></a></span></label>
+                <label class="item-check revelar"><input type="checkbox" value="portugues"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    <span><strong><span lang="pt">Começar o português</span><span lang="es">Empezar el portugués</span></strong><p><span lang="pt">Aulas gratuitas.</span><span lang="es">Clases gratuitas.</span></p><a href="./pg-cursos.html"><span lang="pt">Ver cursos</span><span lang="es">Ver cursos</span></a></span></label>
             </div>
         </div>
     </section>
@@ -95,7 +129,7 @@
             <div class="cabecalho-secao">
                 <span class="sobretitulo"><span lang="pt">Mapa interativo</span><span lang="es">Mapa interactivo</span></span>
                 <h2><span lang="pt">Conheça o estado onde você vai morar</span><span lang="es">Conoce el estado donde vas a vivir</span></h2>
-                <p><span lang="pt">Busque pelo nome, filtre por região ou toque no mapa para ver cultura, pontos turísticos, saúde, ensino e as cidades mais bem localizadas.</span><span lang="es">Busca por nombre, filtra por región o toca el mapa para ver cultura, lugares turísticos, salud, educación y las ciudades mejor ubicadas.</span></p>
+                <p><span lang="pt">Toque num estado, busque pelo nome ou deixe a gente escolher um para você.</span><span lang="es">Toca un estado, búscalo por nombre o deja que elijamos uno por ti.</span></p>
             </div>
 
             <div class="mapa-grade">
@@ -115,6 +149,7 @@
                             <button type="button" data-regiao="centro-oeste" aria-pressed="false"><span lang="pt">Centro-Oeste</span><span lang="es">Centro-Oeste</span></button>
                             <button type="button" data-regiao="sudeste" aria-pressed="false"><span lang="pt">Sudeste</span><span lang="es">Sureste</span></button>
                             <button type="button" data-regiao="sul" aria-pressed="false"><span lang="pt">Sul</span><span lang="es">Sur</span></button>
+                            <button type="button" class="surpresa" id="estadoSurpresa"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg><span lang="pt">Me surpreenda</span><span lang="es">Sorpréndeme</span></button>
                         </div>
                     </div>
                     <div class="mapa-svg" id="mapaSvg">
@@ -168,41 +203,172 @@
         <div class="tooltip" id="tooltip" role="presentation"></div>
     </section>
 
-    <!-- Notícias -->
-    <section class="secao" id="noticias">
+    <!-- Português do dia a dia -->
+    <section class="secao secao-papel" id="portugues">
         <div class="container">
             <div class="cabecalho-secao">
-                <span class="sobretitulo"><span lang="pt">Notícias</span><span lang="es">Noticias</span></span>
-                <h2><span lang="pt">O que está acontecendo em 2026</span><span lang="es">Lo que está pasando en 2026</span></h2>
-                <p><span lang="pt">Uma seleção de notícias recentes sobre migração e refúgio no Brasil.</span><span lang="es">Una selección de noticias recientes sobre migración y refugio en Brasil. <em>(Las noticias están en portugués.)</em></span></p>
+                <span class="sobretitulo"><span lang="pt">Português do dia a dia</span><span lang="es">Portugués del día a día</span></span>
+                <h2><span lang="pt">Aprenda uma frase agora</span><span lang="es">Aprende una frase ahora</span></h2>
+                <p><span lang="pt">Toque no cartão para ver a tradução e no alto-falante para ouvir a pronúncia.</span><span lang="es">Toca la tarjeta para ver la traducción y el altavoz para escuchar la pronunciación.</span></p>
             </div>
-            <div class="noticias">
-                <a class="noticia revelar" href="https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-04/brasil-abriga-mais-de-2-milhoes-de-imigrantes-refugiados" target="_blank" rel="noopener">
-                    <span class="meta"><span>Agência Brasil</span><span lang="pt">Abril de 2026</span><span lang="es">Abril de 2026</span></span>
-                    <h3><span lang="pt">Brasil abriga mais de 2 milhões de imigrantes e refugiados</span><span lang="es">Brasil acoge a más de 2 millones de inmigrantes y refugiados</span></h3>
-                    <p><span lang="pt">Relatório do Observatório das Migrações (OBMigra) mostra que cerca de 415 mil migrantes e refugiados têm emprego formal no país, e aponta os desafios de integração.</span><span lang="es">Un informe del Observatorio de las Migraciones (OBMigra) muestra que unas 415 mil personas migrantes y refugiadas tienen empleo formal en el país, y señala los desafíos de integración.</span></p>
-                    <span class="link-seta"><span lang="pt">Ler notícia</span><span lang="es">Leer noticia</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
-                </a>
-                <a class="noticia revelar" href="https://www12.senado.leg.br/noticias/audios/2026/10/sistema-unico-de-assistencia-social-podera-acolher-migrantes-e-refugiados" target="_blank" rel="noopener">
-                    <span class="meta"><span>Senado Notícias</span><span lang="pt">Outubro de 2026</span><span lang="es">Octubre de 2026</span></span>
-                    <h3><span lang="pt">Projeto quer garantir acesso de migrantes e refugiados à assistência social (SUAS)</span><span lang="es">Un proyecto busca garantizar el acceso de migrantes y refugiados a la asistencia social (SUAS)</span></h3>
-                    <span class="link-seta"><span lang="pt">Ler notícia</span><span lang="es">Leer noticia</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
-                </a>
-                <a class="noticia revelar" href="https://www.acnur.org/br/noticias/notas-informativas/oito-anos-da-operacao-acolhida-no-brasil" target="_blank" rel="noopener">
-                    <span class="meta"><span>ACNUR</span><span lang="pt">Fevereiro de 2026</span><span lang="es">Febrero de 2026</span></span>
-                    <h3><span lang="pt">Oito anos da Operação Acolhida: mais de 157 mil pessoas interiorizadas</span><span lang="es">Ocho años de la Operación Acogida: más de 157 mil personas reubicadas</span></h3>
-                    <span class="link-seta"><span lang="pt">Ler notícia</span><span lang="es">Leer noticia</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
-                </a>
-                <a class="noticia revelar" href="https://scalabrinianos.com/brasil-recebeu-mais-de-34-mil-refugiados-no-primeiro-semestre-de-2026/" target="_blank" rel="noopener">
-                    <span class="meta"><span>Scalabrinianos</span><span lang="pt">2026</span><span lang="es">2026</span></span>
-                    <h3><span lang="pt">Brasil recebeu mais de 34 mil solicitantes de refúgio no 1º semestre</span><span lang="es">Brasil recibió más de 34 mil solicitantes de refugio en el primer semestre</span></h3>
-                    <span class="link-seta"><span lang="pt">Ler notícia</span><span lang="es">Leer noticia</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
-                </a>
-                <a class="noticia revelar" href="https://www.otempo.com.br/brasil/2026/5/6/brasil-registra-mais-de-2-milhoes-de-migrantes-e-refugiados-415-mil-estao-no-mercado-formal" target="_blank" rel="noopener">
-                    <span class="meta"><span>O Tempo</span><span lang="pt">Maio de 2026</span><span lang="es">Mayo de 2026</span></span>
-                    <h3><span lang="pt">Trabalhadores migrantes no mercado formal cresceram 54% entre 2023 e 2025</span><span lang="es">Los trabajadores migrantes en el mercado formal crecieron un 54% entre 2023 y 2025</span></h3>
-                    <span class="link-seta"><span lang="pt">Ler notícia</span><span lang="es">Leer noticia</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
-                </a>
+            <div class="flashcards">
+                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Olá!" data-es-aria-label="Girar tarjeta: Olá!">
+                    <div class="flashcard-interno">
+                        <div class="flashcard-face flashcard-frente">
+                            <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
+                            <span class="frase">Olá!</span>
+                            <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Olá!" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
+                        </div>
+                        <div class="flashcard-face flashcard-verso">
+                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
+                            <span class="frase">¡Hola!</span>
+                            <span class="rodape-card"><span lang="pt">Para cumprimentar</span><span lang="es">Para saludar</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Obrigado / Obrigada" data-es-aria-label="Girar tarjeta: Obrigado / Obrigada">
+                    <div class="flashcard-interno">
+                        <div class="flashcard-face flashcard-frente">
+                            <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
+                            <span class="frase">Obrigado / Obrigada</span>
+                            <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Obrigado / Obrigada" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
+                        </div>
+                        <div class="flashcard-face flashcard-verso">
+                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
+                            <span class="frase">Gracias</span>
+                            <span class="rodape-card"><span lang="pt">Homem diz "obrigado", mulher diz "obrigada"</span><span lang="es">El hombre dice "obrigado", la mujer "obrigada"</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Com licença" data-es-aria-label="Girar tarjeta: Com licença">
+                    <div class="flashcard-interno">
+                        <div class="flashcard-face flashcard-frente">
+                            <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
+                            <span class="frase">Com licença</span>
+                            <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Com licença" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
+                        </div>
+                        <div class="flashcard-face flashcard-verso">
+                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
+                            <span class="frase">Permiso / Disculpe</span>
+                            <span class="rodape-card"><span lang="pt">Para passar ou chamar alguém</span><span lang="es">Para pasar o llamar a alguien</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Onde fica o posto de saúde?" data-es-aria-label="Girar tarjeta: Onde fica o posto de saúde?">
+                    <div class="flashcard-interno">
+                        <div class="flashcard-face flashcard-frente">
+                            <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
+                            <span class="frase">Onde fica o posto de saúde?</span>
+                            <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Onde fica o posto de saúde?" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
+                        </div>
+                        <div class="flashcard-face flashcard-verso">
+                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
+                            <span class="frase">¿Dónde queda el centro de salud?</span>
+                            <span class="rodape-card"><span lang="pt">Na rua</span><span lang="es">En la calle</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Quanto custa?" data-es-aria-label="Girar tarjeta: Quanto custa?">
+                    <div class="flashcard-interno">
+                        <div class="flashcard-face flashcard-frente">
+                            <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
+                            <span class="frase">Quanto custa?</span>
+                            <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Quanto custa?" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
+                        </div>
+                        <div class="flashcard-face flashcard-verso">
+                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
+                            <span class="frase">¿Cuánto cuesta?</span>
+                            <span class="rodape-card"><span lang="pt">No mercado</span><span lang="es">En el mercado</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Preciso de ajuda" data-es-aria-label="Girar tarjeta: Preciso de ajuda">
+                    <div class="flashcard-interno">
+                        <div class="flashcard-face flashcard-frente">
+                            <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
+                            <span class="frase">Preciso de ajuda</span>
+                            <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Preciso de ajuda" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
+                        </div>
+                        <div class="flashcard-face flashcard-verso">
+                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
+                            <span class="frase">Necesito ayuda</span>
+                            <span class="rodape-card"><span lang="pt">Em qualquer situação</span><span lang="es">En cualquier situación</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Estou procurando emprego" data-es-aria-label="Girar tarjeta: Estou procurando emprego">
+                    <div class="flashcard-interno">
+                        <div class="flashcard-face flashcard-frente">
+                            <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
+                            <span class="frase">Estou procurando emprego</span>
+                            <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Estou procurando emprego" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
+                        </div>
+                        <div class="flashcard-face flashcard-verso">
+                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
+                            <span class="frase">Estoy buscando trabajo</span>
+                            <span class="rodape-card"><span lang="pt">Na entrevista</span><span lang="es">En la entrevista</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Bom dia! Tudo bem?" data-es-aria-label="Girar tarjeta: Bom dia! Tudo bem?">
+                    <div class="flashcard-interno">
+                        <div class="flashcard-face flashcard-frente">
+                            <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
+                            <span class="frase">Bom dia! Tudo bem?</span>
+                            <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Bom dia! Tudo bem?" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
+                        </div>
+                        <div class="flashcard-face flashcard-verso">
+                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
+                            <span class="frase">¡Buenos días! ¿Todo bien?</span>
+                            <span class="rodape-card"><span lang="pt">O jeito brasileiro de dizer oi</span><span lang="es">La forma brasileña de saludar</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 32px"><a class="link-seta" href="./pg-cursos.html"><span lang="pt">Quer mais? Veja os cursos de português</span><span lang="es">¿Quieres más? Mira los cursos de portugués</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+    </section>
+
+    <!-- Notícias -->
+    <section class="secao" id="noticias">
+        <div class="container carrossel" data-carrossel>
+            <div class="carrossel-cabecalho">
+                <div class="cabecalho-secao">
+                    <span class="sobretitulo"><span lang="pt">Notícias</span><span lang="es">Noticias</span></span>
+                    <h2><span lang="pt">O que está acontecendo</span><span lang="es">Lo que está pasando</span></h2>
+                    <p lang="es"><em>Las noticias están en portugués.</em></p>
+                </div>
+                <div class="carrossel-setas">
+                    <button type="button" class="carrossel-seta" data-pt-aria-label="Anteriores" data-es-aria-label="Anteriores"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+                    <button type="button" class="carrossel-seta" data-pt-aria-label="Próximas" data-es-aria-label="Siguientes"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                </div>
+            </div>
+            <div class="carrossel-trilho">
+                    <a class="noticia noticia-card" href="https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-04/brasil-abriga-mais-de-2-milhoes-de-imigrantes-refugiados" target="_blank" rel="noopener">
+                        <span class="meta"><span class="fonte">Agência Brasil</span><span lang="pt">Abr 2026</span><span lang="es">Abr 2026</span></span>
+                        <h3><span lang="pt">Brasil abriga mais de 2 milhões de imigrantes e refugiados</span><span lang="es">Brasil acoge a más de 2 millones de inmigrantes y refugiados</span></h3>
+                        <span class="link-seta"><span lang="pt">Ler notícia</span><span lang="es">Leer noticia</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+                    </a>
+                    <a class="noticia noticia-card" href="https://www12.senado.leg.br/noticias/audios/2026/10/sistema-unico-de-assistencia-social-podera-acolher-migrantes-e-refugiados" target="_blank" rel="noopener">
+                        <span class="meta"><span class="fonte">Senado Notícias</span><span lang="pt">Out 2026</span><span lang="es">Oct 2026</span></span>
+                        <h3><span lang="pt">Projeto quer garantir acesso de migrantes à assistência social (SUAS)</span><span lang="es">Un proyecto busca garantizar el acceso de migrantes a la asistencia social (SUAS)</span></h3>
+                        <span class="link-seta"><span lang="pt">Ler notícia</span><span lang="es">Leer noticia</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+                    </a>
+                    <a class="noticia noticia-card" href="https://www.acnur.org/br/noticias/notas-informativas/oito-anos-da-operacao-acolhida-no-brasil" target="_blank" rel="noopener">
+                        <span class="meta"><span class="fonte">ACNUR</span><span lang="pt">Fev 2026</span><span lang="es">Feb 2026</span></span>
+                        <h3><span lang="pt">Oito anos da Operação Acolhida: mais de 157 mil pessoas interiorizadas</span><span lang="es">Ocho años de la Operación Acogida: más de 157 mil personas reubicadas</span></h3>
+                        <span class="link-seta"><span lang="pt">Ler notícia</span><span lang="es">Leer noticia</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+                    </a>
+                    <a class="noticia noticia-card" href="https://scalabrinianos.com/brasil-recebeu-mais-de-34-mil-refugiados-no-primeiro-semestre-de-2026/" target="_blank" rel="noopener">
+                        <span class="meta"><span class="fonte">Scalabrinianos</span><span lang="pt">2026</span><span lang="es">2026</span></span>
+                        <h3><span lang="pt">Mais de 34 mil pedidos de refúgio no 1º semestre</span><span lang="es">Más de 34 mil solicitudes de refugio en el primer semestre</span></h3>
+                        <span class="link-seta"><span lang="pt">Ler notícia</span><span lang="es">Leer noticia</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+                    </a>
+                    <a class="noticia noticia-card" href="https://www.otempo.com.br/brasil/2026/5/6/brasil-registra-mais-de-2-milhoes-de-migrantes-e-refugiados-415-mil-estao-no-mercado-formal" target="_blank" rel="noopener">
+                        <span class="meta"><span class="fonte">O Tempo</span><span lang="pt">Mai 2026</span><span lang="es">May 2026</span></span>
+                        <h3><span lang="pt">Migrantes no mercado formal cresceram 54% entre 2023 e 2025</span><span lang="es">Los migrantes en el mercado formal crecieron un 54% entre 2023 y 2025</span></h3>
+                        <span class="link-seta"><span lang="pt">Ler notícia</span><span lang="es">Leer noticia</span><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+                    </a>
             </div>
         </div>
     </section>
@@ -224,5 +390,6 @@
 <div id="cm-rodape"></div>
 <script src="./data/estados.js"></script>
 <script src="./js/mapa.js"></script>
+<script src="./js/interacoes.js"></script>
 </body>
 </html>

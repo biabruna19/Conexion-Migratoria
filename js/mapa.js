@@ -77,7 +77,7 @@
     document.body.appendChild(tooltip);
 
     // ---------- Filtro por região ----------
-    const botoesRegiao = document.querySelectorAll('.regioes button');
+    const botoesRegiao = document.querySelectorAll('.regioes button[data-regiao]');
     botoesRegiao.forEach(b => b.addEventListener('click', () => {
         const regiao = b.dataset.regiao;
         botoesRegiao.forEach(x => x.setAttribute('aria-pressed', x === b));
@@ -145,6 +145,17 @@
         if (li) { e.preventDefault(); escolher(li.dataset.uf); }
     });
     busca.addEventListener('blur', () => setTimeout(() => abrirLista(false), 100));
+
+    // "Me surpreenda": escolhe um estado aleatório
+    const surpresa = document.getElementById('estadoSurpresa');
+    if (surpresa) surpresa.addEventListener('click', () => {
+        const opcoes = Object.keys(ESTADOS).filter(uf => uf !== selecionado);
+        const uf = opcoes[Math.floor(Math.random() * opcoes.length)];
+        document.querySelector('.regioes button[data-regiao=""]').click();
+        selecionar(uf, true);
+        const p = caixa.querySelector(`path[data-uf="${uf}"]`);
+        p.classList.remove('pulso'); void p.getBoundingClientRect(); p.classList.add('pulso');
+    });
 
     // Troca de idioma atualiza o painel
     I18N.aoTrocar(() => { mostrarPainel(selecionado); if (!lista.hidden) desenharLista(); });
