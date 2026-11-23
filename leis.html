@@ -38,50 +38,70 @@
             <div>
                 <article class="bloco revelar" id="documentos">
                     <div class="bloco-cabecalho"><span class="icone-redondo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></span><h2><span lang="pt">Documentação necessária</span><span lang="es">Documentación necesaria</span></h2></div>
-                    <p><span lang="pt">Para garantir o direito de permanência no Brasil, é preciso apresentar e regularizar alguns documentos. Este é um resumo dos principais e de como obtê-los:</span><span lang="es">Para garantizar el derecho de permanencia en Brasil, es necesario presentar y regularizar algunos documentos. Este es un resumen de los principales y de cómo obtenerlos:</span></p>
-                    <div class="lista-documentos" style="margin-top: 24px">
-                        <div class="documento">
+                    <p><span lang="pt">Toque em cada documento que você já tem e acompanhe o que falta.</span><span lang="es">Toca cada documento que ya tienes y sigue lo que falta.</span></p>
+                    <div class="progresso" data-progresso="documentos" style="margin-top: 24px">
+                        <div class="progresso-topo">
+                            <span><span lang="pt">Documentos que você já tem</span><span lang="es">Documentos que ya tienes</span></span>
+                            <span><span class="contagem" data-feitos>0</span> / <span data-total>6</span></span>
+                        </div>
+                        <div class="progresso-barra"><span></span></div>
+                        <p class="parabens"><span lang="pt">Tudo pronto! Você tem todos os documentos principais.</span><span lang="es">¡Todo listo! Tienes todos los documentos principales.</span></p>
+                    </div>
+                    <div class="lista-documentos" data-checklist="documentos" style="margin-top: 16px">
+                        <label class="documento">
+                            <input type="checkbox" value="doc1">
+                            <span class="ja-tenho"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span lang="pt">Já tenho</span><span lang="es">Ya lo tengo</span></span>
                             <h3><span lang="pt">Protocolo de solicitação de refúgio</span><span lang="es">Protocolo de solicitud de refugio</span></h3>
                             <ul>
                                 <li><span lang="pt">Solicite na Polícia Federal, apresentando documentos como o passaporte.</span><span lang="es">Solicítalo en la Policía Federal, presentando documentos como el pasaporte.</span></li>
                                 <li><span lang="pt">Você recebe um documento de residência provisória, renovável todo ano.</span><span lang="es">Recibes un documento de residencia provisional, renovable cada año.</span></li>
                             </ul>
-                        </div>
-                        <div class="documento">
+                        </label>
+                        <label class="documento">
+                            <input type="checkbox" value="doc2">
+                            <span class="ja-tenho"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span lang="pt">Já tenho</span><span lang="es">Ya lo tengo</span></span>
                             <h3><span lang="pt">CPF (Cadastro de Pessoa Física)</span><span lang="es">CPF (Registro de Persona Física)</span></h3>
                             <ul>
                                 <li><span lang="pt">Solicite na Receita Federal com passaporte, protocolo de refúgio ou visto.</span><span lang="es">Solicítalo en la Receita Federal con pasaporte, protocolo de refugio o visa.</span></li>
                                 <li><span lang="pt">É necessário para acessar serviços públicos e privados.</span><span lang="es">Es necesario para acceder a servicios públicos y privados.</span></li>
                             </ul>
-                        </div>
-                        <div class="documento">
+                        </label>
+                        <label class="documento">
+                            <input type="checkbox" value="doc3">
+                            <span class="ja-tenho"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span lang="pt">Já tenho</span><span lang="es">Ya lo tengo</span></span>
                             <h3><span lang="pt">Carteira de Trabalho (CTPS)</span><span lang="es">Libreta de Trabajo (CTPS)</span></h3>
                             <ul>
                                 <li><span lang="pt">Solicite depois de ter CPF e documento de residência válido.</span><span lang="es">Solicítala después de tener CPF y un documento de residencia válido.</span></li>
                                 <li><span lang="pt">Permite o emprego formal e o acesso à previdência social.</span><span lang="es">Permite el empleo formal y el acceso a la seguridad social.</span></li>
                             </ul>
-                        </div>
-                        <div class="documento">
+                        </label>
+                        <label class="documento">
+                            <input type="checkbox" value="doc4">
+                            <span class="ja-tenho"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span lang="pt">Já tenho</span><span lang="es">Ya lo tengo</span></span>
                             <h3><span lang="pt">Carteira de Registro Nacional Migratório (CRNM)</span><span lang="es">Cédula de Registro Nacional Migratorio (CRNM)</span></h3>
                             <ul>
                                 <li><span lang="pt">Emitida após a obtenção do visto temporário ou da autorização de residência.</span><span lang="es">Se emite después de obtener la visa temporal o la autorización de residencia.</span></li>
                                 <li><span lang="pt">Funciona como documento de identidade do imigrante.</span><span lang="es">Funciona como documento de identidad del inmigrante.</span></li>
                             </ul>
-                        </div>
-                        <div class="documento">
+                        </label>
+                        <label class="documento">
+                            <input type="checkbox" value="doc5">
+                            <span class="ja-tenho"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span lang="pt">Já tenho</span><span lang="es">Ya lo tengo</span></span>
                             <h3><span lang="pt">Cartão SUS</span><span lang="es">Tarjeta SUS</span></h3>
                             <ul>
                                 <li><span lang="pt">Solicite numa unidade de saúde ou on-line, com o protocolo de refúgio ou documento equivalente.</span><span lang="es">Solicítala en un centro de salud o en línea, con el protocolo de refugio o un documento equivalente.</span></li>
                                 <li><span lang="pt">Garante acesso gratuito à saúde pública.</span><span lang="es">Garantiza acceso gratuito a la salud pública.</span></li>
                             </ul>
-                        </div>
-                        <div class="documento">
+                        </label>
+                        <label class="documento">
+                            <input type="checkbox" value="doc6">
+                            <span class="ja-tenho"><span class="marcador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span lang="pt">Já tenho</span><span lang="es">Ya lo tengo</span></span>
                             <h3><span lang="pt">Documentos de estudo e trabalho</span><span lang="es">Documentos de estudio y trabajo</span></h3>
                             <ul>
                                 <li><span lang="pt">Diplomas e certificados, traduzidos se necessário.</span><span lang="es">Diplomas y certificados, traducidos si es necesario.</span></li>
                                 <li><span lang="pt">Podem ser exigidos em alguns tipos de visto ou autorização de residência.</span><span lang="es">Pueden exigirse en algunos tipos de visa o autorización de residencia.</span></li>
                             </ul>
-                        </div>
+                        </label>
                     </div>
                 </article>
 
@@ -167,5 +187,6 @@
 </main>
 <div id="cm-rodape"></div>
 <script src="./js/componentes.js"></script>
+<script src="./js/interacoes.js"></script>
 </body>
 </html>
