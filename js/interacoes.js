@@ -165,8 +165,9 @@
             botoes.forEach(b => b.setAttribute('aria-pressed', b.dataset.lingua === lingua));
             area.querySelectorAll('[data-traducoes]').forEach(el => {
                 el.textContent = JSON.parse(el.dataset.traducoes)[lingua];
-                el.lang = lingua;
-                el.dir = lingua === 'ar' ? 'rtl' : 'ltr';
+                // "es-ES" (e não "es"): o CSS esconde [lang="es"] quando o site está em português
+                el.setAttribute('lang', lingua === 'es' ? 'es-ES' : lingua);
+                el.classList.toggle('rtl', lingua === 'ar');
             });
             area.querySelectorAll('[data-rotulo-lingua]').forEach(el => { el.textContent = NOMES_LINGUA[lingua]; });
         };
