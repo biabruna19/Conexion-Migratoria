@@ -6,14 +6,13 @@
     <title>Cursos · Conexión Migratoria</title>
     <meta name="theme-color" content="#053344">
     <link rel="icon" href="./img/ico-CM.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/estilo.css">
-    <script src="./js/idioma.js"></script>
-    <script src="./js/demo-store.js"></script>
-    <script>CM.exigirLogin();</script>
+    <link rel="stylesheet" href="./css/estilo.css?v=202611231612">
+    <script src="./js/idioma.js?v=202611231612"></script>
+    <script src="./js/demo-store.js?v=202611231612"></script>
 </head>
 <body>
 <div id="cm-topo"></div>
-<script src="./js/layout.js"></script>
+<script src="./js/layout.js?v=202611231612"></script>
 
 <main id="conteudo">
     <header class="cabecalho-pagina">
@@ -80,8 +79,16 @@
                 <h2><span lang="pt">Frases para o dia a dia</span><span lang="es">Frases para el día a día</span></h2>
                 <p><span lang="pt">Toque para ver a tradução e ouça a pronúncia.</span><span lang="es">Toca para ver la traducción y escucha la pronunciación.</span></p>
             </div>
+            <div class="traduzir-para notranslate" translate="no" role="group" data-traduzir-para>
+                <span><span lang="pt">Traduzir para:</span><span lang="es">Traducir a:</span></span>
+                <button type="button" data-lingua="es" aria-pressed="true">Español</button>
+                <button type="button" data-lingua="en" aria-pressed="false">English</button>
+                <button type="button" data-lingua="fr" aria-pressed="false">Français</button>
+                <button type="button" data-lingua="ht" aria-pressed="false">Kreyòl</button>
+                <button type="button" data-lingua="ar" aria-pressed="false">العربية</button>
+            </div>
             <div class="flashcards">
-                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Meu nome é…" data-es-aria-label="Girar tarjeta: Meu nome é…">
+                <div class="flashcard revelar notranslate" translate="no" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Meu nome é…" data-es-aria-label="Girar tarjeta: Meu nome é…">
                     <div class="flashcard-interno">
                         <div class="flashcard-face flashcard-frente">
                             <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
@@ -89,13 +96,13 @@
                             <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Meu nome é" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
                         </div>
                         <div class="flashcard-face flashcard-verso">
-                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
-                            <span class="frase">Me llamo…</span>
-                            <span class="rodape-card"><span lang="pt">Para se apresentar</span><span lang="es">Para presentarte</span></span>
+                            <span class="rotulo" data-rotulo-lingua>Español</span>
+                            <span class="frase" data-traducoes='{&quot;es&quot;: &quot;Me llamo…&quot;, &quot;en&quot;: &quot;My name is…&quot;, &quot;fr&quot;: &quot;Je m&#x27;appelle…&quot;, &quot;ht&quot;: &quot;Mwen rele…&quot;, &quot;ar&quot;: &quot;اسمي…&quot;}'>Me llamo…</span>
+                            <span class="rodape-card"><span lang="pt">Toque para voltar</span><span lang="es">Toca para volver</span></span>
                         </div>
                     </div>
                 </div>
-                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Eu sou da Venezuela" data-es-aria-label="Girar tarjeta: Eu sou da Venezuela">
+                <div class="flashcard revelar notranslate" translate="no" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Eu sou da Venezuela" data-es-aria-label="Girar tarjeta: Eu sou da Venezuela">
                     <div class="flashcard-interno">
                         <div class="flashcard-face flashcard-frente">
                             <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
@@ -103,13 +110,13 @@
                             <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Eu sou da Venezuela" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
                         </div>
                         <div class="flashcard-face flashcard-verso">
-                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
-                            <span class="frase">Soy de Venezuela</span>
-                            <span class="rodape-card"><span lang="pt">Troque pelo seu país</span><span lang="es">Cambia por tu país</span></span>
+                            <span class="rotulo" data-rotulo-lingua>Español</span>
+                            <span class="frase" data-traducoes='{&quot;es&quot;: &quot;Soy de Venezuela&quot;, &quot;en&quot;: &quot;I&#x27;m from Venezuela&quot;, &quot;fr&quot;: &quot;Je viens du Venezuela&quot;, &quot;ht&quot;: &quot;Mwen soti Venezyela&quot;, &quot;ar&quot;: &quot;أنا من فنزويلا&quot;}'>Soy de Venezuela</span>
+                            <span class="rodape-card"><span lang="pt">Toque para voltar</span><span lang="es">Toca para volver</span></span>
                         </div>
                     </div>
                 </div>
-                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Não entendi. Pode repetir?" data-es-aria-label="Girar tarjeta: Não entendi. Pode repetir?">
+                <div class="flashcard revelar notranslate" translate="no" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Não entendi. Pode repetir?" data-es-aria-label="Girar tarjeta: Não entendi. Pode repetir?">
                     <div class="flashcard-interno">
                         <div class="flashcard-face flashcard-frente">
                             <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
@@ -117,13 +124,13 @@
                             <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Não entendi. Pode repetir?" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
                         </div>
                         <div class="flashcard-face flashcard-verso">
-                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
-                            <span class="frase">No entendí. ¿Puede repetir?</span>
-                            <span class="rodape-card"><span lang="pt">Quando não entender</span><span lang="es">Cuando no entiendas</span></span>
+                            <span class="rotulo" data-rotulo-lingua>Español</span>
+                            <span class="frase" data-traducoes='{&quot;es&quot;: &quot;No entendí. ¿Puede repetir?&quot;, &quot;en&quot;: &quot;I didn&#x27;t understand. Could you repeat?&quot;, &quot;fr&quot;: &quot;Je n&#x27;ai pas compris. Vous pouvez répéter ?&quot;, &quot;ht&quot;: &quot;M pa konprann. Ou ka repete?&quot;, &quot;ar&quot;: &quot;لم أفهم. هل يمكنك التكرار؟&quot;}'>No entendí. ¿Puede repetir?</span>
+                            <span class="rodape-card"><span lang="pt">Toque para voltar</span><span lang="es">Toca para volver</span></span>
                         </div>
                     </div>
                 </div>
-                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Fala mais devagar, por favor" data-es-aria-label="Girar tarjeta: Fala mais devagar, por favor">
+                <div class="flashcard revelar notranslate" translate="no" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Fala mais devagar, por favor" data-es-aria-label="Girar tarjeta: Fala mais devagar, por favor">
                     <div class="flashcard-interno">
                         <div class="flashcard-face flashcard-frente">
                             <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
@@ -131,13 +138,13 @@
                             <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Fala mais devagar, por favor" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
                         </div>
                         <div class="flashcard-face flashcard-verso">
-                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
-                            <span class="frase">Hable más despacio, por favor</span>
-                            <span class="rodape-card"><span lang="pt">Pedir calma na conversa</span><span lang="es">Pedir calma en la conversación</span></span>
+                            <span class="rotulo" data-rotulo-lingua>Español</span>
+                            <span class="frase" data-traducoes='{&quot;es&quot;: &quot;Hable más despacio, por favor&quot;, &quot;en&quot;: &quot;Please speak more slowly&quot;, &quot;fr&quot;: &quot;Parlez plus lentement, s&#x27;il vous plaît&quot;, &quot;ht&quot;: &quot;Pale pi dousman, tanpri&quot;, &quot;ar&quot;: &quot;تكلّم ببطء من فضلك&quot;}'>Hable más despacio, por favor</span>
+                            <span class="rodape-card"><span lang="pt">Toque para voltar</span><span lang="es">Toca para volver</span></span>
                         </div>
                     </div>
                 </div>
-                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Onde fica o ponto de ônibus?" data-es-aria-label="Girar tarjeta: Onde fica o ponto de ônibus?">
+                <div class="flashcard revelar notranslate" translate="no" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Onde fica o ponto de ônibus?" data-es-aria-label="Girar tarjeta: Onde fica o ponto de ônibus?">
                     <div class="flashcard-interno">
                         <div class="flashcard-face flashcard-frente">
                             <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
@@ -145,13 +152,13 @@
                             <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Onde fica o ponto de ônibus?" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
                         </div>
                         <div class="flashcard-face flashcard-verso">
-                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
-                            <span class="frase">¿Dónde queda la parada de autobús?</span>
-                            <span class="rodape-card"><span lang="pt">Transporte</span><span lang="es">Transporte</span></span>
+                            <span class="rotulo" data-rotulo-lingua>Español</span>
+                            <span class="frase" data-traducoes='{&quot;es&quot;: &quot;¿Dónde queda la parada de autobús?&quot;, &quot;en&quot;: &quot;Where is the bus stop?&quot;, &quot;fr&quot;: &quot;Où est l&#x27;arrêt de bus ?&quot;, &quot;ht&quot;: &quot;Kote estasyon bis la ye?&quot;, &quot;ar&quot;: &quot;أين موقف الحافلات؟&quot;}'>¿Dónde queda la parada de autobús?</span>
+                            <span class="rodape-card"><span lang="pt">Toque para voltar</span><span lang="es">Toca para volver</span></span>
                         </div>
                     </div>
                 </div>
-                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Qual é o seu telefone?" data-es-aria-label="Girar tarjeta: Qual é o seu telefone?">
+                <div class="flashcard revelar notranslate" translate="no" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Qual é o seu telefone?" data-es-aria-label="Girar tarjeta: Qual é o seu telefone?">
                     <div class="flashcard-interno">
                         <div class="flashcard-face flashcard-frente">
                             <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
@@ -159,13 +166,13 @@
                             <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Qual é o seu telefone?" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
                         </div>
                         <div class="flashcard-face flashcard-verso">
-                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
-                            <span class="frase">¿Cuál es tu teléfono?</span>
-                            <span class="rodape-card"><span lang="pt">Para trocar contato</span><span lang="es">Para intercambiar contacto</span></span>
+                            <span class="rotulo" data-rotulo-lingua>Español</span>
+                            <span class="frase" data-traducoes='{&quot;es&quot;: &quot;¿Cuál es tu teléfono?&quot;, &quot;en&quot;: &quot;What&#x27;s your phone number?&quot;, &quot;fr&quot;: &quot;Quel est ton numéro de téléphone ?&quot;, &quot;ht&quot;: &quot;Ki nimewo telefòn ou?&quot;, &quot;ar&quot;: &quot;ما رقم هاتفك؟&quot;}'>¿Cuál es tu teléfono?</span>
+                            <span class="rodape-card"><span lang="pt">Toque para voltar</span><span lang="es">Toca para volver</span></span>
                         </div>
                     </div>
                 </div>
-                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Estou com dor" data-es-aria-label="Girar tarjeta: Estou com dor">
+                <div class="flashcard revelar notranslate" translate="no" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Estou com dor" data-es-aria-label="Girar tarjeta: Estou com dor">
                     <div class="flashcard-interno">
                         <div class="flashcard-face flashcard-frente">
                             <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
@@ -173,13 +180,13 @@
                             <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Estou com dor" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
                         </div>
                         <div class="flashcard-face flashcard-verso">
-                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
-                            <span class="frase">Tengo dolor</span>
-                            <span class="rodape-card"><span lang="pt">No médico</span><span lang="es">En el médico</span></span>
+                            <span class="rotulo" data-rotulo-lingua>Español</span>
+                            <span class="frase" data-traducoes='{&quot;es&quot;: &quot;Tengo dolor&quot;, &quot;en&quot;: &quot;I&#x27;m in pain&quot;, &quot;fr&quot;: &quot;J&#x27;ai mal&quot;, &quot;ht&quot;: &quot;Mwen gen doulè&quot;, &quot;ar&quot;: &quot;أشعر بألم&quot;}'>Tengo dolor</span>
+                            <span class="rodape-card"><span lang="pt">Toque para voltar</span><span lang="es">Toca para volver</span></span>
                         </div>
                     </div>
                 </div>
-                <div class="flashcard revelar" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Até amanhã!" data-es-aria-label="Girar tarjeta: Até amanhã!">
+                <div class="flashcard revelar notranslate" translate="no" tabindex="0" role="button" data-pt-aria-label="Virar cartão: Até amanhã!" data-es-aria-label="Girar tarjeta: Até amanhã!">
                     <div class="flashcard-interno">
                         <div class="flashcard-face flashcard-frente">
                             <span class="rotulo"><span lang="pt">Em português</span><span lang="es">En portugués</span></span>
@@ -187,9 +194,9 @@
                             <span class="rodape-card"><span><span lang="pt">Toque para traduzir</span><span lang="es">Toca para traducir</span></span><button type="button" class="botao-ouvir" data-falar="Até amanhã!" data-pt-aria-label="Ouvir" data-es-aria-label="Escuchar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button></span>
                         </div>
                         <div class="flashcard-face flashcard-verso">
-                            <span class="rotulo"><span lang="pt">Em espanhol</span><span lang="es">En español</span></span>
-                            <span class="frase">¡Hasta mañana!</span>
-                            <span class="rodape-card"><span lang="pt">Para se despedir</span><span lang="es">Para despedirte</span></span>
+                            <span class="rotulo" data-rotulo-lingua>Español</span>
+                            <span class="frase" data-traducoes='{&quot;es&quot;: &quot;¡Hasta mañana!&quot;, &quot;en&quot;: &quot;See you tomorrow!&quot;, &quot;fr&quot;: &quot;À demain !&quot;, &quot;ht&quot;: &quot;Na wè demen!&quot;, &quot;ar&quot;: &quot;إلى الغد!&quot;}'>¡Hasta mañana!</span>
+                            <span class="rodape-card"><span lang="pt">Toque para voltar</span><span lang="es">Toca para volver</span></span>
                         </div>
                     </div>
                 </div>
@@ -239,7 +246,7 @@
     </section>
 </main>
 <div id="cm-rodape"></div>
-<script src="./js/interacoes.js"></script>
-<script src="./js/cursos.js"></script>
+<script src="./js/interacoes.js?v=202611231612"></script>
+<script src="./js/cursos.js?v=202611231612"></script>
 </body>
 </html>

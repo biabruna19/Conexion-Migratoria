@@ -155,6 +155,26 @@
         });
     });
 
+    // ---------- Tradução dos cartões em várias línguas ----------
+    const NOMES_LINGUA = { es: 'Español', en: 'English', fr: 'Français', ht: 'Kreyòl ayisyen', ar: 'العربية' };
+    document.querySelectorAll('[data-traduzir-para]').forEach(grupo => {
+        const botoes = [...grupo.querySelectorAll('[data-lingua]')];
+        const area = grupo.nextElementSibling;
+        const escolher = (lingua) => {
+            localStorage.setItem('cm_lingua_cartoes', lingua);
+            botoes.forEach(b => b.setAttribute('aria-pressed', b.dataset.lingua === lingua));
+            area.querySelectorAll('[data-traducoes]').forEach(el => {
+                el.textContent = JSON.parse(el.dataset.traducoes)[lingua];
+                el.lang = lingua;
+                el.dir = lingua === 'ar' ? 'rtl' : 'ltr';
+            });
+            area.querySelectorAll('[data-rotulo-lingua]').forEach(el => { el.textContent = NOMES_LINGUA[lingua]; });
+        };
+        botoes.forEach(b => b.addEventListener('click', () => escolher(b.dataset.lingua)));
+        const globo = window.I18N ? I18N.escolha() : 'es';
+        escolher(localStorage.getItem('cm_lingua_cartoes') || (NOMES_LINGUA[globo] ? globo : 'es'));
+    });
+
     // ---------- Carrossel horizontal ----------
     document.querySelectorAll('[data-carrossel]').forEach(bloco => {
         const trilho = bloco.querySelector('.carrossel-trilho');
