@@ -15,26 +15,26 @@
     const ATRIBUTOS = ['placeholder', 'aria-label', 'title', 'alt'];
     const ouvintes = [];
 
-    // Idiomas do globo: nome escrito na própria língua
+    // Idiomas do globo: nomes em português (ou em espanhol, quando o site está em espanhol)
     const IDIOMAS = [
-        { cod: 'pt', nome: 'Português', sigla: 'PT' },
-        { cod: 'es', nome: 'Español', sigla: 'ES' },
-        { cod: 'en', nome: 'English', sigla: 'EN' },
-        { cod: 'fr', nome: 'Français', sigla: 'FR' },
-        { cod: 'ht', nome: 'Kreyòl ayisyen', sigla: 'HT' },
-        { cod: 'ar', nome: 'العربية', sigla: 'AR' },
-        { cod: 'fa', nome: 'فارسی', sigla: 'FA' },
-        { cod: 'ru', nome: 'Русский', sigla: 'RU' },
-        { cod: 'uk', nome: 'Українська', sigla: 'UK' },
-        { cod: 'zh-CN', nome: '中文', sigla: 'ZH' },
-        { cod: 'hi', nome: 'हिन्दी', sigla: 'HI' },
-        { cod: 'it', nome: 'Italiano', sigla: 'IT' },
-        { cod: 'de', nome: 'Deutsch', sigla: 'DE' },
-        { cod: 'tr', nome: 'Türkçe', sigla: 'TR' },
-        { cod: 'sw', nome: 'Kiswahili', sigla: 'SW' },
-        { cod: 'ln', nome: 'Lingála', sigla: 'LN' },
-        { cod: 'qu', nome: 'Runa Simi', sigla: 'QU' },
-        { cod: 'gn', nome: 'Avañe\'ẽ', sigla: 'GN' },
+        { cod: 'pt', pt: 'Português', es: 'Portugués', sigla: 'PT' },
+        { cod: 'es', pt: 'Espanhol', es: 'Español', sigla: 'ES' },
+        { cod: 'en', pt: 'Inglês', es: 'Inglés', sigla: 'EN' },
+        { cod: 'fr', pt: 'Francês', es: 'Francés', sigla: 'FR' },
+        { cod: 'ht', pt: 'Crioulo haitiano', es: 'Criollo haitiano', sigla: 'HT' },
+        { cod: 'ar', pt: 'Árabe', es: 'Árabe', sigla: 'AR' },
+        { cod: 'fa', pt: 'Persa', es: 'Persa', sigla: 'FA' },
+        { cod: 'ru', pt: 'Russo', es: 'Ruso', sigla: 'RU' },
+        { cod: 'uk', pt: 'Ucraniano', es: 'Ucraniano', sigla: 'UK' },
+        { cod: 'zh-CN', pt: 'Chinês', es: 'Chino', sigla: 'ZH' },
+        { cod: 'hi', pt: 'Hindi', es: 'Hindi', sigla: 'HI' },
+        { cod: 'it', pt: 'Italiano', es: 'Italiano', sigla: 'IT' },
+        { cod: 'de', pt: 'Alemão', es: 'Alemán', sigla: 'DE' },
+        { cod: 'tr', pt: 'Turco', es: 'Turco', sigla: 'TR' },
+        { cod: 'sw', pt: 'Suaíli', es: 'Suajili', sigla: 'SW' },
+        { cod: 'ln', pt: 'Lingala', es: 'Lingala', sigla: 'LN' },
+        { cod: 'qu', pt: 'Quíchua', es: 'Quechua', sigla: 'QU' },
+        { cod: 'gn', pt: 'Guarani', es: 'Guaraní', sigla: 'GN' },
     ];
     const MANUAIS = ['pt', 'es'];
     const raiz = document.documentElement;
@@ -103,7 +103,7 @@
         aviso.id = 'cm-aviso-traducao';
         aviso.className = 'aviso-traducao notranslate';
         aviso.setAttribute('role', 'alert');
-        aviso.innerHTML = `<span>Não foi possível carregar a tradução automática. Verifique a conexão ou escolha Português/Español.<br><small>Automatic translation could not be loaded.</small></span>
+        aviso.innerHTML = `<span>Não foi possível carregar a tradução automática. Verifique a conexão ou escolha Português ou Espanhol.<br><small>Automatic translation could not be loaded.</small></span>
             <button type="button">Português</button>`;
         aviso.querySelector('button').addEventListener('click', () => window.I18N.definir('pt'));
         document.body.appendChild(aviso);
@@ -139,8 +139,8 @@
                 ${ICONE_GLOBO}<span class="globo-sigla"></span>
             </button>
             <ul class="globo-lista" id="${id}" role="listbox" aria-label="Idioma · Language" hidden>
-                ${IDIOMAS.map(i => `<li role="option" tabindex="-1" data-cod="${i.cod}" aria-selected="false"${['ar', 'fa'].includes(i.cod) ? ' dir="rtl"' : ''}>
-                    <span>${i.nome}</span>${MANUAIS.includes(i.cod) ? '' : '<small>auto</small>'}
+                ${IDIOMAS.map(i => `<li role="option" tabindex="-1" data-cod="${i.cod}" aria-selected="false">
+                    <span class="globo-nome">${i.pt}</span>${MANUAIS.includes(i.cod) ? '' : '<small>auto</small>'}
                 </li>`).join('')}
             </ul>`;
         const botao = alvo.querySelector('.globo-botao');
@@ -172,7 +172,11 @@
         document.querySelectorAll('.globo').forEach(g => {
             const sigla = g.querySelector('.globo-sigla');
             if (sigla) sigla.textContent = atual.sigla;
-            g.querySelectorAll('li[data-cod]').forEach(li => li.setAttribute('aria-selected', li.dataset.cod === escolhaAtual));
+            g.querySelectorAll('li[data-cod]').forEach(li => {
+                li.setAttribute('aria-selected', li.dataset.cod === escolhaAtual);
+                const idioma = IDIOMAS.find(i => i.cod === li.dataset.cod);
+                li.querySelector('.globo-nome').textContent = raiz.dataset.idioma === 'es' ? idioma.es : idioma.pt;
+            });
         });
     }
 
