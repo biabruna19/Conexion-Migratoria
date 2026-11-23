@@ -133,13 +133,52 @@
     });
 
     // ---------- Saúde, ensino e cidades ----------
-    preencher(campo('saude'), estado.saude, 'p');
-    preencher(campo('ensino'), [estado.ensino.texto], 'p');
-    preencher(campo('escolas'), estado.ensino.escolas.map(e => e.replace(/[;.,\s]+$/, '')), 'li');
-    preencher(campo('cidades'), estado.cidades, 'p');
-    campo('imagemSaude').src = pontos[1].imagem;
-    campo('imagemEnsino').src = pontos[2].imagem;
-    campo('imagemCidades').src = pontos[3].imagem;
+    // O cartão mostra uma prévia curta (todos ficam do mesmo tamanho);
+    // o texto completo abre numa janela por cima da página.
+    const escolas = estado.ensino.escolas.filter(Boolean).map(e => e.replace(/[;.,\s]+$/, ''));
+    const INFO = {
+        saude: { pt: 'Sistema de saúde', es: 'Sistema de salud', icone: 'coracao', textos: estado.saude, imagem: pontos[1].imagem },
+        ensino: { pt: 'Sistema de ensino', es: 'Sistema educativo', icone: 'capelo', textos: [estado.ensino.texto], imagem: pontos[2].imagem, escolas },
+        cidades: { pt: 'Cidades bem localizadas', es: 'Ciudades bien ubicadas', icone: 'pino', textos: estado.cidades, imagem: pontos[3].imagem },
+    };
+    campo('previaSaude').textContent = estado.saude[0];
+    campo('previaEnsino').textContent = estado.ensino.texto;
+    campo('previaCidades').textContent = estado.cidades[0];
+    campo('imagemSaude').src = INFO.saude.imagem;
+    campo('imagemEnsino').src = INFO.ensino.imagem;
+    campo('imagemCidades').src = INFO.cidades.imagem;
+    const contagem = () => { campo('contagemEscolas').textContent = t(`${escolas.length} escolas públicas citadas`, `${escolas.length} escuelas públicas citadas`); };
+    contagem();
+    I18N.aoTrocar(contagem);
+
+    const janela = document.getElementById('janelaInfo');
+    let focoAntesJanela = null;
+    function abrirJanela(chave) {
+        const info = INFO[chave];
+        focoAntesJanela = document.activeElement;
+        document.getElementById('janelaTitulo').textContent = t(info.pt, info.es);
+        document.getElementById('janelaIcone').innerHTML = icone(info.icone);
+        document.getElementById('janelaImagem').src = info.imagem;
+        preencher(document.getElementById('janelaTexto'), info.textos, 'p');
+        preencher(document.getElementById('janelaEscolas'), info.escolas || [], 'li');
+        janela.hidden = false;
+        document.body.style.overflow = 'hidden';
+        janela.querySelector('.janela-caixa').scrollTop = 0;
+        document.getElementById('janelaFechar').focus();
+    }
+    function fecharJanela() {
+        janela.hidden = true;
+        document.body.style.overflow = '';
+        if (focoAntesJanela) focoAntesJanela.focus();
+    }
+    document.querySelectorAll('.info-abrir').forEach(b => b.addEventListener('click', () => abrirJanela(b.dataset.info)));
+    document.getElementById('janelaFechar').addEventListener('click', fecharJanela);
+    janela.addEventListener('click', (e) => { if (e.target === janela) fecharJanela(); });
+    document.addEventListener('keydown', (e) => {
+        if (janela.hidden) return;
+        if (e.key === 'Escape') fecharJanela();
+        if (e.key === 'Tab') { e.preventDefault(); document.getElementById('janelaFechar').focus(); }
+    });
 
     // ---------- Outros estados da mesma região ----------
     const ordem = Object.keys(ESTADOS).sort((a, b) => ESTADOS[a].titulo.localeCompare(ESTADOS[b].titulo));
