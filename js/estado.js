@@ -7,6 +7,7 @@
     const uf = (new URLSearchParams(location.search).get('uf') || '').toUpperCase();
     const estado = ESTADOS[uf];
     const campo = (nome) => document.querySelector(`[data-campo="${nome}"]`);
+    const t = (pt, es) => I18N.t({ pt, es });
     const REGIOES = {
         norte: { pt: 'Região Norte', es: 'Región Norte' },
         nordeste: { pt: 'Região Nordeste', es: 'Región Noreste' },
@@ -14,114 +15,142 @@
         sudeste: { pt: 'Região Sudeste', es: 'Región Sureste' },
         sul: { pt: 'Região Sul', es: 'Región Sur' },
     };
+    const CAPITAIS = {
+        AC: 'Rio Branco', AL: 'Maceió', AM: 'Manaus', AP: 'Macapá', BA: 'Salvador', CE: 'Fortaleza', DF: 'Brasília',
+        ES: 'Vitória', GO: 'Goiânia', MA: 'São Luís', MG: 'Belo Horizonte', MS: 'Campo Grande', MT: 'Cuiabá',
+        PA: 'Belém', PB: 'João Pessoa', PE: 'Recife', PI: 'Teresina', PR: 'Curitiba', RJ: 'Rio de Janeiro',
+        RN: 'Natal', RO: 'Porto Velho', RR: 'Boa Vista', RS: 'Porto Alegre', SC: 'Florianópolis', SE: 'Aracaju',
+        SP: 'São Paulo', TO: 'Palmas',
+    };
 
     if (!estado) {
         document.getElementById('conteudo').innerHTML = `
             <section class="estado-vazio"><div>
                 <span class="icone-redondo">${icone('mapa')}</span>
-                <h1 style="font-size:2.4rem">${I18N.t({ pt: 'Estado não encontrado', es: 'Estado no encontrado' })}</h1>
-                <p>${I18N.t({ pt: 'Escolha um estado no mapa interativo da página inicial.', es: 'Elige un estado en el mapa interactivo de la página de inicio.' })}</p>
-                <a class="botao botao-primario" href="./index.html#mapa">${I18N.t({ pt: 'Voltar ao mapa', es: 'Volver al mapa' })}</a>
+                <h1 style="font-size:2.4rem">${t('Estado não encontrado', 'Estado no encontrado')}</h1>
+                <p>${t('Escolha um estado no mapa interativo da página inicial.', 'Elige un estado en el mapa interactivo de la página de inicio.')}</p>
+                <a class="botao botao-primario" href="./index.html#mapa">${t('Voltar ao mapa', 'Volver al mapa')}</a>
             </div></section>`;
         return;
     }
 
-    const preencherLista = (el, itens, tag) => {
+    const preencher = (el, itens, tag) => {
         el.innerHTML = '';
-        itens.filter(Boolean).forEach(t => {
+        itens.filter(Boolean).forEach(texto => {
             const item = document.createElement(tag);
-            item.textContent = t;
+            item.textContent = texto;
             el.appendChild(item);
         });
     };
 
     function textosIdioma() {
-        const titulo = estado.titulo;
-        document.title = `${titulo} · Conexión Migratoria`;
+        document.title = `${estado.titulo} · Conexión Migratoria`;
         campo('regiao').textContent = I18N.t(REGIOES[estado.regiao]);
         campo('resumo').textContent = I18N.t(estado.resumo);
+        campo('tituloVizinhos').textContent = t(`Outros estados da ${REGIOES[estado.regiao].pt}`, `Otros estados de la ${REGIOES[estado.regiao].es}`);
     }
 
-    // Topo
+    // ---------- Topo ----------
     campo('imagem').src = estado.imagem;
     campo('imagem').alt = estado.titulo;
     campo('titulo').textContent = estado.titulo;
     campo('titulo-trilha').textContent = estado.titulo;
+    campo('capital').textContent = CAPITAIS[uf];
     textosIdioma();
     I18N.aoTrocar(textosIdioma);
 
-    // Cultura
-    preencherLista(campo('cultura'), estado.cultura.textos, 'p');
+    // ---------- Cultura ----------
+    preencher(campo('cultura'), estado.cultura.textos, 'p');
     campo('imagemCultura').src = estado.cultura.imagem;
     campo('imagemCultura').alt = estado.titulo;
 
-    // Pontos turísticos: lista à esquerda, destaque à direita
-    const lista = campo('pontosLista');
-    function mostrarPonto(i, focar) {
-        const ponto = estado.pontosTuristicos[i];
-        campo('pontoImagem').src = ponto.imagem;
-        campo('pontoImagem').alt = ponto.nome;
-        campo('pontoNome').textContent = ponto.nome;
-        campo('pontoDescricao').textContent = ponto.descricao;
-        lista.querySelectorAll('[role="tab"]').forEach((b, j) => {
-            b.setAttribute('aria-selected', i === j);
-            b.tabIndex = i === j ? 0 : -1;
-            if (i === j && focar) b.focus();
-        });
-        const destaque = document.getElementById('pontoDestaque');
-        destaque.style.animation = 'none';
-        void destaque.offsetWidth;
-        destaque.style.animation = 'aparecer .35s ease';
-    }
-    estado.pontosTuristicos.forEach((ponto, i) => {
+    // ---------- Pontos turísticos: galeria + tela cheia ----------
+    const pontos = estado.pontosTuristicos;
+    const galeria = campo('galeria');
+    pontos.forEach((ponto, i) => {
         const b = document.createElement('button');
         b.type = 'button';
-        b.className = 'ponto-botao';
+        b.className = 'galeria-item revelar';
         b.id = `imgponto${i + 1}`;
-        b.setAttribute('role', 'tab');
-        b.setAttribute('aria-controls', 'pontoDestaque');
-        b.innerHTML = `<img src="${ponto.imagem}" alt="" loading="lazy"><span></span>`;
-        b.querySelector('span').textContent = ponto.nome;
-        b.addEventListener('click', () => mostrarPonto(i));
-        b.addEventListener('keydown', (e) => {
-            const passo = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
-            if (passo) { e.preventDefault(); mostrarPonto((i + passo + 4) % 4, true); }
-        });
-        lista.appendChild(b);
+        b.innerHTML = `<img src="${ponto.imagem}" alt="" loading="lazy"><span class="galeria-legenda"><span></span>${icone('seta')}</span>`;
+        b.querySelector('.galeria-legenda span').textContent = ponto.nome;
+        b.setAttribute('aria-label', ponto.nome);
+        b.addEventListener('click', () => abrirLightbox(i));
+        galeria.appendChild(b);
     });
-    mostrarPonto(0);
 
-    // Saúde, ensino e cidades (as imagens reaproveitam fotos do próprio estado)
-    preencherLista(campo('saude'), estado.saude, 'p');
-    preencherLista(campo('ensino'), [estado.ensino.texto], 'p');
-    preencherLista(campo('escolas'), estado.ensino.escolas, 'li');
-    preencherLista(campo('cidades'), estado.cidades, 'li');
-    campo('imagemSaude').src = estado.pontosTuristicos[1].imagem;
-    campo('imagemEnsino').src = estado.pontosTuristicos[2].imagem;
-    campo('imagemCidades').src = estado.pontosTuristicos[3].imagem;
-
-    // Abas de mais informações
-    const abas = [...document.querySelectorAll('#informacoes [role="tab"]')];
-    abas.forEach((aba, i) => {
-        aba.addEventListener('click', () => ativar(aba));
-        aba.addEventListener('keydown', (e) => {
-            const passo = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
-            if (passo) { e.preventDefault(); ativar(abas[(i + passo + abas.length) % abas.length], true); }
-        });
-    });
-    function ativar(aba, focar) {
-        abas.forEach(a => {
-            const ativa = a === aba;
-            a.setAttribute('aria-selected', ativa);
-            a.tabIndex = ativa ? 0 : -1;
-            document.getElementById(a.getAttribute('aria-controls')).hidden = !ativa;
-        });
-        if (focar) aba.focus();
+    const lightbox = document.getElementById('lightbox');
+    let atual = 0;
+    let focoAnterior = null;
+    function mostrarPonto(i) {
+        atual = (i + pontos.length) % pontos.length;
+        const p = pontos[atual];
+        const img = document.getElementById('lightboxImagem');
+        img.classList.remove('entrando'); void img.offsetWidth; img.classList.add('entrando');
+        img.src = p.imagem;
+        img.alt = p.nome;
+        document.getElementById('lightboxNome').textContent = p.nome;
+        document.getElementById('lightboxDescricao').textContent = p.descricao;
+        document.getElementById('lightboxContador').textContent = `${atual + 1} / ${pontos.length}`;
+        lightbox.setAttribute('aria-label', p.nome);
     }
-    ativar(abas[0]);
+    function abrirLightbox(i) {
+        focoAnterior = document.activeElement;
+        mostrarPonto(i);
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+        document.getElementById('lightboxFechar').focus();
+    }
+    function fecharLightbox() {
+        lightbox.hidden = true;
+        document.body.style.overflow = '';
+        if (focoAnterior) focoAnterior.focus();
+    }
+    document.getElementById('lightboxFechar').addEventListener('click', fecharLightbox);
+    document.getElementById('lightboxAnterior').addEventListener('click', () => mostrarPonto(atual - 1));
+    document.getElementById('lightboxProxima').addEventListener('click', () => mostrarPonto(atual + 1));
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) fecharLightbox(); });
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.hidden) return;
+        if (e.key === 'Escape') fecharLightbox();
+        else if (e.key === 'ArrowLeft') mostrarPonto(atual - 1);
+        else if (e.key === 'ArrowRight') mostrarPonto(atual + 1);
+        else if (e.key === 'Tab') { // mantém o foco dentro da janela
+            const focaveis = [...lightbox.querySelectorAll('button')];
+            const i = focaveis.indexOf(document.activeElement);
+            e.preventDefault();
+            focaveis[(i + (e.shiftKey ? -1 : 1) + focaveis.length) % focaveis.length].focus();
+        }
+    });
+    // Arrastar para o lado no celular
+    let toqueX = null;
+    lightbox.addEventListener('touchstart', (e) => { toqueX = e.touches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+        if (toqueX === null) return;
+        const dx = e.changedTouches[0].clientX - toqueX;
+        if (Math.abs(dx) > 50) mostrarPonto(atual + (dx < 0 ? 1 : -1));
+        toqueX = null;
+    });
 
-    // Estado anterior / próximo (ordem alfabética)
+    // ---------- Saúde, ensino e cidades ----------
+    preencher(campo('saude'), estado.saude, 'p');
+    preencher(campo('ensino'), [estado.ensino.texto], 'p');
+    preencher(campo('escolas'), estado.ensino.escolas.map(e => e.replace(/[;.,\s]+$/, '')), 'li');
+    preencher(campo('cidades'), estado.cidades, 'p');
+    campo('imagemSaude').src = pontos[1].imagem;
+    campo('imagemEnsino').src = pontos[2].imagem;
+    campo('imagemCidades').src = pontos[3].imagem;
+
+    // ---------- Outros estados da mesma região ----------
     const ordem = Object.keys(ESTADOS).sort((a, b) => ESTADOS[a].titulo.localeCompare(ESTADOS[b].titulo));
+    const vizinhos = ordem.filter(s => s !== uf && ESTADOS[s].regiao === estado.regiao);
+    campo('vizinhos').innerHTML = vizinhos.map(s => `
+        <a class="vizinho" href="./pg-estados.html?uf=${s}">
+            <img src="${ESTADOS[s].imagem}" alt="" loading="lazy">
+            <span class="vizinho-nome">${ESTADOS[s].titulo}<small>${CAPITAIS[s]}</small></span>
+        </a>`).join('');
+
+    // ---------- Estado anterior / próximo e seletor ----------
     const pos = ordem.indexOf(uf);
     const anterior = ordem[(pos - 1 + ordem.length) % ordem.length];
     const proximo = ordem[(pos + 1) % ordem.length];
@@ -132,10 +161,7 @@
     linkProx.href = `./pg-estados.html?uf=${proximo}`;
     linkProx.querySelector('span').textContent = ESTADOS[proximo].titulo;
 
-    // Ver outro estado
     const seletor = document.getElementById('outroEstado');
-    Object.keys(ESTADOS)
-        .sort((a, b) => ESTADOS[a].titulo.localeCompare(ESTADOS[b].titulo))
-        .forEach(sigla => seletor.add(new Option(ESTADOS[sigla].titulo, sigla, false, sigla === uf)));
+    ordem.forEach(sigla => seletor.add(new Option(ESTADOS[sigla].titulo, sigla, false, sigla === uf)));
     seletor.addEventListener('change', () => { location.href = `./pg-estados.html?uf=${seletor.value}`; });
 })();

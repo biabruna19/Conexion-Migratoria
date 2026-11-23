@@ -4,7 +4,26 @@
  */
 (function () {
     const usuario = CM.usuarioAtual();
-    if (!usuario) return; // exigirLogin() já redirecionou
+    if (!usuario) {
+        // Nenhuma página exige login: aqui só convidamos a pessoa a entrar
+        const t2 = (pt, es) => I18N.t({ pt, es });
+        document.querySelector('.perfil-grade').outerHTML = `
+            <div class="convite-conta">
+                <span class="icone-redondo">${icone('usuario')}</span>
+                <h2 style="font-size:1.8rem">${t2('Você ainda não entrou', 'Todavía no has iniciado sesión')}</h2>
+                <p>${t2('Com uma conta você salva seu perfil e sua foto neste navegador. Todo o resto do site funciona sem login.', 'Con una cuenta guardas tu perfil y tu foto en este navegador. Todo lo demás del sitio funciona sin iniciar sesión.')}</p>
+                <div class="acoes">
+                    <a class="botao botao-primario" href="./logar.html">${t2('Entrar', 'Iniciar sesión')}</a>
+                    <a class="botao botao-contorno" href="./criarConta.html">${t2('Criar conta', 'Crear cuenta')}</a>
+                    <button type="button" class="botao botao-fantasma" id="perfilVisitante">${t2('Entrar como visitante', 'Entrar como visitante')}</button>
+                </div>
+            </div>`;
+        document.getElementById('perfilVisitante').addEventListener('click', async () => {
+            await CM.entrarComoVisitante();
+            location.reload();
+        });
+        return;
+    }
 
     const t = (pt, es) => I18N.t({ pt, es });
     const campos = {
