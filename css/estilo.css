@@ -1076,3 +1076,13 @@ font { background: none !important; box-shadow: none !important; }
     .info-cartao h3 { min-height: 0; }
 }
 .janela-corpo .icone-redondo { position: relative; z-index: 1; }
+
+/* Aviso quando a tradução automática não carrega */
+.aviso-traducao {
+    position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 300;
+    display: flex; align-items: center; gap: 16px; max-width: min(560px, calc(100% - 32px));
+    padding: 14px 16px 14px 20px; border-radius: var(--raio);
+    background: var(--tinta); color: #fff; font-size: .9rem; box-shadow: var(--sombra-3);
+}
+.aviso-traducao small { color: rgba(255, 255, 255, .7); }
+.aviso-traducao button { flex: none; height: 38px; padding: 0 16px; border-radius: 999px; background: var(--azul-claro); color: #fff; font-weight: 600; }
