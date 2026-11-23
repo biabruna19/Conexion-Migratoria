@@ -49,13 +49,8 @@
     };
     window.icone = (nome, classe = '') => `<svg class="icone ${classe}" viewBox="0 0 24 24" aria-hidden="true">${ICONES[nome] || ''}</svg>`;
 
-    const MARCA = `
-        <svg viewBox="0 0 40 40" aria-hidden="true">
-            <rect width="40" height="40" rx="12" fill="#0F5C63"/>
-            <path d="M27.5 13.2A10 10 0 1 0 27.5 26.8" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
-            <circle cx="28.4" cy="20" r="3.4" fill="#E9A23B"/>
-        </svg>
-        <span class="marca-nome">Conexión Migratoria<small>${pt('Portal do imigrante', 'Portal del inmigrante')}</small></span>`;
+    // Logotipo original do projeto (versão branca, sobre fundo azul-escuro)
+    const MARCA = `<img src="./img/logo-branca-conexion-migratoria.png" alt="Conexión Migratoria">`;
 
     const LINKS = [
         { href: naHome ? '#mapa' : './index.html#mapa', pt: 'Mapa', es: 'Mapa' },
