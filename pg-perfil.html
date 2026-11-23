@@ -1,107 +1,81 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-titulo-pt="Meu perfil · Conexión Migratoria" data-titulo-es="Mi perfil · Conexión Migratoria">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conexión Migratoria - Perfil</title>
-
-    <link rel="stylesheet" href="./css/perfil.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
-    <link rel="stylesheet" href="./css/nav-footer.css">
-
+    <title>Meu perfil · Conexión Migratoria</title>
+    <meta name="theme-color" content="#0F5C63">
+    <link rel="icon" href="./img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/idioma.js"></script>
     <script src="./js/demo-store.js"></script>
     <script>CM.exigirLogin();</script>
-    <link rel="stylesheet" href="./css/repaginada.css">
 </head>
-
 <body>
-
 <div id="cm-topo"></div>
 <script src="./js/layout.js"></script>
 
+<main id="conteudo">
+    <header class="cabecalho-pagina" style="padding-bottom: 40px">
+        <div class="container">
+            <span class="sobretitulo"><span lang="pt">Sua conta</span><span lang="es">Tu cuenta</span></span>
+            <h1><span lang="pt">Perfil do imigrante</span><span lang="es">Perfil del inmigrante</span></h1>
+        </div>
+    </header>
 
-<section>
-    <h1>Perfil do Imigrante</h1>
-
-    <div class="container">
-        <div class="alinar-1">
-            <div class="inputs-image">
-                <h1 id="nomeTitulo"></h1>
+    <section class="secao" style="padding-top: 0">
+        <div class="container perfil-grade">
+            <aside class="perfil-cartao">
+                <div class="foto-perfil-moldura">
+                    <img class="foto-perfil" id="fotoPerfil" src="./img/perfil-de-usuario.png" alt="Foto de perfil" data-pt-alt="Foto de perfil" data-es-alt="Foto de perfil">
+                    <button type="button" class="foto-acao excluir" id="excluirFoto" data-pt-aria-label="Excluir foto" data-es-aria-label="Eliminar foto" data-pt-title="Excluir foto" data-es-title="Eliminar foto"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
+                </div>
                 <div>
-                    <div class="excluir-foto">
-                        <button type="button" id="excluirFoto" title="Excluir foto" aria-label="Excluir foto">
-                            <img src="./img/lixeira-de-reciclagem.png" alt="">
-                        </button>
-                    </div>
-                    <img class="foto-perfil" id="fotoPerfil" src="./img/perfil-de-usuario.png" alt="Foto de perfil">
+                    <h2 id="nomeTitulo"></h2>
+                    <p id="nacionalidadeTitulo" style="margin-top:4px"></p>
                 </div>
+                <input type="file" id="profile_picture" accept="image/png, image/jpeg, image/webp" hidden>
+                <button type="button" class="botao botao-contorno botao-bloco" onclick="document.getElementById('profile_picture').click()"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3.5"/></svg><span lang="pt">Enviar foto</span><span lang="es">Subir foto</span></button>
+                <p class="texto-pequeno"><span lang="pt">JPG, PNG ou WEBP até 5 MB. A foto fica salva só neste navegador.</span><span lang="es">JPG, PNG o WEBP hasta 5 MB. La foto se guarda solo en este navegador.</span></p>
+            </aside>
 
-                <!-- Upload de imagem (fica salva no navegador, redimensionada) -->
-                <div class="upload-ft">
-                    <input type="file" id="profile_picture" accept="image/png, image/jpeg, image/webp" hidden>
-                    <button type="button" onclick="document.getElementById('profile_picture').click()">Upload foto</button>
+            <div class="bloco perfil-form">
+                <div class="bloco-cabecalho">
+                    <h2 style="font-size:1.6rem"><span lang="pt">Informações de usuário</span><span lang="es">Información del usuario</span></h2>
+                    <button type="button" class="botao botao-contorno botao-pequeno" id="botaoEditar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg><span id="editarTexto"></span></button>
                 </div>
+                <form id="formDados" novalidate>
+                    <div class="campo">
+                        <label for="nomeInput"><span lang="pt">Nome</span><span lang="es">Nombre</span></label>
+                        <input type="text" name="nome" id="nomeInput" required readonly>
+                    </div>
+                    <div class="campo">
+                        <label for="emailInput">E-mail</label>
+                        <input type="email" name="email" id="emailInput" required readonly>
+                    </div>
+                    <div class="campo">
+                        <label for="telefoneInput"><span lang="pt">Telefone</span><span lang="es">Teléfono</span></label>
+                        <input type="tel" name="telefone" id="telefoneInput" readonly>
+                    </div>
+                    <div class="campo">
+                        <label for="nacionalidadeInput"><span lang="pt">Nacionalidade</span><span lang="es">Nacionalidad</span></label>
+                        <input type="text" name="nacionalidade" id="nacionalidadeInput" readonly>
+                    </div>
+                    <div class="campo">
+                        <label for="senhaInput"><span lang="pt">Senha</span><span lang="es">Contraseña</span></label>
+                        <input type="password" name="senha" id="senhaInput" placeholder="••••••••" autocomplete="new-password" readonly>
+                    </div>
+                    <p class="mensagem-form" role="alert" hidden style="grid-column: 1 / -1"></p>
+                    <div class="acoes-form">
+                        <button type="button" class="botao botao-fantasma" data-sair><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg><span lang="pt">Sair da minha conta</span><span lang="es">Cerrar sesión</span></button>
+                        <button type="submit" class="botao botao-primario" id="salvarButton" disabled><span lang="pt">Salvar alterações</span><span lang="es">Guardar cambios</span></button>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <div class="alinar-2">
-            <div class="inputs-infos">
-                <div class="pt-perfil">
-                    <div class="ali-tlt">
-                        <div class="titulo-infos-perfil">
-                            <h1>Informações de usuário</h1>
-                        </div>
-                        <button type="button" class="editar" id="botaoEditar">
-                            <span class="editar-icone"><img src="./img/editar.png" alt="" id="editarIcone"></span>
-                            <p id="editarTexto">Editar</p>
-                        </button>
-                    </div>
-
-                    <form id="formDados">
-                        <div class="infos-perfil">
-                            <div class="infos-perfil-alinhar">
-                                <div>
-                                    <h2><label for="nomeInput">Nome</label></h2>
-                                    <input type="text" name="nome" id="nomeInput" required readonly>
-                                </div>
-                                <div>
-                                    <h2><label for="emailInput">E-mail</label></h2>
-                                    <input type="email" name="email" id="emailInput" required readonly>
-                                </div>
-                            </div>
-                            <div class="infos-perfil-alinhar">
-                                <div>
-                                    <h2><label for="telefoneInput">Telefone</label></h2>
-                                    <input type="tel" name="telefone" id="telefoneInput" readonly>
-                                </div>
-                                <div>
-                                    <h2><label for="nacionalidadeInput">Nacionalidade</label></h2>
-                                    <input type="text" name="nacionalidade" id="nacionalidadeInput" readonly>
-                                </div>
-                            </div>
-                            <div class="infos-perfil-alinhar">
-                                <div>
-                                    <h2><label for="senhaInput">Senha</label></h2>
-                                    <input type="password" name="senha" id="senhaInput" placeholder="••••••••" autocomplete="new-password" minlength="4" readonly>
-                                </div>
-                                <div class="salvar-alt">
-                                    <button type="submit" id="salvarButton" disabled>SALVAR ALTERAÇÕES</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="sair-caonta">
-                        <button type="button" data-sair>SAIR DA MINHA CONTA</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+</main>
+<div id="cm-rodape"></div>
 <script src="./js/perfil.js"></script>
 </body>
 </html>
-

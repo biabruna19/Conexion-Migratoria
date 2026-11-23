@@ -2,6 +2,12 @@
 // Carregado como script para funcionar no GitHub Pages sem servidor nem banco de dados.
 window.ESTADOS = {
   "SP": {
+    "titulo": "São Paulo",
+    "regiao": "sudeste",
+    "resumo": {
+      "pt": "O Estado de São Paulo, no Brasil, é um centro econômico e cultural crucial, liderado pela sua capital, São Paulo, a maior cidade do país e um hub global de negócios e inovação. Com uma economia diversificada que abrange indústria, comércio e serviços financeiros, São Paulo também oferece uma rica vida cultural, com museus renomados, teatros de prestígio e uma cena gastronômica dinâmica. A infraestrutura avançada de transporte, incluindo extensas rodovias e aeroportos internacionais, facilita a mobilidade tanto dentro do estado quanto internacionalmente. Além das suas áreas urbanas dinâmicas, São Paulo possui um litoral com belas praias e áreas naturais preservadas no interior, como a Serra da Mantiqueira, atraindo tanto turistas quanto amantes da natureza.",
+      "es": "El estado de São Paulo es un centro económico y cultural fundamental para Brasil. Su capital, São Paulo, es la ciudad más grande del país y un polo mundial de negocios e innovación. Además de su economía diversa, ofrece una intensa vida cultural, con museos, teatros y una gastronomía muy variada. Su infraestructura de transporte facilita la movilidad, y el estado tiene playas y áreas naturales como la Sierra de la Mantiqueira."
+    },
     "nome": "DE SÃO PAULO",
     "imagem": "imgs-estado/img1sp-sp.webp",
     "cultura": {
@@ -55,6 +61,12 @@ window.ESTADOS = {
     ]
   },
   "RS": {
+    "titulo": "Rio Grande do Sul",
+    "regiao": "sul",
+    "resumo": {
+      "pt": "O Rio Grande do Sul, localizado no Sul do Brasil, é famoso por sua rica cultura gaúcha e suas paisagens variadas. Sua capital, Porto Alegre, é um importante centro econômico e cultural, conhecida por sua qualidade de vida e infraestrutura urbana. A economia gaúcha é diversificada, com destaque para a agricultura (produção de soja, milho, trigo e uva para vinho), pecuária (principalmente bovinos e ovinos), indústria (metalurgia, automotiva, alimentícia) e serviços. O estado também é um polo turístico significativo, atraindo visitantes para destinos como a Serra Gaúcha, famosa por suas paisagens serranas, Gramado e Canela, conhecidas por seu clima europeu e festivais de cinema e Natal, e o Vale dos Vinhedos, conhecido por sua produção de vinhos e paisagens de vinícolas.",
+      "es": "Rio Grande do Sul, en el Sur de Brasil, es famoso por su rica cultura gaúcha y sus paisajes variados. Su capital, Porto Alegre, es un importante centro económico y cultural con buena calidad de vida. Su economía incluye la agricultura (soja, maíz, trigo y uva para vino), la ganadería, la industria y los servicios. Entre sus destinos turísticos destacan la Sierra Gaúcha, Gramado, Canela y el Valle de los Viñedos."
+    },
     "nome": "DO RIO GRANDE DO SUL",
     "imagem": "imgs-estado/img1rs-rs.webp",
     "cultura": {
@@ -108,6 +120,12 @@ window.ESTADOS = {
     ]
   },
   "SC": {
+    "titulo": "Santa Catarina",
+    "regiao": "sul",
+    "resumo": {
+      "pt": "Santa Catarina, localizado no Sul do Brasil, é famoso por suas belas praias, montanhas e pela forte influência da cultura europeia. Sua capital, Florianópolis, é um importante destino turístico e tecnológico, conhecida por sua qualidade de vida elevada e infraestrutura avançada. A economia catarinense é diversificada, com uma forte presença da indústria (especialmente têxtil, alimentícia, metalúrgica e automotiva), agricultura (principalmente produção de maçãs, uvas e aves), tecnologia (com um crescente setor de tecnologia da informação e comunicação) e turismo. O estado é conhecido por suas praias paradisíacas, como Jurerê Internacional e Bombinhas, suas montanhas na Serra Catarinense, e por preservar fortemente suas tradições culturais europeias, principalmente a alemã e a italiana.",
+      "es": "Santa Catarina, en el Sur de Brasil, es famosa por sus playas, sus montañas y la fuerte influencia de la cultura europea. Su capital, Florianópolis, es un importante destino turístico y tecnológico, con alta calidad de vida. La economía combina industria (textil, alimentaria y metalúrgica), agricultura (manzanas, uvas y aves), tecnología y turismo. El estado conserva con fuerza sus tradiciones alemanas e italianas."
+    },
     "nome": "DE SANTA CATARINA",
     "imagem": "imgs-estado/img1sc-sc.webp",
     "cultura": {
@@ -161,6 +179,12 @@ window.ESTADOS = {
     ]
   },
   "PR": {
+    "titulo": "Paraná",
+    "regiao": "sul",
+    "resumo": {
+      "pt": "O Paraná, localizado na região Sul do Brasil, é um estado com uma economia forte e diversificada. Sua capital, Curitiba, é conhecida internacionalmente por sua inovação urbana, planejamento eficiente e qualidade de vida elevada para seus habitantes. A economia paranaense é impulsionada por diversos setores, incluindo agricultura (produção de soja, milho, trigo), indústria automotiva, tecnologia (principalmente software e tecnologia da informação) e serviços. Além de ser um centro econômico, o Paraná é um importante polo turístico, atraindo visitantes para destinos como as famosas Cataratas do Iguaçu, uma das sete maravilhas naturais do mundo, e o Parque Nacional do Iguaçu, que abriga essa impressionante queda d'água.",
+      "es": "Paraná, en la región Sur de Brasil, tiene una economía fuerte y diversificada. Su capital, Curitiba, es reconocida internacionalmente por su innovación urbana, su planificación eficiente y su alta calidad de vida. La economía incluye la agricultura (soja, maíz y trigo), la industria automotriz, la tecnología y los servicios. El estado es también un gran destino turístico gracias a las Cataratas del Iguazú, una de las siete maravillas naturales del mundo."
+    },
     "nome": "DO PARANÁ",
     "imagem": "imgs-estado/img1pr-pr.webp",
     "cultura": {
@@ -214,6 +238,12 @@ window.ESTADOS = {
     ]
   },
   "MS": {
+    "titulo": "Mato Grosso do Sul",
+    "regiao": "centro-oeste",
+    "resumo": {
+      "pt": "Mato Grosso do Sul, também localizado na região Centro-Oeste do Brasil, é conhecido por suas paisagens naturais exuberantes e a biodiversidade do Pantanal. Sua capital, Campo Grande, desempenha um papel importante como centro administrativo e econômico regional. A economia do estado é baseada principalmente na agropecuária, com destaque para a criação de gado de corte e a agricultura, incluindo o cultivo de soja e milho. O turismo ecológico é uma atividade significativa, atraindo visitantes para destinos como Bonito, famoso por suas cavernas, rios cristalinos e mergulhos, e o Pantanal, uma das maiores planícies alagadas do mundo, conhecida por sua rica vida selvagem e oportunidades únicas de observação de fauna e flora.",
+      "es": "Mato Grosso do Sul, en la región Centro-Oeste, es conocido por sus paisajes naturales y la biodiversidad del Pantanal. Su capital, Campo Grande, es un importante centro administrativo y económico regional. La economía se basa en la ganadería de carne y en el cultivo de soja y maíz. El ecoturismo es muy importante, con destinos como Bonito, famoso por sus cuevas y ríos cristalinos, y el Pantanal, una de las mayores llanuras inundables del mundo."
+    },
     "nome": "DO MATO GROSO DO SUL",
     "imagem": "imgs-estado/img1ms-ms.webp",
     "cultura": {
@@ -267,6 +297,12 @@ window.ESTADOS = {
     ]
   },
   "GO": {
+    "titulo": "Goiás",
+    "regiao": "centro-oeste",
+    "resumo": {
+      "pt": "Goiás, localizado na região Centro-Oeste do Brasil, é um estado com forte vocação agropecuária. Sua capital, Goiânia, é um centro urbano em crescimento, com infraestrutura desenvolvida que suporta serviços e comércio variados. A economia de Goiás é impulsionada pela agricultura, destacando-se o cultivo de soja, milho, algodão e cana-de-açúcar, além da pecuária bovina. O estado também possui um crescente setor industrial, com destaque para a indústria alimentícia, metalúrgica e de vestuário, além de se consolidar como um importante polo de tecnologia e inovação na região Centro-Oeste do Brasil.",
+      "es": "Goiás, en la región Centro-Oeste de Brasil, tiene una fuerte vocación agropecuaria. Su capital, Goiânia, es un centro urbano en crecimiento, con infraestructura para servicios y comercio. La economía se basa en el cultivo de soja, maíz, algodón y caña de azúcar, además de la ganadería bovina. El estado también tiene un sector industrial en expansión, con industrias alimentaria, metalúrgica y textil, y se consolida como polo de tecnología e innovación."
+    },
     "nome": "DE GOIÁS",
     "imagem": "imgs-estado/img1go-go.webp",
     "cultura": {
@@ -320,6 +356,12 @@ window.ESTADOS = {
     ]
   },
   "MA": {
+    "titulo": "Maranhão",
+    "regiao": "nordeste",
+    "resumo": {
+      "pt": "O Maranhão, localizado no Nordeste do Brasil, é conhecido por sua rica cultura e diversidade natural. Sua capital, São Luís, possui um centro histórico que é Patrimônio Mundial da UNESCO, destacando-se pela arquitetura colonial portuguesa. A economia maranhense é diversificada, com bases na agricultura (especialmente produção de soja, arroz e mandioca), mineração (ferro e alumínio) e exportação através do Porto do Itaqui, um dos mais movimentados do país. O turismo é uma atividade crescente no estado, com destaque para os Lençóis Maranhenses, um dos principais cartões-postais do Brasil, e a rica cultura local, que inclui festas populares e gastronomia típica.",
+      "es": "Maranhão, en el Nordeste de Brasil, es conocido por su rica cultura y su diversidad natural. Su capital, São Luís, tiene un centro histórico declarado Patrimonio Mundial por la UNESCO, con arquitectura colonial portuguesa. Su economía se basa en la agricultura, la minería y la exportación por el Puerto de Itaqui, uno de los más activos del país. El turismo crece gracias a los Lençóis Maranhenses, una de las postales más famosas de Brasil."
+    },
     "nome": "DO MARANHÃO",
     "imagem": "imgs-estado/img1ma-ma.webp",
     "cultura": {
@@ -373,6 +415,12 @@ window.ESTADOS = {
     ]
   },
   "RR": {
+    "titulo": "Roraima",
+    "regiao": "norte",
+    "resumo": {
+      "pt": "Roraima, localizado no extremo norte do Brasil, é conhecido por suas paisagens naturais impressionantes e pela presença significativa de comunidades indígenas. Sua capital, Boa Vista, é a única capital brasileira localizada no hemisfério norte. A economia de Roraima é baseada principalmente na agricultura (principalmente arroz, milho e feijão), pecuária (bovinos, ovinos e caprinos) e mineração (especialmente ouro, diamantes e cassiterita). A preservação ambiental é uma prioridade para o estado, que possui áreas protegidas e reservas indígenas. O ecoturismo também é uma atividade em crescimento, com visitantes atraídos pelas belezas naturais como o Monte Roraima, as cachoeiras e a fauna diversificada da região.",
+      "es": "Roraima, en el extremo norte de Brasil, es conocido por sus paisajes naturales y por la importante presencia de comunidades indígenas. Su capital, Boa Vista, es la única capital brasileña situada en el hemisferio norte. La economía se basa en la agricultura, la ganadería y la minería. La preservación ambiental es una prioridad, con áreas protegidas y reservas indígenas, y el ecoturismo crece con atractivos como el Monte Roraima y sus cascadas."
+    },
     "nome": "DE RORAIMA",
     "imagem": "imgs-estado/img1rr-rr.webp",
     "cultura": {
@@ -426,6 +474,12 @@ window.ESTADOS = {
     ]
   },
   "MT": {
+    "titulo": "Mato Grosso",
+    "regiao": "centro-oeste",
+    "resumo": {
+      "pt": "Mato Grosso, localizado na região Centro-Oeste do Brasil, é um dos maiores produtores agrícolas do país, destacando-se na produção de soja, milho, algodão e carne bovina. Sua capital, Cuiabá, é um centro econômico em crescimento, com infraestrutura que suporta diversos setores, incluindo serviços e comércio. Além da agricultura, a economia mato-grossense inclui a pecuária, com criação de gado de corte, e a mineração, com destaque para a extração de ouro, diamantes e minério de ferro. O estado também abriga parte significativa do Pantanal, uma das maiores áreas úmidas do mundo, e o Parque Nacional da Chapada dos Guimarães, conhecido por sua paisagem de cerrado e formações rochosas impressionantes.",
+      "es": "Mato Grosso, en la región Centro-Oeste, es uno de los mayores productores agrícolas del país, con destaque para la soja, el maíz, el algodón y la carne bovina. Su capital, Cuiabá, es un centro económico en crecimiento. Además de la agricultura y la ganadería, la minería de oro y diamantes es relevante. El estado alberga parte del Pantanal y el Parque Nacional de Chapada dos Guimarães, conocido por sus impresionantes formaciones rocosas."
+    },
     "nome": "DO MATO GROSSO",
     "imagem": "imgs-estado/img1mt-mt.webp",
     "cultura": {
@@ -479,6 +533,12 @@ window.ESTADOS = {
     ]
   },
   "RO": {
+    "titulo": "Rondônia",
+    "regiao": "norte",
+    "resumo": {
+      "pt": "Rondônia, localizado na região Norte do Brasil, é caracterizado por suas vastas florestas e diversidade natural. Sua capital, Porto Velho, é um centro econômico em crescimento, com infraestrutura que suporta atividades comerciais e industriais na região. A economia de Rondônia é baseada principalmente na agricultura (produção de café, soja, milho e feijão), pecuária (bovinos e aves) e mineração (especialmente ouro, cassiterita e diamantes). O estado desempenha um papel importante na preservação ambiental, com esforços significativos voltados para o desenvolvimento sustentável e a conservação de suas riquezas naturais.",
+      "es": "Rondônia, en la región Norte de Brasil, se caracteriza por sus extensos bosques y su diversidad natural. Su capital, Porto Velho, es un centro económico en crecimiento. La economía se basa en la agricultura (café, soja, maíz y frijoles), la ganadería y la minería de oro y casiterita. El estado realiza importantes esfuerzos de desarrollo sostenible y conservación de sus riquezas naturales."
+    },
     "nome": "DE RONDÔNIA",
     "imagem": "imgs-estado/img1ro-ro.webp",
     "cultura": {
@@ -532,6 +592,12 @@ window.ESTADOS = {
     ]
   },
   "TO": {
+    "titulo": "Tocantins",
+    "regiao": "norte",
+    "resumo": {
+      "pt": "Tocantins, localizado na região Norte do Brasil, é conhecido por sua rica biodiversidade e vastas áreas preservadas. Sua capital, Palmas, é uma das cidades mais jovens do país, planejada para integrar urbanismo e sustentabilidade, refletindo um modelo de desenvolvimento urbano consciente. A economia de Tocantins é predominantemente baseada na agropecuária, com forte produção de soja, milho, gado e aves, sendo esses setores os pilares econômicos do estado. Além disso, Tocantins possui um potencial turístico significativo com suas belezas naturais, destacando-se o Parque Estadual do Jalapão com suas dunas, rios de águas cristalinas e cachoeiras, atraindo visitantes interessados em ecoturismo e aventura.",
+      "es": "Tocantins, en la región Norte de Brasil, es conocido por su biodiversidad y sus extensas áreas preservadas. Su capital, Palmas, es una de las ciudades más jóvenes del país, planificada para integrar urbanismo y sostenibilidad. La economía se basa en la agropecuaria, con fuerte producción de soja, maíz, ganado y aves. Su gran atractivo turístico es el Parque Estatal del Jalapão, con dunas, ríos cristalinos y cascadas."
+    },
     "nome": "DE TOCANTINS",
     "imagem": "imgs-estado/img1to-to.webp",
     "cultura": {
@@ -585,6 +651,12 @@ window.ESTADOS = {
     ]
   },
   "PE": {
+    "titulo": "Pernambuco",
+    "regiao": "nordeste",
+    "resumo": {
+      "pt": "Pernambuco, localizado no Nordeste do Brasil, é famoso por sua cultura vibrante, música e festas tradicionais. Sua capital, Recife, é um importante centro econômico e cultural, conhecido por sua rica história e arquitetura colonial. A economia pernambucana é diversificada, com forte presença da indústria (especialmente automobilística, naval e de tecnologia), comércio e serviços. O turismo desempenha um papel significativo na economia local, destacando-se destinos como Porto de Galinhas, conhecida por suas praias paradisíacas e piscinas naturais, Olinda, cidade histórica e cultural, e o arquipélago de Fernando de Noronha, um paraíso ecológico com praias deslumbrantes e vida marinha rica.",
+      "es": "Pernambuco, en el Nordeste de Brasil, es famoso por su cultura vibrante, su música y sus fiestas tradicionales. Su capital, Recife, es un importante centro económico y cultural, con una rica historia y arquitectura colonial. La economía tiene fuerte presencia industrial (automotriz, naval y tecnológica), comercio y servicios. Entre sus destinos turísticos destacan Porto de Galinhas, la histórica Olinda y el archipiélago de Fernando de Noronha."
+    },
     "nome": "DE PERNAMBUCO",
     "imagem": "imgs-estado/img1pe-pe.webp",
     "cultura": {
@@ -638,6 +710,12 @@ window.ESTADOS = {
     ]
   },
   "AC": {
+    "titulo": "Acre",
+    "regiao": "norte",
+    "resumo": {
+      "pt": "O Acre, localizado na região Norte do Brasil, é conhecido por suas vastas florestas e biodiversidade. A capital, Rio Branco, é um importante centro econômico e cultural do estado. Além do extrativismo de borracha e madeira, a agricultura também desempenha um papel significativo na economia acreana, destacando-se principalmente a produção de mandioca e soja. O estado possui uma rica cultura indígena, com diversas etnias que contribuem para a diversidade cultural da região.",
+      "es": "Acre, en la región Norte de Brasil, es conocido por sus extensos bosques y su biodiversidad. Su capital, Rio Branco, es el principal centro económico y cultural del estado. Además de la extracción de caucho y madera, la agricultura es importante, sobre todo la producción de yuca y soja. El estado tiene una rica cultura indígena, con diversas etnias que contribuyen a la diversidad cultural de la región."
+    },
     "nome": "DO ACRE",
     "imagem": "imgs-estado/img1ac-ac.webp",
     "cultura": {
@@ -691,6 +769,12 @@ window.ESTADOS = {
     ]
   },
   "PI": {
+    "titulo": "Piauí",
+    "regiao": "nordeste",
+    "resumo": {
+      "pt": "O Piauí, localizado no Nordeste do Brasil, é conhecido por suas paisagens naturais impressionantes e importantes sítios arqueológicos. Sua capital, Teresina, desempenha um papel central como centro administrativo e econômico regional. A economia piauiense é baseada principalmente na agricultura, com destaque para o cultivo de soja, milho, feijão e algodão, além da pecuária bovina. A mineração também é relevante, especialmente na extração de argila e calcário. O turismo está em crescimento no estado, com atrativos que incluem o Parque Nacional de Sete Cidades, conhecido por suas formações rochosas e pinturas rupestres, e o Delta do Parnaíba, um dos únicos deltas em mar aberto das Américas, repleto de manguezais e dunas.",
+      "es": "Piauí, en el Nordeste de Brasil, es conocido por sus paisajes naturales y sus importantes sitios arqueológicos. Su capital, Teresina, es el centro administrativo y económico del estado. La economía se basa en la agricultura (soja, maíz, frijoles y algodón) y la ganadería bovina. El turismo crece con atractivos como el Parque Nacional de Sete Cidades, con pinturas rupestres, y el Delta del Parnaíba, uno de los pocos deltas en mar abierto de las Américas."
+    },
     "nome": "DO PIAUÍ",
     "imagem": "imgs-estado/img1pi-pi.webp",
     "cultura": {
@@ -744,6 +828,12 @@ window.ESTADOS = {
     ]
   },
   "AL": {
+    "titulo": "Alagoas",
+    "regiao": "nordeste",
+    "resumo": {
+      "pt": "Alagoas, localizada no Nordeste do Brasil, é famosa por suas belas praias de águas cristalinas e barreiras de corais. A capital, Maceió, é um destino turístico popular, com uma infraestrutura que atende tanto turistas quanto a população local. Além das praias deslumbrantes, Alagoas se destaca pela produção artesanal de rendas e bordados, parte de sua rica cultura local. A economia do estado é impulsionada pelo turismo, agricultura, especialmente cana-de-açúcar, e a indústria petroquímica. A culinária alagoana também é muito apreciada, com pratos típicos como a sururu, um molusco local, e o tradicional ensopado de peixe.",
+      "es": "Alagoas, en el Nordeste de Brasil, es famosa por sus playas de aguas cristalinas y barreras de coral. Su capital, Maceió, es un destino turístico muy popular, con buena infraestructura para turistas y residentes. El estado destaca por la producción artesanal de encajes y bordados, y su economía se basa en el turismo, la caña de azúcar y la industria petroquímica. Su gastronomía es muy apreciada, con platos típicos como el sururu, un molusco local."
+    },
     "nome": "DE ALAGOAS",
     "imagem": "imgs-estado/img1al-al.webp",
     "cultura": {
@@ -797,6 +887,12 @@ window.ESTADOS = {
     ]
   },
   "RN": {
+    "titulo": "Rio Grande do Norte",
+    "regiao": "nordeste",
+    "resumo": {
+      "pt": "O Rio Grande do Norte, localizado no Nordeste do Brasil, é conhecido por suas belas dunas, praias e pelo famoso cajueiro de Pirangi. Sua capital, Natal, é um destino turístico popular, com uma infraestrutura bem desenvolvida para receber visitantes de todo o mundo. A economia do estado é diversificada, com base no turismo, que inclui tanto o turismo de sol e praia quanto o ecoturismo nas áreas de dunas e reservas naturais. Além do turismo, a agricultura é relevante, destacando-se o cultivo de frutas tropicais como o caju, melão e banana. A indústria salineira também tem importância econômica significativa no estado.",
+      "es": "Rio Grande do Norte, en el Nordeste de Brasil, es conocido por sus dunas, sus playas y el famoso anacardo gigante de Pirangi. Su capital, Natal, es un destino turístico popular con buena infraestructura. La economía se basa en el turismo de sol y playa y en el ecoturismo, además de la agricultura de frutas tropicales como el anacardo, el melón y la banana. La producción de sal también tiene gran importancia económica."
+    },
     "nome": "DO RIO GRANDE DO NORTE",
     "imagem": "imgs-estado/img1rn-rn.webp",
     "cultura": {
@@ -850,6 +946,12 @@ window.ESTADOS = {
     ]
   },
   "CE": {
+    "titulo": "Ceará",
+    "regiao": "nordeste",
+    "resumo": {
+      "pt": "O Ceará, também localizado no Nordeste do Brasil, é conhecido por suas praias paradisíacas e clima quente ao longo do ano. Sua capital, Fortaleza, é um centro econômico e turístico importante, com uma infraestrutura bem desenvolvida que suporta serviços, comércio e indústrias variadas. A economia cearense é diversificada, incluindo a agricultura, com destaque para o cultivo de frutas tropicais como caju, coco e manga, além do turismo, que atrai visitantes para suas belas praias e atrações culturais. Recentemente, o estado tem se destacado também na indústria de energias renováveis, especialmente a energia eólica, consolidando-se como um importante polo nesse setor no Brasil.",
+      "es": "Ceará, en el Nordeste de Brasil, es conocido por sus playas paradisíacas y su clima cálido durante todo el año. Su capital, Fortaleza, es un importante centro económico y turístico, con buena infraestructura de servicios, comercio e industria. La economía incluye la agricultura de frutas tropicales como el anacardo, el coco y el mango, además del turismo. En los últimos años, el estado se ha destacado en las energías renovables, especialmente la eólica."
+    },
     "nome": "DO CEARÁ",
     "imagem": "imgs-estado/img1ce-ce.webp",
     "cultura": {
@@ -903,6 +1005,12 @@ window.ESTADOS = {
     ]
   },
   "AP": {
+    "titulo": "Amapá",
+    "regiao": "norte",
+    "resumo": {
+      "pt": "O Amapá, localizado na região Norte do Brasil, é caracterizado por sua vasta cobertura florestal e rica biodiversidade. Sua capital, Macapá, é a única cidade brasileira cortada pela linha do Equador, o que é um marco geográfico significativo. Além da mineração de manganês, o estado também se destaca pelo extrativismo vegetal, incluindo a exploração de madeira e açaí, e pela pesca, contribuindo para a economia local. A posição estratégica do Amapá, juntamente com seus recursos naturais, o torna importante para a conservação ambiental, com várias áreas protegidas e esforços de desenvolvimento sustentável.",
+      "es": "Amapá, en la región Norte de Brasil, se caracteriza por su extensa cobertura forestal y su rica biodiversidad. Su capital, Macapá, es la única ciudad brasileña atravesada por la línea del Ecuador. La economía local se apoya en la minería de manganeso, la extracción de madera y açaí, y la pesca. Por sus recursos naturales, el estado tiene muchas áreas protegidas y proyectos de desarrollo sostenible."
+    },
     "nome": "DO AMAPÁ",
     "imagem": "imgs-estado/img1ap-ap.webp",
     "cultura": {
@@ -956,6 +1064,12 @@ window.ESTADOS = {
     ]
   },
   "PB": {
+    "titulo": "Paraíba",
+    "regiao": "nordeste",
+    "resumo": {
+      "pt": "A Paraíba, localizada no Nordeste do Brasil, é conhecida por suas belas praias e rica cultura. Sua capital, João Pessoa, destaca-se por ser uma das cidades mais verdes do país, com muitos parques e áreas naturais preservadas. A economia paraibana é diversificada, com atividades que incluem agricultura (produção de cana-de-açúcar, mandioca, frutas tropicais), indústria (principalmente têxtil, alimentícia e metalúrgica) e serviços. O turismo é uma atividade econômica importante, impulsionada pelas atrações naturais como a praia de Tambaba, conhecida pela sua beleza e pelo naturismo praticado, e o centro histórico de João Pessoa, que preserva construções coloniais e monumentos históricos.",
+      "es": "Paraíba, en el Nordeste de Brasil, es conocida por sus playas y su rica cultura. Su capital, João Pessoa, es una de las ciudades más verdes del país, con muchos parques y áreas naturales. Su economía incluye la agricultura (caña de azúcar, yuca y frutas tropicales), la industria textil y alimentaria y los servicios. El turismo es importante gracias a playas como Tambaba y al centro histórico de João Pessoa, con construcciones coloniales."
+    },
     "nome": "DA PARAÍBA",
     "imagem": "imgs-estado/img1pb-pb.webp",
     "cultura": {
@@ -1009,6 +1123,12 @@ window.ESTADOS = {
     ]
   },
   "SE": {
+    "titulo": "Sergipe",
+    "regiao": "nordeste",
+    "resumo": {
+      "pt": "Sergipe, localizado na região Nordeste do Brasil, é o menor estado em área territorial, mas possui uma história e cultura ricas. Sua capital, Aracaju, é conhecida por suas praias de águas mornas e tranquilas, além de um centro histórico bem preservado que atrai turistas interessados em patrimônio cultural. A economia de Sergipe é diversificada, com um destaque significativo para a indústria de petróleo e gás, a agricultura com foco na produção de cana-de-açúcar, a pesca e o turismo. Além disso, o estado desempenha um papel importante na geração de energia elétrica, com usinas hidrelétricas e termelétricas que contribuem para o suprimento regional e nacional.",
+      "es": "Sergipe, en el Nordeste de Brasil, es el estado más pequeño del país, pero tiene una historia y una cultura muy ricas. Su capital, Aracaju, es conocida por sus playas de aguas tibias y tranquilas y por su centro histórico bien conservado. La economía destaca por el petróleo y el gas, la caña de azúcar, la pesca y el turismo. El estado también es importante en la generación de energía eléctrica."
+    },
     "nome": "DE SERGIPE",
     "imagem": "imgs-estado/img1se-se.webp",
     "cultura": {
@@ -1062,6 +1182,12 @@ window.ESTADOS = {
     ]
   },
   "MG": {
+    "titulo": "Minas Gerais",
+    "regiao": "sudeste",
+    "resumo": {
+      "pt": "Minas Gerais, localizado na região Sudeste do Brasil, é famoso por sua rica história, arquitetura colonial e culinária tradicional. Sua capital, Belo Horizonte, é um importante centro de negócios e cultura, oferecendo uma ampla gama de serviços e infraestrutura urbana. A economia mineira é diversificada, com destaque para a mineração (principalmente de minério de ferro, ouro e nióbio), agricultura (café, milho, feijão), indústria (metalurgia, siderurgia, automobilística) e serviços. O turismo é uma atividade relevante, especialmente devido às cidades históricas como Ouro Preto, Tiradentes e Diamantina, que preservam o patrimônio colonial e atraem visitantes interessados em história, arquitetura e cultura.",
+      "es": "Minas Gerais, en la región Sudeste de Brasil, es famoso por su historia, su arquitectura colonial y su cocina tradicional. Su capital, Belo Horizonte, es un importante centro de negocios y cultura. La economía incluye la minería (hierro, oro y niobio), la agricultura (café, maíz y frijoles), la industria y los servicios. El turismo es relevante gracias a ciudades históricas como Ouro Preto, Tiradentes y Diamantina, que conservan el patrimonio colonial."
+    },
     "nome": "DE MINAS GERAIS",
     "imagem": "imgs-estado/img1mg-mg.webp",
     "cultura": {
@@ -1115,6 +1241,12 @@ window.ESTADOS = {
     ]
   },
   "RJ": {
+    "titulo": "Rio de Janeiro",
+    "regiao": "sudeste",
+    "resumo": {
+      "pt": "O Rio de Janeiro, localizado na região Sudeste do Brasil, é um dos estados mais conhecidos do país, famoso por suas belas praias, montanhas e pela cidade do Rio de Janeiro, que é um ícone turístico global. A economia fluminense é diversificada, com uma forte presença da indústria de petróleo e gás, turismo, serviços financeiros e culturais. O estado também é um importante centro cultural, conhecido por sua rica vida artística, eventos como o Carnaval, e por abrigar diversos pontos turísticos famosos como o Cristo Redentor, o Pão de Açúcar e as praias de Copacabana e Ipanema.",
+      "es": "Río de Janeiro, en la región Sudeste, es uno de los estados más conocidos del país, famoso por sus playas, sus montañas y por la ciudad de Río, un ícono turístico mundial. Su economía se basa en el petróleo y el gas, el turismo y los servicios financieros y culturales. Es también un gran centro cultural, con el Carnaval y lugares famosos como el Cristo Redentor, el Pan de Azúcar y las playas de Copacabana e Ipanema."
+    },
     "nome": "DO RIO DE JANEIRO",
     "imagem": "imgs-estado/img1rj-rj.webp",
     "cultura": {
@@ -1168,6 +1300,12 @@ window.ESTADOS = {
     ]
   },
   "ES": {
+    "titulo": "Espírito Santo",
+    "regiao": "sudeste",
+    "resumo": {
+      "pt": "O Espírito Santo, localizado na região Sudeste do Brasil, é conhecido por suas belas praias e paisagens montanhosas. Sua capital, Vitória, é um importante porto e centro de negócios, facilitando o comércio e a indústria na região. A economia capixaba é diversificada, destacando-se pela indústria de petróleo e gás, mineração (principalmente de ferro e granito), celulose e agricultura, com cultivo de café, frutas e flores. O turismo é relevante, atraindo visitantes com seus atrativos naturais como praias, montanhas e parques, além de seu patrimônio cultural, que inclui festas populares e gastronomia típica.",
+      "es": "Espírito Santo, en la región Sudeste de Brasil, es conocido por sus playas y paisajes de montaña. Su capital, Vitória, es un importante puerto y centro de negocios. Su economía destaca por el petróleo y el gas, la minería de hierro y granito, la celulosa y la agricultura de café, frutas y flores. El turismo es relevante gracias a sus playas, montañas y parques, además de sus fiestas populares y su gastronomía típica."
+    },
     "nome": "DO ESPIRITO SANTO",
     "imagem": "imgs-estado/img1es-es.webp",
     "cultura": {
@@ -1221,6 +1359,12 @@ window.ESTADOS = {
     ]
   },
   "DF": {
+    "titulo": "Distrito Federal",
+    "regiao": "centro-oeste",
+    "resumo": {
+      "pt": "O Distrito Federal, localizado na região Centro-Oeste do Brasil, abriga a capital do país, Brasília. A cidade é conhecida por sua arquitetura moderna e urbanismo planejado por Oscar Niemeyer e Lúcio Costa, sendo um marco da arquitetura brasileira e Patrimônio Cultural da Humanidade pela UNESCO. Além de ser o centro político e administrativo do Brasil, Brasília também possui uma economia diversificada, baseada principalmente em serviços. O setor público é um dos pilares econômicos, junto com o comércio e a tecnologia da informação, contribuindo significativamente para a dinâmica econômica e cultural da região.",
+      "es": "El Distrito Federal, en la región Centro-Oeste, alberga la capital del país, Brasilia. La ciudad es conocida por su arquitectura moderna y su urbanismo planificado por Oscar Niemeyer y Lúcio Costa, y es Patrimonio Cultural de la Humanidad por la UNESCO. Además de ser el centro político y administrativo de Brasil, tiene una economía basada en los servicios, con el sector público, el comercio y la tecnología de la información como pilares."
+    },
     "nome": "DO DISTRITO FEDERAL",
     "imagem": "imgs-estado/img1df-df.webp",
     "cultura": {
@@ -1274,6 +1418,12 @@ window.ESTADOS = {
     ]
   },
   "BA": {
+    "titulo": "Bahia",
+    "regiao": "nordeste",
+    "resumo": {
+      "pt": "A Bahia, localizada no Nordeste do Brasil, é conhecida por sua rica cultura, música e culinária. Salvador, sua capital, é uma das cidades mais antigas do país e um importante centro cultural e turístico, famosa por suas festas populares como o Carnaval e o São João. Além da diversidade cultural, a economia baiana é robusta e diversificada, com setores que incluem agricultura (como o cultivo de cacau e sisal), pecuária, mineração (principalmente de minério de ferro e petróleo) e turismo. As praias paradisíacas, o patrimônio histórico e a arquitetura colonial são grandes atrativos que contribuem para o charme e a popularidade da Bahia como destino turístico.",
+      "es": "Bahía, en el Nordeste de Brasil, es conocida por su rica cultura, música y gastronomía. Salvador, su capital, es una de las ciudades más antiguas del país y un gran centro cultural y turístico, famoso por el Carnaval y las fiestas de San Juan. Su economía es diversa e incluye la agricultura (cacao y sisal), la ganadería, la minería y el turismo. Sus playas paradisíacas y su arquitectura colonial atraen visitantes de todo el mundo."
+    },
     "nome": "DA BAHIA",
     "imagem": "imgs-estado/img1ba-ba.webp",
     "cultura": {
@@ -1327,6 +1477,12 @@ window.ESTADOS = {
     ]
   },
   "AM": {
+    "titulo": "Amazonas",
+    "regiao": "norte",
+    "resumo": {
+      "pt": "O Amazonas, maior estado do Brasil em extensão territorial, localiza-se na região Norte. Sua capital, Manaus, é um importante polo industrial e de comércio, notória pela Zona Franca de Manaus, que atrai investimentos e impulsiona a economia local. Além da industrialização, o estado é amplamente reconhecido pela imensa biodiversidade da Floresta Amazônica, que desempenha um papel crucial no equilíbrio climático global. O ecoturismo é uma atividade crescente na região, promovendo a conservação ambiental e o desenvolvimento sustentável como prioridades para o estado do Amazonas.",
+      "es": "Amazonas, el estado más grande de Brasil, está en la región Norte. Su capital, Manaos, es un importante polo industrial y comercial gracias a la Zona Franca de Manaos, que atrae inversiones e impulsa la economía local. El estado es reconocido por la inmensa biodiversidad de la selva amazónica, clave para el equilibrio climático del planeta. El ecoturismo crece en la región y promueve la conservación ambiental y el desarrollo sostenible."
+    },
     "nome": "DA AMAZÔNIA",
     "imagem": "imgs-estado/img1am-am.webp",
     "cultura": {
@@ -1380,6 +1536,12 @@ window.ESTADOS = {
     ]
   },
   "PA": {
+    "titulo": "Pará",
+    "regiao": "norte",
+    "resumo": {
+      "pt": "O Pará, localizado na região Norte do Brasil, é caracterizado por sua vasta floresta amazônica e pela presença de grandes rios como o Amazonas e o Tocantins. Sua capital, Belém, é um importante porto e centro comercial, facilitando o comércio regional e internacional. A economia paraense é diversificada, com bases na mineração (especialmente de ferro e bauxita), extrativismo vegetal (como a castanha-do-pará e a borracha) e agricultura (principalmente de mandioca, soja e milho). O estado desempenha um papel crucial na preservação ambiental, sendo lar de diversas áreas protegidas, e no ecoturismo, atraindo visitantes interessados na rica biodiversidade e nas belezas naturais da região amazônica.",
+      "es": "Pará, en la región Norte de Brasil, se caracteriza por la selva amazónica y por grandes ríos como el Amazonas y el Tocantins. Su capital, Belém, es un importante puerto y centro comercial. La economía se basa en la minería (hierro y bauxita), la extracción vegetal (castaña de Pará y caucho) y la agricultura. El estado tiene muchas áreas protegidas y atrae a visitantes interesados en la biodiversidad amazónica."
+    },
     "nome": "DO PARÁ",
     "imagem": "imgs-estado/img1pa-pa.webp",
     "cultura": {

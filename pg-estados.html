@@ -1,135 +1,123 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-titulo-pt="Estado · Conexión Migratoria" data-titulo-es="Estado · Conexión Migratoria">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conexión Migratoria - Estado</title>
-
-    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
-    <link rel="stylesheet" href="./css/nav-footer.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/estados.css">
+    <title>Estado · Conexión Migratoria</title>
+    <meta name="theme-color" content="#0F5C63">
+    <link rel="icon" href="./img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/idioma.js"></script>
     <script src="./js/demo-store.js"></script>
     <script>CM.exigirLogin();</script>
-    <link rel="stylesheet" href="./css/repaginada.css">
 </head>
 <body>
-
 <div id="cm-topo"></div>
 <script src="./js/layout.js"></script>
 
+<main id="conteudo">
+    <section class="estado-hero">
+        <img data-campo="imagem" alt="">
+        <div class="container">
+            <nav class="trilha" aria-label="Trilha">
+                <a href="./index.html"><span lang="pt">Início</span><span lang="es">Inicio</span></a><span>/</span>
+                <a href="./index.html#mapa"><span lang="pt">Mapa</span><span lang="es">Mapa</span></a><span>/</span>
+                <span data-campo="titulo-trilha"></span>
+            </nav>
+            <span class="etiqueta" data-campo="regiao"></span>
+            <h1 data-campo="titulo"></h1>
+            <p data-campo="resumo"></p>
+        </div>
+    </section>
 
-<main>
-    <div class="containe-body">
-        <button class="anterior" type="button" aria-label="Slide anterior"><img src="./img/seta-direita.png" alt=""></button>
-        <section class="sec1 slide-estado">
-            <div class="conteudo">
-                <div class="titulo">
-                    <h1>CONHEÇA MAIS SOBRE O ESTADO</h1>
-                    <h1><span data-campo="nome"></span></h1>
-                </div>
-                <div class="imagem">
-                    <div class="borda-imagem">
-                        <img data-campo="imagem" alt="">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="sec2 slide-estado">
-            <div class="conteudo">
-                <h1>UM POUCO SOBRE A <span>CULTURA</span></h1>
-                <div class="alinhar-infos">
-                    <div class="info-estado" data-campo="cultura"></div>
-                    <div class="imagem2">
-                        <div class="borda-imagem">
-                            <img data-campo="imagemCultura" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <button class="proximo" type="button" aria-label="Próximo slide"><img src="./img/seta-direita.png" alt=""></button>
+    <div class="container" lang="es" style="padding-top: 24px">
+        <div class="nota"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><p>El resumen está en español. El contenido detallado de cada estado (cultura, lugares turísticos, salud, educación y ciudades) está disponible en portugués.</p></div>
     </div>
+
+    <!-- Cultura -->
+    <section class="secao" id="cultura">
+        <div class="container cultura-grade">
+            <div class="texto">
+                <span class="sobretitulo"><span lang="pt">Cultura</span><span lang="es">Cultura</span></span>
+                <h2 style="font-size: clamp(2rem, 3.6vw, 2.75rem); margin: 14px 0 22px"><span lang="pt">Um pouco sobre a cultura</span><span lang="es">Un poco sobre la cultura</span></h2>
+                <div data-campo="cultura" lang="pt-BR"></div>
+            </div>
+            <figure class="revelar"><img data-campo="imagemCultura" alt="" loading="lazy"></figure>
+        </div>
+    </section>
+
+    <!-- Pontos turísticos -->
+    <section class="secao secao-escura" id="pontos">
+        <div class="container">
+            <div class="cabecalho-secao">
+                <span class="sobretitulo"><span lang="pt">Para conhecer</span><span lang="es">Para conocer</span></span>
+                <h2><span lang="pt">Pontos turísticos</span><span lang="es">Lugares turísticos</span></h2>
+            </div>
+            <div class="pontos">
+                <div class="pontos-lista" role="tablist" aria-orientation="vertical" data-campo="pontosLista" data-pt-aria-label="Pontos turísticos" data-es-aria-label="Lugares turísticos"></div>
+                <div class="ponto-destaque" role="tabpanel" id="pontoDestaque" aria-live="polite">
+                    <img data-campo="pontoImagem" alt="">
+                    <div class="legenda">
+                        <h3 data-campo="pontoNome"></h3>
+                        <p data-campo="pontoDescricao" lang="pt-BR"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mais informações -->
+    <section class="secao" id="informacoes">
+        <div class="container">
+            <div class="cabecalho-secao">
+                <span class="sobretitulo"><span lang="pt">Mais informações</span><span lang="es">Más información</span></span>
+                <h2><span lang="pt">Saúde, ensino e onde morar</span><span lang="es">Salud, educación y dónde vivir</span></h2>
+            </div>
+            <div class="abas" role="tablist" data-pt-aria-label="Mais informações" data-es-aria-label="Más información">
+                <button type="button" role="tab" id="saude" aria-controls="infos1" aria-selected="true"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg><span lang="pt">Saúde</span><span lang="es">Salud</span></button>
+                <button type="button" role="tab" id="ensino" aria-controls="infos2" aria-selected="false"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span lang="pt">Ensino</span><span lang="es">Educación</span></button>
+                <button type="button" role="tab" id="localidade" aria-controls="infos3" aria-selected="false"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span lang="pt">Cidades</span><span lang="es">Ciudades</span></button>
+            </div>
+            <div class="bloco">
+                <div role="tabpanel" id="infos1" aria-labelledby="saude" class="info-painel">
+                    <div>
+                        <h3 style="font-size:1.6rem;margin-bottom:16px"><span lang="pt">Sistema de saúde</span><span lang="es">Sistema de salud</span></h3>
+                        <div class="texto" data-campo="saude" lang="pt-BR"></div>
+                    </div>
+                    <figure><img data-campo="imagemSaude" alt="" loading="lazy"></figure>
+                </div>
+                <div role="tabpanel" id="infos2" aria-labelledby="ensino" class="info-painel" hidden>
+                    <div>
+                        <h3 style="font-size:1.6rem;margin-bottom:16px"><span lang="pt">Sistema de ensino</span><span lang="es">Sistema educativo</span></h3>
+                        <div class="texto" data-campo="ensino" lang="pt-BR"></div>
+                        <ul class="escolas" data-campo="escolas" lang="pt-BR"></ul>
+                    </div>
+                    <figure><img data-campo="imagemEnsino" alt="" loading="lazy"></figure>
+                </div>
+                <div role="tabpanel" id="infos3" aria-labelledby="localidade" class="info-painel" hidden>
+                    <div>
+                        <h3 style="font-size:1.6rem;margin-bottom:16px"><span lang="pt">Cidades bem localizadas</span><span lang="es">Ciudades bien ubicadas</span></h3>
+                        <ul class="cidades" data-campo="cidades" lang="pt-BR"></ul>
+                    </div>
+                    <figure><img data-campo="imagemCidades" alt="" loading="lazy"></figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outros estados -->
+    <section class="secao-compacta secao-papel">
+        <div class="container navegar-estados">
+            <a class="botao botao-contorno" href="./index.html#mapa"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span lang="pt">Voltar ao mapa</span><span lang="es">Volver al mapa</span></a>
+            <label style="display:flex;align-items:center;gap:12px;font-weight:600">
+                <span lang="pt">Ver outro estado</span><span lang="es">Ver otro estado</span>
+                <select id="outroEstado"></select>
+            </label>
+        </div>
+    </section>
 </main>
-
-<section class="sessao2" id="imgfundo">
-    <h1>PONTOS TURÍSTICOS</h1>
-    <div class="pontos-turisticos">
-        <div class="cards" data-campo="pontosCards"></div>
-        <div class="pontos-info" data-campo="pontosInfo"></div>
-    </div>
-</section>
-
-<section class="sessao3">
-    <h1>MAIS INFORMAÇÕES</h1>
-    <div class="cards-sec3">
-        <div>
-            <img src="./img/saude.png" alt="">
-            <h2>SAÚDE</h2>
-            <p>Veja um pouco sobre o sistema de saúde gratuito deste estado.</p>
-            <a href="#scroll"><button id="saude" type="button" data-alvo="infos1">VER MAIS</button></a>
-        </div>
-        <div>
-            <img src="./img/diplomado.png" alt="">
-            <h2>ENSINO</h2>
-            <p>Saiba um pouco sobre o sistema de ensino e sobre as escolas públicas.</p>
-            <a href="#scroll"><button id="ensino" type="button" data-alvo="infos2">VER MAIS</button></a>
-        </div>
-        <div>
-            <img src="./img/pin.png" alt="">
-            <h2>LOCALIDADE</h2>
-            <p>Veja as cidades com melhor localização e qualidade de vida.</p>
-            <a href="#scroll"><button id="localidade" type="button" data-alvo="infos3">VER MAIS</button></a>
-        </div>
-    </div>
-    <div id="scroll"></div>
-
-    <section class="infos-sec3" id="infos1">
-        <h1>SISTEMA DE SAÚDE</h1>
-        <div class="container-infos">
-            <div class="ajustar" data-campo="saude"></div>
-            <div class="imagem-ref">
-                <img src="./img/medico.webp" alt="" loading="lazy">
-            </div>
-        </div>
-    </section>
-
-    <section class="infos-sec3" id="infos2">
-        <h1>SISTEMA DE ENSINO</h1>
-        <div class="container-infos">
-            <div class="ajustar" data-campo="ensino"></div>
-            <div class="imagem-ref">
-                <img src="./img/ensino.webp" alt="" loading="lazy">
-            </div>
-        </div>
-    </section>
-
-    <section class="infos-sec3" id="infos3">
-        <h1>CIDADES BEM LOCALIZADAS</h1>
-        <div class="container-infos">
-            <div class="ajustar" data-campo="cidades"></div>
-            <div class="imagem-ref">
-                <img src="./img/localidade.webp" alt="" loading="lazy">
-            </div>
-        </div>
-    </section>
-</section>
-
-<div class="div-wavefoot" id="div-wavefoot">
-    <div class="wave-foot wave1"></div> 
-    <div class="wave-foot wave2"></div> 
-    <div class="wave-foot wave3"></div> 
-    <div class="wave-foot wave4"></div> 
-</div>
-
-<footer>
-    <div style="text-align: center; padding: 40px; color: #fff; background: rgba(0,0,0,0.2);">
-        <p>Conexión Migratoria &copy; 2026. Todos os direitos reservados.</p>
-        <p style="margin-top: 10px; font-size: 14px;">O seu portal de auxílio para adaptação no Brasil.</p>
-    </div>
-</footer>
+<div id="cm-rodape"></div>
 <script src="./data/estados.js"></script>
 <script src="./js/estado.js"></script>
 </body>
 </html>
-

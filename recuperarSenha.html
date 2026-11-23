@@ -1,40 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-titulo-pt="Recuperar senha · Conexión Migratoria" data-titulo-es="Recuperar contraseña · Conexión Migratoria">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conexión Migratoria - Recuperar Senha</title>
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
+    <title>Recuperar senha · Conexión Migratoria</title>
+    <meta name="theme-color" content="#0F5C63">
+    <link rel="icon" href="./img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/idioma.js"></script>
     <script src="./js/demo-store.js"></script>
-    <link rel="stylesheet" href="./css/repaginada.css">
 </head>
 <body>
-    <section>
-        <div class="infos">
-            <a href="./index.html" class="voltar-site">&larr; Voltar para o site</a>
-                        <h1>RECUPERAR SENHA</h1>
-            <img src="./img/logo-branca-conexion-migratoria.png" alt="">
-            <a href="./logar.html"><button class="creat">VOLTAR AO LOGIN</button></a>
-        </div>
 
-        <div id="login1" class="login1">
-            <h1 class="title">INFORME SEU E-MAIL</h1>
-            <form id="recoverForm">
-                <div class="input">
-                    <img src="./img/o-email.png" style="filter: brightness(0) invert(1);">
-                    <div></div>
-                    <input type="email" name="email" placeholder="E-mail cadastrado" required>
+<main class="acesso" id="conteudo">
+    <aside class="acesso-arte">
+        <img src="./imgs-estado/img1sc-sc.webp" alt="">
+        <a class="marca" href="./index.html" aria-label="Conexión Migratoria">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#fff"/><path d="M27.5 13.2A10 10 0 1 0 27.5 26.8" fill="none" stroke="#0F5C63" stroke-width="3.2" stroke-linecap="round"/><circle cx="28.4" cy="20" r="3.4" fill="#E9A23B"/></svg>
+            <span class="marca-nome">Conexión Migratoria<small><span lang="pt">Portal do imigrante</span><span lang="es">Portal del inmigrante</span></small></span>
+        </a>
+        <div>
+            <blockquote><span lang="pt">Um novo país. O mesmo direito de recomeçar.</span><span lang="es">Un nuevo país. El mismo derecho a empezar de nuevo.</span></blockquote>
+            <p><span lang="pt">Crie sua conta para explorar o mapa dos estados, os guias de documentos, emprego e cursos.</span><span lang="es">Crea tu cuenta para explorar el mapa de los estados y las guías de documentos, empleo y cursos.</span></p>
+        </div>
+    </aside>
+    <section class="acesso-form">
+        <div class="topo-form">
+            <a class="botao botao-fantasma" href="./index.html"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span lang="pt">Voltar para o site</span><span lang="es">Volver al sitio</span></a>
+            <div class="seletor-idioma" role="group" aria-label="Idioma">
+                <button type="button" data-idioma-botao="pt" aria-pressed="false" title="Português">PT</button>
+                <button type="button" data-idioma-botao="es" aria-pressed="false" title="Español">ES</button>
+            </div>
+        </div>
+        <div class="caixa">
+            <div>
+                <span class="sobretitulo"><span lang="pt">Passo 1 de 2</span><span lang="es">Paso 1 de 2</span></span>
+                <h1 style="margin-top:12px"><span lang="pt">Recuperar senha</span><span lang="es">Recuperar contraseña</span></h1>
+                <p style="margin-top:10px"><span lang="pt">Informe o e-mail cadastrado para criar uma nova senha.</span><span lang="es">Ingresa el correo registrado para crear una nueva contraseña.</span></p>
+            </div>
+            <form id="recoverForm" novalidate>
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" name="email" autocomplete="email" required>
                 </div>
-                <div class="botao">
-                    <input type="submit" name="submit" id="submit" value="CONTINUAR">
-                </div>
+                <p class="mensagem-form" role="alert" hidden></p>
+                <button class="botao botao-primario botao-bloco" type="submit" id="submit"><span lang="pt">Continuar</span><span lang="es">Continuar</span></button>
             </form>
+            <p class="texto-pequeno"><a href="./logar.html"><span lang="pt">Voltar ao login</span><span lang="es">Volver al inicio de sesión</span></a></p>
         </div>
     </section>
-    <script src="./js/conta.js"></script>
+</main>
+<script src="./js/conta.js"></script>
 </body>
 </html>
-
-
