@@ -990,3 +990,44 @@ font { background: none !important; box-shadow: none !important; }
     .lightbox-seta { display: none; }
     .vizinhos { grid-auto-columns: 70%; }
 }
+
+/* ==========================================================================
+   Correções de compatibilidade (Safari / telas baixas)
+   ========================================================================== */
+
+/* Cartões que viram: além do backface-visibility (que falha no Safari),
+   escondemos a face de trás/da frente na metade da animação. */
+.flashcard-interno { -webkit-transform-style: preserve-3d; }
+.flashcard-frente { -webkit-transform: rotateY(0deg); transform: rotateY(0deg); }
+.flashcard-verso { -webkit-transform: rotateY(180deg); }
+.flashcard-face { transition: visibility 0s linear .3s; }
+.flashcard:not(.virado) .flashcard-verso,
+.dica-virar:not(.virado) .flashcard-verso,
+.flashcard.virado .flashcard-frente,
+.dica-virar.virado .flashcard-frente { visibility: hidden; }
+.flashcard-verso .frase.rtl { direction: rtl; text-align: right; unicode-bidi: plaintext; }
+
+/* "Ler mais": altura máxima com degradê, em vez de line-clamp
+   (o line-clamp quebra no Safari quando há mais de um parágrafo) */
+.texto-recolhido {
+    display: block; -webkit-line-clamp: unset; -webkit-box-orient: unset;
+    max-height: calc(var(--linhas, 3) * 1.65em); overflow: hidden;
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+}
+
+/* Tela cheia dos pontos turísticos: foto ao lado do texto e rolagem quando precisa */
+.lightbox { overflow-y: auto; align-content: center; }
+.lightbox figure {
+    width: 100%; max-width: 1200px; max-height: none;
+    grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); gap: 32px; align-items: center;
+}
+.lightbox img { max-height: 78vh; aspect-ratio: 4 / 3; object-fit: cover; }
+.lightbox figcaption { max-height: 78vh; overflow-y: auto; padding-right: 6px; align-self: center; }
+@media (max-width: 900px) {
+    .lightbox { align-content: start; padding: 76px 16px 32px; }
+    .lightbox figure { grid-template-columns: 1fr; gap: 18px; }
+    .lightbox img { max-height: 46vh; }
+    .lightbox figcaption { max-height: none; overflow: visible; }
+}
+.lightbox { background: rgba(3, 20, 28, .985); }

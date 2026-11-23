@@ -6,7 +6,7 @@
 </p>
 
 <h3 align="center">
-  <a href="https://biabruna19.github.io/Conexion-Migratoria/">Ver o site → biabruna19.github.io/Conexion-Migratoria</a>
+  <a href="https://biabruna19.github.io/Conexion-Migratoria/logar.html">Ver o site → biabruna19.github.io/Conexion-Migratoria</a>
 </h3>
 
 <p align="center">
@@ -40,7 +40,7 @@ O português e o espanhol têm textos escritos à mão, porque boa parte de quem
 
 ## Como testar
 
-É só abrir o [site](https://biabruna19.github.io/Conexion-Migratoria/): todas as páginas funcionam sem login. O globo no topo troca o idioma. Para testar a parte de conta, use **Entrar → entrar como visitante**.
+O [link do site](https://biabruna19.github.io/Conexion-Migratoria/logar.html) abre na tela de entrada. Clique em **entrar como visitante** para conhecer tudo sem criar conta, ou em **Voltar para o site** para navegar sem login. O globo no topo troca o idioma.
 
 O site roda direto no GitHub Pages, sem servidor nem banco de dados. As contas e fotos ficam guardadas só no navegador de quem está testando, e as senhas são salvas em hash, nunca em texto puro.
 
