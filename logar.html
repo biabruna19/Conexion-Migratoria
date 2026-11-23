@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
 
+    <script src="./js/demo-store.js"></script>
+    <link rel="stylesheet" href="./css/repaginada.css">
 </head>
 
 
 <body>
     <section>
         <div class="infos">
-            <h1>BEM VINDO!</h1>
+            <a href="./index.html" class="voltar-site">&larr; Voltar para o site</a>
+                        <h1>BEM VINDO!</h1>
             <img src="./img/logo-branca-conexion-migratoria.png" alt="">
             <a href="./criarConta.html"><button class="creat" id="creat">CRIAR CONTA</button></a>
         </div>
@@ -26,12 +29,12 @@
                 <div class="input">
                     <img src="./img/do-utilizador.png">
                     <div></div>
-                    <input type="email" name="email" placeholder="E-mail">
+                    <input type="email" name="email" placeholder="E-mail" autocomplete="email" required>
                 </div>
                 <div class="input">
                     <img src="./img/cadeado.png">
                     <div></div>
-                    <input type="password" name="senha" placeholder="Senha">
+                    <input type="password" name="senha" placeholder="Senha" autocomplete="current-password" required>
                 </div>
                 <div style="text-align: right; width: 100%; margin-top: -10px; margin-bottom: 15px;">
                     <a href="recuperarSenha.html" style="color: #fff; text-decoration: none; font-size: 14px;">Esqueceu a senha?</a>
@@ -39,12 +42,10 @@
                 <div class="botao">
                     <input type="submit" name="submit" id="submit" value="ENTRAR">
                 </div>
+                <button type="button" class="botao-visitante" id="entrarVisitante">Só quero conhecer: entrar como visitante</button>
             </form>
         </div>
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
+    <script src="./js/conta.js"></script>
 </body>
 </html>

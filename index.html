@@ -11,66 +11,13 @@
     <link rel="icon" type="image/x-icon" href="./img/ico-CM.ico">
     <link rel="stylesheet" href="./css/nav-footer.css">
 
+    <script src="./js/demo-store.js"></script>
+    <link rel="stylesheet" href="./css/repaginada.css">
 </head>
 <body>
 
-    <script>window.gtranslateSettings = {"default_language":"pt","detect_browser_language":true,"languages":["pt","es"],"wrapper_selector":".gtranslate_wrapper","flag_size":48,"alt_flags":{"pt":"brazil"}}</script>
-    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
-    
-<nav>
-    <div class="alinhar">
-        <div class="logos">
-            <a href=""><img src="./img/logo-branca-conexion-migratoria.png"></a>
-        </div>
-        <div class="links-nav">
-            <ul>
-                <a href="#mapa"><li>MAPA INTERATIVO</li></a>
-                <a href="#leis"><li>LEIS E DOCUMENTOS</li></a>
-                <a href="#leis"><li>EMPREGABILIDADE</li></a>
-                <a href="#leis"><li>CURSOS</li></a>
-                <a href="#noticias"><li>NOTÍCIAS</li></a>
-            </ul>
-    
-            <div class="traduçao">
-                <div class="gtranslate_wrapper">
-                </div>
-            </div>
-    
-            <div class="user"> 
-                <a href="./logar.php"><img src="./img/do-utilizador.png" alt=""></a>
-            </div>
-        </div>
-
-        <div class="menu-hamburguer"  id="menuHamburguer">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-
-<script>
-    document.getElementById('menuHamburguer').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.getElementById('backMenuMobile').classList.toggle('active');
-});
-</script>
-    
-    <div class="movendo-gradient"></div>
-    
-</nav>
-
-<div class="back-menumobile" id="backMenuMobile">
-    <div class="menu-mobile">
-        <h1>TRADUZIR</h1>
-        
-        <div>
-            <div class="gtranslate_wrapper">
-            </div>
-        </div>
-
-        <a href="./logar.php">Fazer Login</a>
-    </div>
-</div>
+<div id="cm-topo"></div>
+<script src="./js/layout.js"></script>
 
 <section class="sessao1">
 
@@ -80,7 +27,7 @@
             <h1><span>CONEXIÓN MIGRATORIA</span></h1>
         </div>
         <p>O aumento do movimento migratório em várias partes do mundo tem ocorrido com regularidade. Neste espaço, auxiliamos você, imigrante, a se familiarizar com o Brasil.</p>
-        <a href="./logar.php"><button>ENTRAR</button></a>
+        <a href="./logar.html" id="heroCta"><button>ENTRAR</button></a>
     </div>
 
 </section>
@@ -222,31 +169,7 @@
         </div>
         
     
-        <script>
-            
-            const description = document.querySelector(".tooltip");
-    
-            document.querySelectorAll('path').forEach((el) =>
-                el.addEventListener('mouseover', (event) => {
-                    event.target.className = ("enabled");
-                    description.classList.add("active");
-                    description.innerHTML = event.target.id;
-                })
-    
-            );
-    
-            document.querySelectorAll('path').forEach((el) =>
-                el.addEventListener("mouseout", () => {
-                    description.classList.remove("active");
-                })
-            );
-    
-            document.onmousemove = function (e) {
-                description.style.left = e.pageX + "px";
-                description.style.top = (e.pageY - 70) + "px";
-            }
-    
-        </script>
+
 
 <div class="info-mapa" id="AC">
             <h1>ACRE</h1>
@@ -409,7 +332,7 @@
             <p>Tocantins, localizado na região Norte do Brasil, é conhecido por sua rica biodiversidade e vastas áreas preservadas. Sua capital, Palmas, é uma das cidades mais jovens do país, planejada para integrar urbanismo e sustentabilidade, refletindo um modelo de desenvolvimento urbano consciente. A economia de Tocantins é predominantemente baseada na agropecuária, com forte produção de soja, milho, gado e aves, sendo esses setores os pilares econômicos do estado. Além disso, Tocantins possui um potencial turístico significativo com suas belezas naturais, destacando-se o Parque Estadual do Jalapão com suas dunas, rios de águas cristalinas e cachoeiras, atraindo visitantes interessados em ecoturismo e aventura.</p>
             <a href="pg-estados.html?uf=TO"><button>VER MAIS SOBRE ESTA REGIÃO</button></a>
         </div>
-        <script src="./js/func-mapa.js"></script>
+        <script src="./js/mapa.js"></script>
     </div>
 
 
@@ -420,7 +343,7 @@
 <section class="sessao4">
     <h1>FACILITADORES</h1>
     <div class="container-cards">
-        <a href="./leis.php">
+        <a href="./leis.html">
             <div class="card card1">
                 <div>
                     <h1>Leis e Documentos</h1>
@@ -429,7 +352,7 @@
                 <p class="ver-mais">Clique para ver mais</p>
             </div>
         </a>
-        <a href="./pg-empregos.php">
+        <a href="./pg-empregos.html">
         <div class="card card2">
             <div>
                 <h1>Busca de empregos</h1>
@@ -438,7 +361,7 @@
             <p class="ver-mais">Clique para ver mais</p>
         </div>
         </a>
-        <a href="./pg-cursos.php">
+        <a href="./pg-cursos.html">
         <div class="card card3">
             <div>
                 <h1>Cursos</h1>
@@ -509,10 +432,14 @@
         <p style="margin-top: 10px; font-size: 14px;">O seu portal de auxílio para adaptação no Brasil.</p>
     </div>
 </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
+<script>
+    // Logado: o botão do topo leva direto ao mapa
+    if (CM.estaLogado()) {
+        const cta = document.getElementById('heroCta');
+        cta.href = '#mapa';
+        cta.querySelector('button').textContent = 'EXPLORAR O MAPA';
+    }
+</script>
 </body>
 </html>
 
