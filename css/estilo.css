@@ -1031,3 +1031,48 @@ font { background: none !important; box-shadow: none !important; }
     .lightbox figcaption { max-height: none; overflow: visible; }
 }
 .lightbox { background: rgba(3, 20, 28, .985); }
+
+/* ==========================================================================
+   Saúde, ensino e cidades: cartões sempre do mesmo tamanho
+   ========================================================================== */
+.info-cartoes { align-items: stretch; }
+.info-cartao { display: flex; flex-direction: column; height: 100%; }
+.info-previa {
+    font-size: .96rem; color: var(--tinta-2);
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+    max-height: calc(4 * 1.65em); /* reserva caso o line-clamp não funcione */
+}
+.info-contagem { align-self: flex-start; }
+.info-cartao .info-abrir { margin-top: auto; align-self: flex-start; }
+.info-cartao > .info-abrir { margin-top: auto; }
+.info-cartao h3 { min-height: 2.4em; display: flex; align-items: flex-end; } /* títulos de 1 ou 2 linhas alinhados */
+
+.janela-info {
+    position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 24px;
+    background: rgba(3, 20, 28, .7); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    animation: aparecer .2s ease;
+}
+.janela-info[hidden] { display: none; }
+.janela-caixa {
+    position: relative; width: min(720px, 100%); max-height: calc(100vh - 48px); overflow-y: auto;
+    background: var(--papel); border-radius: var(--raio-g); box-shadow: var(--sombra-3);
+}
+.janela-caixa figure { height: 200px; overflow: hidden; }
+.janela-caixa figure img { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.25); }
+.janela-corpo { padding: 0 32px 32px; display: grid; gap: 14px; }
+.janela-corpo .icone-redondo { margin-top: -28px; border: 4px solid var(--papel); }
+.janela-corpo h3 { font-size: 1.6rem; }
+.janela-corpo .texto p { font-size: 1rem; }
+.janela-corpo .texto p + p { margin-top: 12px; }
+.janela-fechar {
+    position: absolute; top: 14px; right: 14px; z-index: 1; width: 42px; height: 42px; border-radius: 50%;
+    display: grid; place-items: center; background: rgba(255, 255, 255, .92); color: var(--tinta); box-shadow: var(--sombra-1);
+}
+.janela-fechar:hover { background: var(--azul-claro); color: #fff; }
+@media (max-width: 640px) {
+    .janela-info { padding: 12px; align-items: end; }
+    .janela-caixa { max-height: 88vh; }
+    .janela-corpo { padding: 0 20px 24px; }
+    .info-cartao h3 { min-height: 0; }
+}
+.janela-corpo .icone-redondo { position: relative; z-index: 1; }
