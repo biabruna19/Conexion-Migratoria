@@ -1086,3 +1086,58 @@ font { background: none !important; box-shadow: none !important; }
 }
 .aviso-traducao small { color: rgba(255, 255, 255, .7); }
 .aviso-traducao button { flex: none; height: 38px; padding: 0 16px; border-radius: 999px; background: var(--azul-claro); color: #fff; font-weight: 600; }
+
+/* ==========================================================================
+   Ajustes para celular
+   ========================================================================== */
+
+/* Globo dentro do menu do celular: a lista abre dentro do próprio menu
+   (antes abria para cima e o "Português" ficava escondido atrás do topo) */
+.gaveta { max-height: calc(100vh - var(--topo-altura)); overflow-y: auto; }
+.gaveta .acoes-gaveta .globo { width: 100%; }
+.gaveta .globo-botao { width: 100%; justify-content: center; height: 46px; }
+.gaveta .globo-lista {
+    position: static; width: 100%; max-height: none; margin-top: 10px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+    box-shadow: none; animation: none;
+}
+.gaveta .globo-lista[hidden] { display: none; }
+.gaveta .globo-lista li { padding: 12px; }
+
+/* Toque: sem o efeito de "flutuar" que fica preso depois de tocar no celular */
+* { -webkit-tap-highlight-color: transparent; }
+@media (hover: none) {
+    .item-check:hover, a.cartao:hover, .cartao.interativo:hover, .noticia:hover,
+    .emergencia:hover, .botao:hover, .galeria-item:hover img, .vizinho:hover img { transform: none; box-shadow: none; }
+    .item-check:active, .documento:active { transform: scale(.98); }
+}
+.item-check, .documento { touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+
+@media (max-width: 640px) {
+    /* Primeiros passos: cartões mais compactos */
+    .passos-grade { gap: 10px; }
+    .item-check { padding: 14px 16px; gap: 12px; border-radius: 14px; }
+    .item-check .marcador { width: 26px; height: 26px; }
+    .item-check strong { font-size: .98rem; }
+    .item-check p { font-size: .86rem; }
+    .progresso { padding: 16px 18px; }
+
+    /* Checklist do currículo: duas colunas de itens curtos */
+    [data-checklist="curriculo"] { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+    [data-checklist="curriculo"] .item-check { padding: 12px; gap: 8px; align-items: center; }
+    [data-checklist="curriculo"] .item-check strong { font-size: .86rem; margin: 0; line-height: 1.25; }
+    [data-checklist="curriculo"] .item-check .marcador { width: 22px; height: 22px; }
+
+    /* Documentos: o "Já tenho" vira uma faixa no pé do cartão, sem apertar o título */
+    .documento h3 { padding-right: 0; }
+    .documento .ja-tenho {
+        position: static; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--linha);
+        width: 100%; justify-content: flex-start;
+    }
+    .documento { display: flex; flex-direction: column; }
+    .documento .ja-tenho { order: 3; }
+}
+/* O aviso de tradução fica atrás do menu e do topo (não bloqueia o globo no celular) */
+.aviso-traducao { z-index: 45; }
+.aviso-traducao .fechar-aviso { background: rgba(255, 255, 255, .14); width: 38px; padding: 0; display: grid; place-items: center; }
+@media (max-width: 640px) { .aviso-traducao { bottom: 12px; flex-wrap: wrap; gap: 10px; } }

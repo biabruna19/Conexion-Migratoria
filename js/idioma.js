@@ -104,8 +104,10 @@
         aviso.className = 'aviso-traducao notranslate';
         aviso.setAttribute('role', 'alert');
         aviso.innerHTML = `<span>Não foi possível carregar a tradução automática. Verifique a conexão ou escolha Português ou Espanhol.<br><small>Automatic translation could not be loaded.</small></span>
-            <button type="button">Português</button>`;
-        aviso.querySelector('button').addEventListener('click', () => window.I18N.definir('pt'));
+            <button type="button" class="voltar-pt">Português</button>
+            <button type="button" class="fechar-aviso" aria-label="Fechar">✕</button>`;
+        aviso.querySelector('.voltar-pt').addEventListener('click', () => window.I18N.definir('pt'));
+        aviso.querySelector('.fechar-aviso').addEventListener('click', () => aviso.remove());
         document.body.appendChild(aviso);
     }
     if (!automatico && document.cookie.includes('googtrans=')) {
